@@ -72,9 +72,12 @@ export default function ContactPage() {
               </div>
               <h3 className="text-xl font-semibold text-charcoal mb-2">{t('whatsapp.title')}</h3>
               <p className="text-charcoal-600 mb-4">{t('whatsapp.subtitle')}</p>
-              <Button variant="primary" className="bg-green-600 hover:bg-green-700">
+              <button 
+                onClick={() => window.open('https://wa.me/966XXXXXXXXX?text=' + encodeURIComponent('Hello, I would like to inquire about your products and services.'), '_blank')}
+                className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+              >
                 {t('whatsapp.button')}
-              </Button>
+              </button>
             </Card>
           </div>
 

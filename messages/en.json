@@ -120,7 +120,18 @@
     "email": "info@foodsources.sa",
     "phone": "+966 XX XXX XXXX",
     "address": "Riyadh, Saudi Arabia",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Subscribe to our newsletter for exclusive offers and updates",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Successfully subscribed!"
+    },
+    "careers": "Careers",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "products": {
     "breadcrumb": "Products",

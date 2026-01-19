@@ -75,7 +75,7 @@ export default function Home() {
             </div>
             <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80"
+                src="/hero.png"
                 alt={t("hero.imageAlt")}
                 fill
                 className="object-cover"

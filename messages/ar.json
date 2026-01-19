@@ -120,7 +120,18 @@
     "email": "info@foodsources.sa",
     "phone": "+966 XX XXX XXXX",
     "address": "الرياض، المملكة العربية السعودية",
-    "rights": "جميع الحقوق محفوظة."
+    "rights": "جميع الحقوق محفوظة.",
+    "newsletter": {
+      "title": "ابق على اطلاع",
+      "description": "اشترك في نشرتنا الإخبارية للحصول على عروض حصرية وتحديثات",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "subscribe": "اشترك",
+      "subscribing": "جاري الاشتراك...",
+      "success": "تم الاشتراك بنجاح!"
+    },
+    "careers": "الوظائف",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة"
   },
   "products": {
     "breadcrumb": "المنتجات",

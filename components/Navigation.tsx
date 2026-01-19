@@ -53,7 +53,7 @@ export default function Navigation({ locale }: NavigationProps) {
             {/* Quote Button */}
             <Link
               href={`/${locale}/quote`}
-              className="px-6 py-2.5 bg-olive text-white rounded-lg hover:bg-olive-600 transition-colors font-medium"
+              className=" px-6 py-2.5 bg-terracotta text-white rounded-lg hover:bg-olive-600 transition-colors font-medium"
             >
               {t('requestQuote')}
             </Link>

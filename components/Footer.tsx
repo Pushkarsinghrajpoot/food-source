@@ -1,13 +1,31 @@
 'use client'
 
 import Link from 'next/link'
-import { useLocale, useTranslations } from 'next-intl'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Send } from 'lucide-react'
+import { useState } from 'react'
 
-export default function Footer() {
-  const locale = useLocale()
+interface FooterProps {
+  locale: string;
+}
+
+export default function Footer({ locale }: FooterProps) {
   const t = useTranslations('footer')
   const navT = useTranslations('nav')
+  const [email, setEmail] = useState('')
+  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubscribeStatus('loading')
+    
+    // Simulate API call - replace with actual newsletter API
+    setTimeout(() => {
+      setSubscribeStatus('success')
+      setEmail('')
+      setTimeout(() => setSubscribeStatus('idle'), 3000)
+    }, 1000)
+  }
 
   return (
     <footer className="bg-charcoal text-white">
@@ -49,10 +67,26 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-4">{t('productsTitle')}</h4>
             <ul className="space-y-2">
-              <li className="text-charcoal-300">{t('olives')}</li>
-              <li className="text-charcoal-300">{t('cheeses')}</li>
-              <li className="text-charcoal-300">{t('pickles')}</li>
-              <li className="text-charcoal-300">{t('labneh')}</li>
+              <li>
+                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                  {t('olives')}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                  {t('cheeses')}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                  {t('pickles')}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                  {t('labneh')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -75,8 +109,67 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-charcoal-700 mt-12 pt-8 text-center text-charcoal-400">
-          <p>&copy; {new Date().getFullYear()} Food Sources. {t('rights')}</p>
+        {/* Newsletter Section */}
+        <div className="border-t border-charcoal-700 mt-12 pt-8">
+          <div className="max-w-md mx-auto text-center mb-8">
+            <h4 className="font-semibold text-lg mb-2">{t('newsletter.title') || 'Stay Updated'}</h4>
+            <p className="text-charcoal-400 text-sm mb-4">{t('newsletter.description') || 'Subscribe to our newsletter for exclusive offers'}</p>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={t('newsletter.placeholder') || 'Enter your email'}
+                className="flex-1 px-4 py-2 rounded-lg bg-charcoal-800 border border-charcoal-600 text-white placeholder-charcoal-500 focus:outline-none focus:border-olive"
+                required
+                disabled={subscribeStatus === 'loading'}
+              />
+              <button
+                type="submit"
+                disabled={subscribeStatus === 'loading'}
+                className="px-6 py-2 bg-olive text-white rounded-lg hover:bg-olive-600 transition-colors disabled:opacity-50 flex items-center gap-2"
+              >
+                <Send size={18} />
+                {subscribeStatus === 'loading' ? (t('newsletter.subscribing') || 'Subscribing...') : (t('newsletter.subscribe') || 'Subscribe')}
+              </button>
+            </form>
+            {subscribeStatus === 'success' && (
+              <p className="text-olive text-sm mt-2">{t('newsletter.success') || 'Successfully subscribed!'}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-charcoal-700 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-charcoal-400 text-sm">&copy; {new Date().getFullYear()} Food Sources. {t('rights')}</p>
+            
+            {/* Social Media Links */}
+            <div className="flex items-center gap-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-charcoal-400 hover:text-olive transition-colors">
+                <Facebook size={20} />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-charcoal-400 hover:text-olive transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-charcoal-400 hover:text-olive transition-colors">
+                <Linkedin size={20} />
+              </a>
+            </div>
+            
+            {/* Legal Links */}
+            <div className="flex items-center gap-4 text-sm">
+              <Link href={`/${locale}/careers`} className="text-charcoal-400 hover:text-olive transition-colors">
+                {t('careers') || 'Careers'}
+              </Link>
+              <Link href={`/${locale}/privacy`} className="text-charcoal-400 hover:text-olive transition-colors">
+                {t('privacy') || 'Privacy Policy'}
+              </Link>
+              <Link href={`/${locale}/terms`} className="text-charcoal-400 hover:text-olive transition-colors">
+                {t('terms') || 'Terms of Service'}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
