@@ -427,6 +427,18 @@
       "viewProducts": "View Products"
     }
   },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: January 2026"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: January 2026"
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "Join our team"
+  },
   "faq": {
     "hero": {
       "title": "How can we help?",

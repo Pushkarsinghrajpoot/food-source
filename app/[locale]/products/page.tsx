@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useTranslations, useLocale } from 'next-intl'
@@ -10,7 +10,7 @@ import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import Card from "@/components/ui/Card"
 
-export default function ProductsPage() {
+function ProductsContent() {
   const t = useTranslations('products')
   const navT = useTranslations('nav')
   const locale = useLocale()
@@ -195,5 +195,13 @@ export default function ProductsPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="pt-20 min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ProductsContent />
+    </Suspense>
   )
 }
