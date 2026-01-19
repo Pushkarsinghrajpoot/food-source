@@ -61,6 +61,11 @@ export default function Footer({ locale }: FooterProps) {
                   {navT('contact')}
                 </Link>
               </li>
+              <li>
+                <Link href={`/${locale}/faq`} className="text-charcoal-300 hover:text-olive transition-colors">
+                  {navT('faq')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -68,22 +73,22 @@ export default function Footer({ locale }: FooterProps) {
             <h4 className="font-semibold text-lg mb-4">{t('productsTitle')}</h4>
             <ul className="space-y-2">
               <li>
-                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                <Link href={`/${locale}/products?category=olives`} className="text-charcoal-300 hover:text-olive transition-colors">
                   {t('olives')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                <Link href={`/${locale}/products?category=cheese`} className="text-charcoal-300 hover:text-olive transition-colors">
                   {t('cheeses')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                <Link href={`/${locale}/products?category=pickles`} className="text-charcoal-300 hover:text-olive transition-colors">
                   {t('pickles')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products`} className="text-charcoal-300 hover:text-olive transition-colors">
+                <Link href={`/${locale}/products?category=labneh`} className="text-charcoal-300 hover:text-olive transition-colors">
                   {t('labneh')}
                 </Link>
               </li>
@@ -160,13 +165,13 @@ export default function Footer({ locale }: FooterProps) {
             {/* Legal Links */}
             <div className="flex items-center gap-4 text-sm">
               <Link href={`/${locale}/careers`} className="text-charcoal-400 hover:text-olive transition-colors">
-                {t('careers') || 'Careers'}
+                {t('careers')}
               </Link>
               <Link href={`/${locale}/privacy`} className="text-charcoal-400 hover:text-olive transition-colors">
-                {t('privacy') || 'Privacy Policy'}
+                {t('privacy')}
               </Link>
               <Link href={`/${locale}/terms`} className="text-charcoal-400 hover:text-olive transition-colors">
-                {t('terms') || 'Terms of Service'}
+                {t('terms')}
               </Link>
             </div>
           </div>

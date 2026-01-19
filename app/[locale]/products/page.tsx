@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useTranslations, useLocale } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 import { Search, SlidersHorizontal, Grid, List, Package, ArrowRight } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
@@ -13,8 +14,18 @@ export default function ProductsPage() {
   const t = useTranslations('products')
   const navT = useTranslations('nav')
   const locale = useLocale()
+  const searchParams = useSearchParams()
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
+
+  // Handle URL category parameter
+  useEffect(() => {
+    const categoryParam = searchParams.get('category')
+    if (categoryParam) {
+      setSelectedCategory(categoryParam)
+    }
+  }, [searchParams])
 
   const categories = [
     { id: 'all', label: t('all') },
@@ -35,9 +46,14 @@ export default function ProductsPage() {
     { id: 8, name: "Strained Labneh", category: "labneh", origin: "Lebanon", size: "2kg tub", certification: "Halal", image: "https://images.unsplash.com/photo-1571212515416-9cf500fe1dae?w=400&q=80" },
   ]
 
-  const filteredProducts = selectedCategory === 'all' 
-    ? products 
-    : products.filter(p => p.category === selectedCategory)
+  const filteredProducts = products
+    .filter(p => selectedCategory === 'all' || p.category === selectedCategory)
+    .filter(p => 
+      searchQuery === '' || 
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchQuery.toLowerCase())
+    )
 
   return (
     <div className="pt-20">
@@ -87,6 +103,8 @@ export default function ProductsPage() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal-400" size={20} />
                 <input
                   type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t('searchPlaceholder')}
                   className="w-full pl-10 pr-4 py-2 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
                 />

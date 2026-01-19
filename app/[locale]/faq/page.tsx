@@ -1,63 +1,65 @@
 'use client'
 
 import { useState } from "react"
+import { useTranslations } from 'next-intl'
 import { Search, ShoppingCart, Truck, Package, CreditCard, User, Info, ChevronDown, MessageCircle, Mail } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
 
 export default function FAQPage() {
+  const t = useTranslations('faq')
   const [searchQuery, setSearchQuery] = useState('')
   const [openFaq, setOpenFaq] = useState<string | null>(null)
 
   const categories = [
-    { id: 'ordering', name: 'Ordering', icon: ShoppingCart },
-    { id: 'delivery', name: 'Delivery & Shipping', icon: Truck },
-    { id: 'products', name: 'Products', icon: Package },
-    { id: 'payments', name: 'Payments & Invoicing', icon: CreditCard },
-    { id: 'account', name: 'Account', icon: User },
-    { id: 'general', name: 'General', icon: Info },
+    { id: 'ordering', name: t('categories.ordering'), icon: ShoppingCart },
+    { id: 'delivery', name: t('categories.delivery'), icon: Truck },
+    { id: 'products', name: t('categories.products'), icon: Package },
+    { id: 'payments', name: t('categories.payments'), icon: CreditCard },
+    { id: 'account', name: t('categories.account'), icon: User },
+    { id: 'general', name: t('categories.general'), icon: Info },
   ]
 
   const faqs = {
     ordering: [
-      { q: "What is the minimum order quantity?", a: "Our minimum order quantity varies by product. Generally, we require a minimum order of 2 units per product. For bulk orders, we offer attractive discounts." },
-      { q: "How do I place an order?", a: "You can place orders through our customer portal, by requesting a quote on our website, via email at orders@foodsources.com.sa, or by calling our sales team at +966 XX XXX XXXX." },
-      { q: "Can I modify my order after placing it?", a: "Orders can be modified within 2 hours of placement. Please contact our customer service team immediately if you need to make changes." },
-      { q: "Do you offer bulk discounts?", a: "Yes, we offer tiered pricing based on order volume. Contact our sales team for a customized quote based on your specific needs." },
+      { q: t('ordering.q1'), a: t('ordering.a1') },
+      { q: t('ordering.q2'), a: t('ordering.a2') },
+      { q: t('ordering.q3'), a: t('ordering.a3') },
+      { q: t('ordering.q4'), a: t('ordering.a4') },
     ],
     delivery: [
-      { q: "Which areas do you deliver to?", a: "We deliver across Saudi Arabia, with next-day delivery available in Riyadh, Jeddah, and Dammam. Other cities receive delivery within 2-3 business days." },
-      { q: "What is the delivery time?", a: "Standard delivery is 1-3 business days depending on your location. Express delivery options are available for urgent orders." },
-      { q: "How do I track my order?", a: "Once your order ships, you'll receive a tracking number via email and SMS. You can also track orders through your customer portal." },
-      { q: "What if my order arrives damaged?", a: "We take quality seriously. If your order arrives damaged, please contact us within 24 hours with photos. We'll arrange a replacement or refund immediately." },
+      { q: t('delivery.q1'), a: t('delivery.a1') },
+      { q: t('delivery.q2'), a: t('delivery.a2') },
+      { q: t('delivery.q3'), a: t('delivery.a3') },
+      { q: t('delivery.q4'), a: t('delivery.a4') },
     ],
     products: [
-      { q: "Are your products certified?", a: "Yes, all our products are SFDA certified and meet international food safety standards. Many items also carry Halal certification." },
-      { q: "How should I store the products?", a: "Storage instructions vary by product. Generally, keep items in a cool, dry place. Specific storage guidelines are provided on each product label and spec sheet." },
-      { q: "Can you source products not in your catalog?", a: "Absolutely! We have an extensive network of Mediterranean suppliers. Contact our product team with your requirements, and we'll work to source it for you." },
-      { q: "What is the shelf life of your products?", a: "Shelf life varies by product category. Olives and pickles typically have 18-24 months, while cheeses vary from 6-12 months. Check product specifications for details." },
+      { q: t('products.q1'), a: t('products.a1') },
+      { q: t('products.q2'), a: t('products.a2') },
+      { q: t('products.q3'), a: t('products.a3') },
+      { q: t('products.q4'), a: t('products.a4') },
     ],
     payments: [
-      { q: "What payment methods do you accept?", a: "We accept bank transfers, credit cards, and for approved accounts, we offer Net 30 payment terms." },
-      { q: "Do you offer credit terms?", a: "Yes, qualified businesses can apply for credit accounts with Net 30 or Net 60 payment terms. Contact our accounts team to apply." },
-      { q: "How do I access my invoices?", a: "All invoices are available in your customer portal under the 'Invoices' section. You can also request copies via email." },
-      { q: "What is your refund policy?", a: "We offer full refunds for damaged or defective products within 7 days of delivery. Quality issues are handled on a case-by-case basis." },
+      { q: t('payments.q1'), a: t('payments.a1') },
+      { q: t('payments.q2'), a: t('payments.a2') },
+      { q: t('payments.q3'), a: t('payments.a3') },
+      { q: t('payments.q4'), a: t('payments.a4') },
     ],
     account: [
-      { q: "How do I create an account?", a: "Request a quote on our website, and our team will set up your account. Once approved, you'll receive portal access credentials." },
-      { q: "I forgot my password, what should I do?", a: "Click 'Forgot Password' on the portal login page. You'll receive a reset link via email." },
-      { q: "Can I have multiple users on my account?", a: "Yes, business accounts can have multiple users with different permission levels. Contact support to add users." },
-      { q: "How do I update my account information?", a: "Log into your portal and navigate to Settings > Account Information to update your details." },
+      { q: t('account.q1'), a: t('account.a1') },
+      { q: t('account.q2'), a: t('account.a2') },
+      { q: t('account.q3'), a: t('account.a3') },
+      { q: t('account.q4'), a: t('account.a4') },
     ],
     general: [
-      { q: "What are your business hours?", a: "We're open Sunday to Thursday, 9:00 AM to 6:00 PM. We're closed on Fridays and Saturdays." },
-      { q: "Do you have physical stores?", a: "We operate distribution centers in Riyadh and Jeddah. We're primarily a B2B supplier and don't have retail stores." },
-      { q: "How can I become a supplier?", a: "We're always looking for quality suppliers. Send your company profile and product information to suppliers@foodsources.com.sa." },
-      { q: "Do you offer catering services?", a: "No, we're a food distribution company. We supply ingredients to hotels, restaurants, and caterers." },
+      { q: t('general.q1'), a: t('general.a1') },
+      { q: t('general.q2'), a: t('general.a2') },
+      { q: t('general.q3'), a: t('general.a3') },
+      { q: t('general.q4'), a: t('general.a4') },
     ],
   }
 
-  const popularSearches = ['Minimum order', 'Delivery time', 'Payment terms', 'SFDA certification']
+  const popularSearches = [t('popularSearches.s1'), t('popularSearches.s2'), t('popularSearches.s3'), t('popularSearches.s4')]
 
   return (
     <div className="pt-20">
@@ -65,7 +67,7 @@ export default function FAQPage() {
       <section className="bg-gradient-to-br from-cream to-white py-16 md:py-24">
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal mb-6">
-            How can we help?
+            {t('hero.title')}
           </h1>
           
           {/* Search Bar */}
@@ -75,14 +77,14 @@ export default function FAQPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search for answers..."
+              placeholder={t('hero.searchPlaceholder')}
               className="w-full pl-16 pr-6 py-5 rounded-xl border-2 border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive text-lg shadow-sm"
             />
           </div>
 
           {/* Popular Searches */}
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            <span className="text-sm text-charcoal-600">Popular:</span>
+            <span className="text-sm text-charcoal-600">{t('hero.popularLabel')}</span>
             {popularSearches.map((search, index) => (
               <button
                 key={index}
@@ -169,10 +171,10 @@ export default function FAQPage() {
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-charcoal mb-4">
-              Can't find what you're looking for?
+              {t('help.title')}
             </h2>
             <p className="text-xl text-charcoal-600">
-              Our team is here to help you
+              {t('help.subtitle')}
             </p>
           </div>
 
@@ -181,35 +183,40 @@ export default function FAQPage() {
               <div className="w-16 h-16 rounded-full bg-olive/10 flex items-center justify-center mx-auto mb-4">
                 <Mail className="text-olive" size={32} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">Contact Us</h3>
+              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('help.emailTitle')}</h3>
               <p className="text-charcoal-600 mb-6">
-                Send us an email and we'll respond within 24 hours
+                {t('help.emailSubtitle')}
               </p>
-              <Button variant="primary" className="w-full">
-                Send Email
-              </Button>
+              <a href="mailto:support@foodsources.com.sa?subject=FAQ Support Request">
+                <Button variant="primary" className="w-full">
+                  {t('help.emailButton')}
+                </Button>
+              </a>
             </Card>
 
             <Card className="p-8 text-center">
               <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="text-green-600" size={32} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">Chat with Us</h3>
+              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('help.whatsappTitle')}</h3>
               <p className="text-charcoal-600 mb-6">
-                Connect instantly via WhatsApp for quick support
+                {t('help.whatsappSubtitle')}
               </p>
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                Open WhatsApp
-              </Button>
+              <button 
+                onClick={() => window.open('https://wa.me/966XXXXXXXXX?text=' + encodeURIComponent('Hi, I have a question regarding your products and services.'), '_blank')}
+                className="w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+              >
+                {t('help.whatsappButton')}
+              </button>
             </Card>
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-charcoal-600 mb-2">Or call us directly:</p>
+            <p className="text-charcoal-600 mb-2">{t('help.callLabel')}</p>
             <a href="tel:+966XXXXXXXX" className="text-2xl font-bold text-olive hover:underline">
               +966 XX XXX XXXX
             </a>
-            <p className="text-sm text-charcoal-500 mt-2">Sunday - Thursday: 9:00 AM - 6:00 PM</p>
+            <p className="text-sm text-charcoal-500 mt-2">{t('help.hours')}</p>
           </div>
         </div>
       </section>

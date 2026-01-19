@@ -84,8 +84,8 @@ export default function PartnerPage() {
               {submitStatus === 'success' ? (
                 <div className="text-center py-12">
                   <CheckCircle className="text-olive mx-auto mb-4" size={64} />
-                  <h3 className="text-2xl font-semibold mb-2">Thank You!</h3>
-                  <p className="text-charcoal-600">We'll get back to you within 24 hours.</p>
+                  <h3 className="text-2xl font-semibold mb-2">{t('success.title')}</h3>
+                  <p className="text-charcoal-600">{t('success.message')}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">

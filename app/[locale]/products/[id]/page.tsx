@@ -1,34 +1,46 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, Truck } from "lucide-react"
+import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, Truck, Star } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
+import { getProductById, getRelatedProducts } from "@/data/products"
+import { useLocale } from "next-intl"
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const [selectedSize, setSelectedSize] = useState('5kg')
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const locale = useLocale()
+  const [productId, setProductId] = useState<string>('')
+  const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [activeTab, setActiveTab] = useState('description')
 
-  const product = {
-    name: "Greek Kalamata Olives",
-    category: "Premium Olives",
-    origin: "Kalamata, Greece",
-    description: "Authentic Greek Kalamata olives, handpicked and naturally cured. These premium olives offer a rich, fruity flavor with a meaty texture, perfect for Mediterranean dishes and gourmet presentations.",
-    sizes: ['5kg tin', '10kg bucket', '20kg barrel'],
-    shelfLife: "24 months",
-    storage: "Cool, dry place",
-    certification: "SFDA Approved",
+  useEffect(() => {
+    params.then(p => {
+      setProductId(p.id)
+      const prod = getProductById(p.id)
+      if (prod && prod.sizes.length > 0) {
+        setSelectedSize(prod.sizes[0])
+      }
+    })
+  }, [])
+
+  const product = productId ? getProductById(productId) : null
+  const relatedProducts = productId ? getRelatedProducts(productId) : []
+
+  if (!product) {
+    return (
+      <div className="pt-20 min-h-screen flex items-center justify-center">
+        <p className="text-xl text-charcoal-600">Product not found</p>
+      </div>
+    )
   }
 
-  const relatedProducts = [
-    { id: 2, name: "Premium Feta Cheese", category: "Cheese", origin: "Greece", image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80" },
-    { id: 5, name: "Green Olives Stuffed", category: "Olives", origin: "Spain", image: "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=400&q=80" },
-    { id: 7, name: "Mixed Mediterranean Pickles", category: "Pickles", origin: "Greece", image: "https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=400&q=80" },
-    { id: 3, name: "Turkish Pickled Cucumbers", category: "Pickles", origin: "Turkey", image: "https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?w=400&q=80" },
-  ]
+  const handleDownloadPDF = () => {
+    // Simulate PDF download
+    alert('Product specification sheet will be downloaded. This is a demo - integrate with actual PDF generation/storage.')
+  }
 
   return (
     <div className="pt-20">
@@ -55,20 +67,15 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             <div className="space-y-4">
               <div className="aspect-square bg-cream-200 rounded-2xl relative overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80"
-                  alt="Greek Kalamata Olives"
+                  src={product.image}
+                  alt={product.name}
                   fill
                   className="object-cover"
                   priority
                 />
               </div>
               <div className="grid grid-cols-4 gap-4">
-                {[
-                  "https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=200&q=80",
-                  "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=200&q=80",
-                  "https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=200&q=80",
-                  "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=200&q=80"
-                ].map((img, i) => (
+                {product.images.map((img, i) => (
                   <div key={i} className="aspect-square bg-cream-200 rounded-lg relative overflow-hidden cursor-pointer hover:ring-2 ring-olive transition-all">
                     <Image
                       src={img}
@@ -163,7 +170,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     Add to Quote Request
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="w-full">
+                <Button onClick={handleDownloadPDF} variant="outline" size="lg" className="w-full">
                   <Download size={20} className="mr-2" />
                   Download Product Spec Sheet (PDF)
                 </Button>
@@ -198,7 +205,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       <section className="bg-cream-50 py-16">
         <div className="container-custom max-w-5xl">
           <div className="border-b border-charcoal-200 mb-8">
-            <div className="flex gap-8">
+            <div className="flex gap-8 overflow-x-auto">
               {['description', 'nutritional', 'shipping', 'reviews'].map((tab) => (
                 <button
                   key={tab}
@@ -223,17 +230,13 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               <div className="prose max-w-none">
                 <h3 className="text-2xl font-bold text-charcoal mb-4">Product Description</h3>
                 <p className="text-charcoal-700 leading-relaxed mb-4">
-                  Our Greek Kalamata olives are sourced directly from family-owned groves in the Kalamata region of Greece. These premium olives are carefully handpicked at peak ripeness and naturally cured using traditional methods passed down through generations.
-                </p>
-                <p className="text-charcoal-700 leading-relaxed mb-4">
-                  Known for their distinctive almond shape and deep purple-black color, Kalamata olives offer a rich, fruity flavor with notes of wine and a meaty, tender texture. They're perfect for Mediterranean dishes, salads, tapenades, and as an elegant addition to any charcuterie board.
+                  {product.description}
                 </p>
                 <h4 className="text-xl font-semibold text-charcoal mt-6 mb-3">Suggested Uses</h4>
                 <ul className="list-disc list-inside space-y-2 text-charcoal-700">
-                  <li>Mediterranean salads and appetizers</li>
-                  <li>Pizza and pasta toppings</li>
-                  <li>Olive tapenade and spreads</li>
-                  <li>Cheese and charcuterie boards</li>
+                  {product.suggestedUses.map((use, idx) => (
+                    <li key={idx}>{use}</li>
+                  ))}
                 </ul>
               </div>
             )}
@@ -241,15 +244,63 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               <div>
                 <h3 className="text-2xl font-bold text-charcoal mb-4">Nutritional Information</h3>
                 <p className="text-charcoal-600 mb-4">Per 100g serving</p>
-                <table className="w-full">
-                  <tbody className="divide-y divide-charcoal-200">
-                    <tr><td className="py-3 text-charcoal-700">Energy</td><td className="py-3 text-right font-medium">115 kcal</td></tr>
-                    <tr><td className="py-3 text-charcoal-700">Fat</td><td className="py-3 text-right font-medium">10.7g</td></tr>
-                    <tr><td className="py-3 text-charcoal-700">Carbohydrates</td><td className="py-3 text-right font-medium">6.3g</td></tr>
-                    <tr><td className="py-3 text-charcoal-700">Protein</td><td className="py-3 text-right font-medium">0.8g</td></tr>
-                    <tr><td className="py-3 text-charcoal-700">Sodium</td><td className="py-3 text-right font-medium">735mg</td></tr>
-                  </tbody>
-                </table>
+                {product.nutritional ? (
+                  <table className="w-full">
+                    <tbody className="divide-y divide-charcoal-200">
+                      <tr><td className="py-3 text-charcoal-700">Energy</td><td className="py-3 text-right font-medium">{product.nutritional.energy}</td></tr>
+                      <tr><td className="py-3 text-charcoal-700">Fat</td><td className="py-3 text-right font-medium">{product.nutritional.fat}</td></tr>
+                      <tr><td className="py-3 text-charcoal-700">Carbohydrates</td><td className="py-3 text-right font-medium">{product.nutritional.carbohydrates}</td></tr>
+                      <tr><td className="py-3 text-charcoal-700">Protein</td><td className="py-3 text-right font-medium">{product.nutritional.protein}</td></tr>
+                      <tr><td className="py-3 text-charcoal-700">Sodium</td><td className="py-3 text-right font-medium">{product.nutritional.sodium}</td></tr>
+                    </tbody>
+                  </table>
+                ) : (
+                  <p className="text-charcoal-600">Nutritional information not available</p>
+                )}
+              </div>
+            )}
+            {activeTab === 'reviews' && (
+              <div>
+                <h3 className="text-2xl font-bold text-charcoal mb-4">Customer Reviews</h3>
+                {product.reviews && product.reviews.count > 0 ? (
+                  <>
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            size={24}
+                            className={i < Math.round(product.reviews!.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-charcoal-300'}
+                          />
+                        ))}
+                      </div>
+                      <span className="text-2xl font-bold text-charcoal">{product.reviews.rating}</span>
+                      <span className="text-charcoal-600">({product.reviews.count} reviews)</span>
+                    </div>
+                    <div className="space-y-6">
+                      {product.reviews.comments.map((review, idx) => (
+                        <div key={idx} className="border-b border-charcoal-200 pb-6 last:border-0">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="font-semibold text-charcoal-900">{review.author}</span>
+                            <span className="text-sm text-charcoal-500">{review.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1 mb-2">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                size={16}
+                                className={i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-charcoal-300'}
+                              />
+                            ))}
+                          </div>
+                          <p className="text-charcoal-700">{review.comment}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-charcoal-600">No reviews yet. Be the first to review this product!</p>
+                )}
               </div>
             )}
             {activeTab === 'shipping' && (
@@ -282,24 +333,24 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-8">You May Also Like</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {relatedProducts.map((product) => (
-              <Card key={product.id} hover className="overflow-hidden">
+            {relatedProducts.map((prod) => (
+              <Card key={prod.id} hover className="overflow-hidden group">
                 <div className="aspect-square bg-cream-200 relative overflow-hidden">
                   <Image
-                    src={product.image}
-                    alt={product.name}
+                    src={prod.image}
+                    alt={prod.name}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-6">
                   <span className="text-xs font-medium text-olive bg-olive/10 px-3 py-1 rounded-full">
-                    {product.category}
+                    {prod.category}
                   </span>
-                  <h3 className="text-lg font-semibold text-charcoal mt-3 mb-2">{product.name}</h3>
-                  <p className="text-sm text-charcoal-600 mb-4">{product.origin}</p>
-                  <Link href={`/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center">
-                    View Details <ArrowRight size={16} className="ml-1" />
+                  <h3 className="text-lg font-semibold text-charcoal mt-3 mb-2">{prod.name}</h3>
+                  <p className="text-sm text-charcoal-600 mb-4">{prod.origin}</p>
+                  <Link href={`/${locale}/products/${prod.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center gap-1">
+                    View Details <ArrowRight size={16} />
                   </Link>
                 </div>
               </Card>

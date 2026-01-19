@@ -8,6 +8,12 @@ import Card from "@/components/ui/Card"
 
 export default function PortalPage() {
   const [activeView, setActiveView] = useState('dashboard')
+  const [cart, setCart] = useState<number[]>([])
+
+  const addToCart = (productId: number) => {
+    setCart([...cart, productId])
+    alert('Product added to cart! View your cart to proceed with checkout.')
+  }
 
   const recentOrders = [
     { id: 'ORD-2401', date: 'Jan 18, 2024', items: 12, total: '2,450 SAR', status: 'delivered' },
@@ -69,7 +75,12 @@ export default function PortalPage() {
                 <FileText size={20} />
                 <span className="font-medium">My Orders</span>
               </button>
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-charcoal-700 hover:bg-cream-100 transition-colors">
+              <button
+                onClick={() => setActiveView('invoices')}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                  activeView === 'invoices' ? 'bg-olive text-white' : 'text-charcoal-700 hover:bg-cream-100'
+                }`}
+              >
                 <CreditCard size={20} />
                 <span className="font-medium">Invoices</span>
               </button>
@@ -81,10 +92,12 @@ export default function PortalPage() {
                 <Settings size={20} />
                 <span className="font-medium">Settings</span>
               </button>
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-charcoal-700 hover:bg-cream-100 transition-colors">
-                <HelpCircle size={20} />
-                <span className="font-medium">Support</span>
-              </button>
+              <Link href="/en/faq">
+                <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-charcoal-700 hover:bg-cream-100 transition-colors">
+                  <HelpCircle size={20} />
+                  <span className="font-medium">Support</span>
+                </button>
+              </Link>
             </nav>
 
             <div className="mt-8 pt-8 border-t border-charcoal-100">
@@ -136,26 +149,34 @@ export default function PortalPage() {
 
               {/* Quick Actions */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <Card hover className="p-6 text-center bg-gradient-to-br from-terracotta to-terracotta-600 text-white">
-                  <ShoppingCart size={32} className="mx-auto mb-3" />
-                  <h3 className="font-semibold mb-1">New Order</h3>
-                  <p className="text-sm opacity-90">Start ordering</p>
-                </Card>
-                <Card hover className="p-6 text-center border-2 border-olive/20">
-                  <Package size={32} className="mx-auto mb-3 text-olive" />
-                  <h3 className="font-semibold mb-1 text-charcoal">Reorder Last</h3>
-                  <p className="text-sm text-charcoal-600">Quick reorder</p>
-                </Card>
-                <Card hover className="p-6 text-center border-2 border-olive/20">
-                  <FileText size={32} className="mx-auto mb-3 text-olive" />
-                  <h3 className="font-semibold mb-1 text-charcoal">Request Quote</h3>
-                  <p className="text-sm text-charcoal-600">Get pricing</p>
-                </Card>
-                <Card hover className="p-6 text-center border-2 border-olive/20">
-                  <Truck size={32} className="mx-auto mb-3 text-olive" />
-                  <h3 className="font-semibold mb-1 text-charcoal">Track Delivery</h3>
-                  <p className="text-sm text-charcoal-600">See status</p>
-                </Card>
+                <Link href="/en/products">
+                  <Card hover className="p-6 text-center bg-gradient-to-br from-terracotta to-terracotta-600 text-white cursor-pointer">
+                    <ShoppingCart size={32} className="mx-auto mb-3" />
+                    <h3 className="font-semibold mb-1">New Order</h3>
+                    <p className="text-sm opacity-90">Start ordering</p>
+                  </Card>
+                </Link>
+                <button onClick={() => setActiveView('orders')} className="text-left">
+                  <Card hover className="p-6 text-center border-2 border-olive/20 cursor-pointer">
+                    <Package size={32} className="mx-auto mb-3 text-olive" />
+                    <h3 className="font-semibold mb-1 text-charcoal">Reorder Last</h3>
+                    <p className="text-sm text-charcoal-600">Quick reorder</p>
+                  </Card>
+                </button>
+                <Link href="/en/quote">
+                  <Card hover className="p-6 text-center border-2 border-olive/20 cursor-pointer">
+                    <FileText size={32} className="mx-auto mb-3 text-olive" />
+                    <h3 className="font-semibold mb-1 text-charcoal">Request Quote</h3>
+                    <p className="text-sm text-charcoal-600">Get pricing</p>
+                  </Card>
+                </Link>
+                <button onClick={() => setActiveView('orders')} className="text-left">
+                  <Card hover className="p-6 text-center border-2 border-olive/20 cursor-pointer">
+                    <Truck size={32} className="mx-auto mb-3 text-olive" />
+                    <h3 className="font-semibold mb-1 text-charcoal">Track Delivery</h3>
+                    <p className="text-sm text-charcoal-600">See status</p>
+                  </Card>
+                </button>
               </div>
 
               {/* Recent Orders */}
@@ -219,7 +240,7 @@ export default function PortalPage() {
                             <p className="text-sm text-charcoal-600">Last: {product.lastOrdered}</p>
                           </div>
                         </div>
-                        <Button variant="outline" size="sm">
+                        <Button onClick={() => addToCart(product.id)} variant="outline" size="sm">
                           Add to Cart
                         </Button>
                       </div>
@@ -252,6 +273,156 @@ export default function PortalPage() {
                   </div>
                 </Card>
               </div>
+            </div>
+          )}
+
+          {/* Orders View */}
+          {activeView === 'orders' && (
+            <div className="p-6 space-y-6">
+              <div>
+                <h1 className="text-3xl font-bold text-charcoal mb-2">My Orders</h1>
+                <p className="text-charcoal-600">Track and manage your orders</p>
+              </div>
+
+              <Card className="p-6">
+                <div className="space-y-4">
+                  {recentOrders.map((order) => (
+                    <div key={order.id} className="border border-charcoal-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-charcoal">{order.id}</h3>
+                          <p className="text-sm text-charcoal-600">{order.date}</p>
+                        </div>
+                        <span className={`px-4 py-2 rounded-full text-sm font-medium capitalize ${getStatusColor(order.status)}`}>
+                          {order.status.replace('-', ' ')}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <p className="text-sm text-charcoal-600">Items</p>
+                          <p className="font-semibold text-charcoal">{order.items}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-charcoal-600">Total</p>
+                          <p className="font-semibold text-charcoal">{order.total}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-charcoal-600">Delivery</p>
+                          <p className="font-semibold text-charcoal">
+                            {order.status === 'delivered' ? 'Delivered' : 'In Progress'}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex gap-3">
+                        <Button variant="outline" size="sm">View Details</Button>
+                        <Button variant="outline" size="sm">Track Order</Button>
+                        <Button variant="primary" size="sm">Reorder</Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          )}
+
+          {/* Invoices View */}
+          {activeView === 'invoices' && (
+            <div className="p-6 space-y-6">
+              <div>
+                <h1 className="text-3xl font-bold text-charcoal mb-2">Invoices</h1>
+                <p className="text-charcoal-600">View and download your invoices</p>
+              </div>
+
+              <Card className="p-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-charcoal-200">
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-charcoal-700">Invoice #</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-charcoal-700">Date</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-charcoal-700">Order #</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-charcoal-700">Amount</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-charcoal-700">Status</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-charcoal-700">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-charcoal-100 hover:bg-cream-50 transition-colors">
+                        <td className="py-4 px-4 font-medium text-charcoal">INV-2401</td>
+                        <td className="py-4 px-4 text-charcoal-600">Jan 18, 2024</td>
+                        <td className="py-4 px-4 text-charcoal-600">ORD-2401</td>
+                        <td className="py-4 px-4 font-medium text-charcoal">2,450 SAR</td>
+                        <td className="py-4 px-4">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                            Paid
+                          </span>
+                        </td>
+                        <td className="py-4 px-4">
+                          <Button variant="outline" size="sm">Download PDF</Button>
+                        </td>
+                      </tr>
+                      <tr className="border-b border-charcoal-100 hover:bg-cream-50 transition-colors">
+                        <td className="py-4 px-4 font-medium text-charcoal">INV-2398</td>
+                        <td className="py-4 px-4 text-charcoal-600">Jan 15, 2024</td>
+                        <td className="py-4 px-4 text-charcoal-600">ORD-2398</td>
+                        <td className="py-4 px-4 font-medium text-charcoal">1,800 SAR</td>
+                        <td className="py-4 px-4">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+                            Pending
+                          </span>
+                        </td>
+                        <td className="py-4 px-4">
+                          <Button variant="outline" size="sm">Download PDF</Button>
+                        </td>
+                      </tr>
+                      <tr className="border-b border-charcoal-100 hover:bg-cream-50 transition-colors">
+                        <td className="py-4 px-4 font-medium text-charcoal">INV-2395</td>
+                        <td className="py-4 px-4 text-charcoal-600">Jan 12, 2024</td>
+                        <td className="py-4 px-4 text-charcoal-600">ORD-2395</td>
+                        <td className="py-4 px-4 font-medium text-charcoal">3,200 SAR</td>
+                        <td className="py-4 px-4">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                            Paid
+                          </span>
+                        </td>
+                        <td className="py-4 px-4">
+                          <Button variant="outline" size="sm">Download PDF</Button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-olive/5 border-olive/20">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-1">Outstanding Balance</h3>
+                    <p className="text-sm text-charcoal-600">Due within 30 days</p>
+                  </div>
+                  <p className="text-3xl font-bold text-terracotta">4,250 SAR</p>
+                </div>
+              </Card>
+            </div>
+          )}
+
+          {/* Products View */}
+          {activeView === 'products' && (
+            <div className="p-6 space-y-6">
+              <div>
+                <h1 className="text-3xl font-bold text-charcoal mb-2">Browse Products</h1>
+                <p className="text-charcoal-600">Explore our full catalog</p>
+              </div>
+              <Card className="p-12 text-center">
+                <Package size={64} className="mx-auto mb-4 text-charcoal-300" />
+                <h3 className="text-xl font-semibold text-charcoal mb-2">Visit Our Products Page</h3>
+                <p className="text-charcoal-600 mb-6">Browse our complete catalog of premium Mediterranean ingredients</p>
+                <Link href="/en/products">
+                  <Button variant="primary" size="lg">
+                    View All Products
+                  </Button>
+                </Link>
+              </Card>
             </div>
           )}
         </main>

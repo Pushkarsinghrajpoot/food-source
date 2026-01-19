@@ -9,6 +9,7 @@ import Card from "@/components/ui/Card"
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const categories = ['all', 'recipes', 'industry-news', 'product-guides', 'company-updates']
 
@@ -75,9 +76,14 @@ export default function BlogPage() {
     },
   ]
 
-  const filteredArticles = selectedCategory === 'all' 
-    ? articles 
-    : articles.filter(a => a.category === selectedCategory)
+  const filteredArticles = articles
+    .filter(a => selectedCategory === 'all' || a.category === selectedCategory)
+    .filter(a => 
+      searchQuery === '' || 
+      a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      a.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      a.author.toLowerCase().includes(searchQuery.toLowerCase())
+    )
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
@@ -106,6 +112,8 @@ export default function BlogPage() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400" size={20} />
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search articles..."
               className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive text-lg"
             />

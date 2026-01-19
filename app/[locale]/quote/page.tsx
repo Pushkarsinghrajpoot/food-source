@@ -12,6 +12,7 @@ export default function QuotePage() {
   const t = useTranslations('quote')
   const locale = useLocale()
   const [currentStep, setCurrentStep] = useState(1)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success'>('idle')
   const [formData, setFormData] = useState({
     businessName: '',
     businessType: '',
@@ -59,7 +60,12 @@ export default function QuotePage() {
   }
 
   const handleSubmit = () => {
-    console.log('Quote submitted:', formData)
+    setSubmitStatus('loading')
+    // Simulate API call - replace with actual API endpoint
+    setTimeout(() => {
+      console.log('Quote submitted:', formData)
+      setSubmitStatus('success')
+    }, 1500)
   }
 
   const toggleProduct = (productId: string) => {
@@ -69,6 +75,47 @@ export default function QuotePage() {
         ? prev.selectedProducts.filter(id => id !== productId)
         : [...prev.selectedProducts, productId]
     }))
+  }
+
+  // Success Screen
+  if (submitStatus === 'success') {
+    return (
+      <div className="pt-20 min-h-screen bg-cream-50 flex items-center justify-center">
+        <div className="container-custom">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="bg-white rounded-2xl shadow-xl p-12">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle2 className="text-green-600" size={48} />
+              </div>
+              <h1 className="text-4xl font-bold text-charcoal mb-4">
+                {t('success.title') || 'Quote Request Submitted!'}
+              </h1>
+              <p className="text-xl text-charcoal-600 mb-8">
+                {t('success.message') || 'Thank you for your interest. Our team will review your request and get back to you within 24 hours.'}
+              </p>
+              <div className="bg-cream p-6 rounded-lg mb-8">
+                <p className="text-sm text-charcoal-600 mb-2">
+                  {t('success.confirmation') || 'A confirmation email has been sent to:'}
+                </p>
+                <p className="text-lg font-semibold text-olive">{formData.email}</p>
+              </div>
+              <div className="flex gap-4 justify-center">
+                <Link href={`/${locale}`}>
+                  <Button variant="secondary" size="lg">
+                    {t('success.backHome') || 'Back to Home'}
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/products`}>
+                  <Button variant="primary" size="lg">
+                    {t('success.viewProducts') || 'View Products'}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (

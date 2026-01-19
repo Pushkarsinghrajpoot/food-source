@@ -285,6 +285,11 @@
       "officeHoursWeekdays": "Sunday - Thursday: 9:00 AM - 6:00 PM",
       "officeHoursWeekend": "Friday - Saturday: Closed"
     },
+    "success": {
+      "title": "Message Sent Successfully!",
+      "message": "Thank you for contacting us. We'll get back to you within 24 hours.",
+      "button": "Send Another Message"
+    },
     "businessTypes": {
       "hotel": "Hotel",
       "restaurant": "Restaurant",
@@ -326,6 +331,16 @@
       "careers": "For Careers",
       "suppliers": "For Suppliers",
       "media": "For Media"
+    }
+  },
+  "partner": {
+    "hero": {
+      "title": "Become a Partner",
+      "subtitle": "Join Saudi Arabia's leading network of premium food suppliers and distributors"
+    },
+    "success": {
+      "title": "Thank You!",
+      "message": "We'll get back to you within 24 hours."
     }
   },
   "quote": {
@@ -403,6 +418,106 @@
       "reason1": "Get personalized pricing for your business",
       "reason2": "No commitment required",
       "reason3": "24-hour response time"
+    },
+    "success": {
+      "title": "Quote Request Submitted!",
+      "message": "Thank you for your interest. Our team will review your request and get back to you within 24 hours.",
+      "confirmation": "A confirmation email has been sent to:",
+      "backHome": "Back to Home",
+      "viewProducts": "View Products"
+    }
+  },
+  "faq": {
+    "hero": {
+      "title": "How can we help?",
+      "searchPlaceholder": "Search for answers...",
+      "popularLabel": "Popular:"
+    },
+    "categories": {
+      "ordering": "Ordering",
+      "delivery": "Delivery & Shipping",
+      "products": "Products",
+      "payments": "Payments & Invoicing",
+      "account": "Account",
+      "general": "General"
+    },
+    "ordering": {
+      "q1": "What is the minimum order quantity?",
+      "a1": "Our minimum order quantity varies by product. Generally, we require a minimum order of 2 units per product. For bulk orders, we offer attractive discounts.",
+      "q2": "How do I place an order?",
+      "a2": "You can place orders through our customer portal, by requesting a quote on our website, via email at orders@foodsources.com.sa, or by calling our sales team at +966 XX XXX XXXX.",
+      "q3": "Can I modify my order after placing it?",
+      "a3": "Orders can be modified within 2 hours of placement. Please contact our customer service team immediately if you need to make changes.",
+      "q4": "Do you offer bulk discounts?",
+      "a4": "Yes, we offer tiered pricing based on order volume. Contact our sales team for a customized quote based on your specific needs."
+    },
+    "delivery": {
+      "q1": "Which areas do you deliver to?",
+      "a1": "We deliver across Saudi Arabia, with next-day delivery available in Riyadh, Jeddah, and Dammam. Other cities receive delivery within 2-3 business days.",
+      "q2": "What is the delivery time?",
+      "a2": "Standard delivery is 1-3 business days depending on your location. Express delivery options are available for urgent orders.",
+      "q3": "How do I track my order?",
+      "a3": "Once your order ships, you'll receive a tracking number via email and SMS. You can also track orders through your customer portal.",
+      "q4": "What if my order arrives damaged?",
+      "a4": "We take quality seriously. If your order arrives damaged, please contact us within 24 hours with photos. We'll arrange a replacement or refund immediately."
+    },
+    "products": {
+      "q1": "Are your products certified?",
+      "a1": "Yes, all our products are SFDA certified and meet international food safety standards. Many items also carry Halal certification.",
+      "q2": "How should I store the products?",
+      "a2": "Storage instructions vary by product. Generally, keep items in a cool, dry place. Specific storage guidelines are provided on each product label and spec sheet.",
+      "q3": "Can you source products not in your catalog?",
+      "a3": "Absolutely! We have an extensive network of Mediterranean suppliers. Contact our product team with your requirements, and we'll work to source it for you.",
+      "q4": "What is the shelf life of your products?",
+      "a4": "Shelf life varies by product category. Olives and pickles typically have 18-24 months, while cheeses vary from 6-12 months. Check product specifications for details."
+    },
+    "payments": {
+      "q1": "What payment methods do you accept?",
+      "a1": "We accept bank transfers, credit cards, and for approved accounts, we offer Net 30 payment terms.",
+      "q2": "Do you offer credit terms?",
+      "a2": "Yes, qualified businesses can apply for credit accounts with Net 30 or Net 60 payment terms. Contact our accounts team to apply.",
+      "q3": "How do I access my invoices?",
+      "a3": "All invoices are available in your customer portal under the 'Invoices' section. You can also request copies via email.",
+      "q4": "What is your refund policy?",
+      "a4": "We offer full refunds for damaged or defective products within 7 days of delivery. Quality issues are handled on a case-by-case basis."
+    },
+    "account": {
+      "q1": "How do I create an account?",
+      "a1": "Request a quote on our website, and our team will set up your account. Once approved, you'll receive portal access credentials.",
+      "q2": "I forgot my password, what should I do?",
+      "a2": "Click 'Forgot Password' on the portal login page. You'll receive a reset link via email.",
+      "q3": "Can I have multiple users on my account?",
+      "a3": "Yes, business accounts can have multiple users with different permission levels. Contact support to add users.",
+      "q4": "How do I update my account information?",
+      "a4": "Log into your portal and navigate to Settings > Account Information to update your details."
+    },
+    "general": {
+      "q1": "What are your business hours?",
+      "a1": "We're open Sunday to Thursday, 9:00 AM to 6:00 PM. We're closed on Fridays and Saturdays.",
+      "q2": "Do you have physical stores?",
+      "a2": "We operate distribution centers in Riyadh and Jeddah. We're primarily a B2B supplier and don't have retail stores.",
+      "q3": "How can I become a supplier?",
+      "a3": "We're always looking for quality suppliers. Send your company profile and product information to suppliers@foodsources.com.sa.",
+      "q4": "Do you offer catering services?",
+      "a4": "No, we're a food distribution company. We supply ingredients to hotels, restaurants, and caterers."
+    },
+    "popularSearches": {
+      "s1": "Minimum order",
+      "s2": "Delivery time",
+      "s3": "Payment terms",
+      "s4": "SFDA certification"
+    },
+    "help": {
+      "title": "Can't find what you're looking for?",
+      "subtitle": "Our team is here to help you",
+      "emailTitle": "Contact Us",
+      "emailSubtitle": "Send us an email and we'll respond within 24 hours",
+      "emailButton": "Send Email",
+      "whatsappTitle": "Chat with Us",
+      "whatsappSubtitle": "Connect instantly via WhatsApp for quick support",
+      "whatsappButton": "Open WhatsApp",
+      "callLabel": "Or call us directly:",
+      "hours": "Sunday - Thursday: 9:00 AM - 6:00 PM"
     }
   }
 }
