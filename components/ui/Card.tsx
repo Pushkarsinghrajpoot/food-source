@@ -5,7 +5,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   hover?: boolean
 }
 
-export function Card({ className, hover = false, children, ...props }: CardProps) {
+export default function Card({ className, hover = false, children, ...props }: CardProps) {
   return (
     <div
       className={cn(

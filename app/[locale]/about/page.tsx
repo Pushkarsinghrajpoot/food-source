@@ -2,27 +2,30 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { useTranslations, useLocale } from 'next-intl'
 import { Heart, Target, Award, Users, TrendingUp, Globe, CheckCircle } from "lucide-react"
 import Button from "@/components/ui/Button"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function AboutPage() {
+  const t = useTranslations('about')
+  const locale = useLocale()
   const values = [
-    { icon: Award, title: "Quality First", description: "Never compromising on ingredient excellence" },
-    { icon: Heart, title: "Integrity", description: "Honest and transparent in all our dealings" },
-    { icon: Users, title: "Partnership", description: "Building lasting relationships with our clients" },
-    { icon: TrendingUp, title: "Innovation", description: "Constantly improving our service and offerings" },
-    { icon: Globe, title: "Sustainability", description: "Responsible sourcing for future generations" },
-    { icon: CheckCircle, title: "Excellence", description: "Exceeding expectations in everything we do" },
+    { icon: Award, title: t('values.quality.title'), description: t('values.quality.description') },
+    { icon: Heart, title: t('values.integrity.title'), description: t('values.integrity.description') },
+    { icon: Users, title: t('values.partnership.title'), description: t('values.partnership.description') },
+    { icon: TrendingUp, title: t('values.innovation.title'), description: t('values.innovation.description') },
+    { icon: Globe, title: t('values.sustainability.title'), description: t('values.sustainability.description') },
+    { icon: CheckCircle, title: t('values.excellence.title'), description: t('values.excellence.description') },
   ]
 
   const timeline = [
-    { year: "2015", title: "Founded in Riyadh", description: "Started with a vision to bring authentic Mediterranean flavors to Saudi Arabia" },
-    { year: "2017", title: "Expanded Product Range", description: "Added premium cheeses and pickles to our olive collection" },
-    { year: "2019", title: "Jeddah Distribution Center", description: "Opened our second facility to serve the Western region" },
-    { year: "2021", title: "200+ Partner Milestone", description: "Celebrated serving over 200 hotels and restaurants" },
-    { year: "2023", title: "Digital Ordering Platform", description: "Launched our online portal for seamless ordering" },
-    { year: "2024", title: "500+ Establishments", description: "Now proudly serving 500+ partners across KSA" },
+    { year: "2015", title: t('timeline.2015.title'), description: t('timeline.2015.description') },
+    { year: "2017", title: t('timeline.2017.title'), description: t('timeline.2017.description') },
+    { year: "2019", title: t('timeline.2019.title'), description: t('timeline.2019.description') },
+    { year: "2021", title: t('timeline.2021.title'), description: t('timeline.2021.description') },
+    { year: "2023", title: t('timeline.2023.title'), description: t('timeline.2023.description') },
+    { year: "2024", title: t('timeline.2024.title'), description: t('timeline.2024.description') },
   ]
 
   const team = [
@@ -38,7 +41,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80"
-            alt="Mediterranean landscape"
+            alt={t('hero.imageAlt')}
             fill
             className="object-cover opacity-20"
             priority
@@ -47,10 +50,10 @@ export default function AboutPage() {
         <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal mb-6 leading-tight">
-              Our Story
+              {t('hero.title')}
             </h1>
             <p className="text-2xl text-charcoal-600 leading-relaxed">
-              A family's passion for bringing Mediterranean excellence to Saudi Arabia
+              {t('hero.subtitle')}
             </p>
           </div>
         </div>
@@ -62,15 +65,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <blockquote className="text-3xl md:text-4xl font-serif text-olive leading-relaxed">
-                "We believe every great dish starts with exceptional ingredients"
+                "{t('intro.quote')}"
               </blockquote>
             </div>
             <div className="space-y-4 text-charcoal-700 leading-relaxed text-lg">
               <p>
-                Founded in 2015, Food Sources Trading Co. began with a simple mission: to connect Saudi Arabia's finest culinary establishments with the authentic flavors of the Mediterranean.
+                {t('intro.paragraph1')}
               </p>
               <p>
-                What started as a small family business has grown into one of the region's most trusted suppliers of premium olives, cheeses, and pickles. Today, we're proud to serve over 500 hotels, restaurants, and catering businesses across the Kingdom.
+                {t('intro.paragraph2')}
               </p>
             </div>
           </div>
@@ -81,8 +84,8 @@ export default function AboutPage() {
       <section className="section-padding bg-cream">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">Our Journey</h2>
-            <p className="text-xl text-charcoal-600">Building excellence, one milestone at a time</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('timeline.title')}</h2>
+            <p className="text-xl text-charcoal-600">{t('timeline.subtitle')}</p>
           </div>
           <div className="max-w-4xl mx-auto space-y-12">
             {timeline.map((milestone, index) => (
@@ -113,16 +116,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="p-12 bg-gradient-to-br from-olive to-olive-600 text-white">
               <Target size={48} className="mb-6" />
-              <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
+              <h2 className="text-3xl font-bold mb-4">{t('vision.title')}</h2>
               <p className="text-lg leading-relaxed opacity-95">
-                To be the leading provider of Mediterranean ingredients in the Middle East, recognized for uncompromising quality and exceptional service.
+                {t('vision.description')}
               </p>
             </Card>
             <Card className="p-12 bg-white border-2 border-olive/20">
               <Heart size={48} className="mb-6 text-olive" />
-              <h2 className="text-3xl font-bold text-charcoal mb-4">Our Mission</h2>
+              <h2 className="text-3xl font-bold text-charcoal mb-4">{t('mission.title')}</h2>
               <p className="text-lg text-charcoal-700 leading-relaxed">
-                To empower culinary professionals with premium Mediterranean ingredients, delivered with reliability and expertise that exceeds expectations.
+                {t('mission.description')}
               </p>
             </Card>
           </div>
@@ -133,7 +136,7 @@ export default function AboutPage() {
       <section className="section-padding bg-cream">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">What Drives Us</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('values.title')}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
@@ -153,8 +156,8 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">The People Behind the Passion</h2>
-            <p className="text-xl text-charcoal-600">Meet the team dedicated to your success</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('team.title')}</h2>
+            <p className="text-xl text-charcoal-600">{t('team.subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {team.map((member, index) => (
@@ -182,11 +185,11 @@ export default function AboutPage() {
       <section className="section-padding bg-cream">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">Our Commitments</h2>
-            <p className="text-xl text-charcoal-600">Certified excellence in every delivery</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('certifications.title')}</h2>
+            <p className="text-xl text-charcoal-600">{t('certifications.subtitle')}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {['SFDA Certified', 'Halal Approved', 'ISO 9001', 'Quality Assured'].map((cert, index) => (
+            {[t('certifications.sfda'), t('certifications.halal'), t('certifications.iso'), t('certifications.quality')].map((cert, index) => (
               <Card key={index} className="p-6 text-center">
                 <Award className="text-olive mx-auto mb-3" size={40} />
                 <p className="font-semibold text-charcoal text-sm">{cert}</p>
@@ -200,14 +203,14 @@ export default function AboutPage() {
       <section className="section-padding bg-gradient-to-r from-olive to-olive-600 text-white">
         <div className="container-custom text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Let's Write the Next Chapter Together
+            {t('cta.title')}
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Partner with a team that cares as much about quality as you do
+            {t('cta.subtitle')}
           </p>
-          <Link href="/contact">
+          <Link href={`/${locale}/contact`}>
             <Button className="bg-white text-olive hover:bg-cream-100" size="lg">
-              Become a Partner
+              {t('cta.button')}
             </Button>
           </Link>
         </div>

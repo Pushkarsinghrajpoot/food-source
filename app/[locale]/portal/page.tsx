@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { ShoppingCart, Package, FileText, Heart, Settings, HelpCircle, Search, TrendingUp, Truck, CreditCard } from "lucide-react"
 import Button from "@/components/ui/Button"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function PortalPage() {
   const [activeView, setActiveView] = useState('dashboard')

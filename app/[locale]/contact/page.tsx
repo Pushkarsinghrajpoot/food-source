@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from "react"
+import { useTranslations, useLocale } from 'next-intl'
 import { Phone, Mail, MessageCircle, MapPin, Clock, Send } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function ContactPage() {
+  const t = useTranslations('contact')
+  const locale = useLocale()
   const [formData, setFormData] = useState({
     businessName: '',
     contactPerson: '',
@@ -29,10 +32,10 @@ export default function ContactPage() {
       <section className="bg-gradient-to-br from-cream to-cream-200 py-16">
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal mb-4">
-            Let's Start a Conversation
+            {t('hero.title')}
           </h1>
           <p className="text-xl text-charcoal-600 max-w-2xl mx-auto">
-            Whether you're ready to order or just have questions, we're here to help
+            {t('hero.subtitle')}
           </p>
         </div>
       </section>
@@ -45,8 +48,8 @@ export default function ContactPage() {
               <div className="w-16 h-16 rounded-full bg-terracotta/10 flex items-center justify-center mx-auto mb-4">
                 <Phone className="text-terracotta" size={32} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">Call Us</h3>
-              <p className="text-charcoal-600 mb-4">Available Sun-Thu, 9am-6pm</p>
+              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('callUs.title')}</h3>
+              <p className="text-charcoal-600 mb-4">{t('callUs.hours')}</p>
               <a href="tel:+966XXXXXXXX" className="text-olive font-semibold text-lg hover:underline">
                 +966 XX XXX XXXX
               </a>
@@ -56,8 +59,8 @@ export default function ContactPage() {
               <div className="w-16 h-16 rounded-full bg-olive/10 flex items-center justify-center mx-auto mb-4">
                 <Mail className="text-olive" size={32} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">Email Us</h3>
-              <p className="text-charcoal-600 mb-4">Get custom pricing for your business</p>
+              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('emailUs.title')}</h3>
+              <p className="text-charcoal-600 mb-4">{t('emailUs.subtitle')}</p>
               <a href="mailto:contact@foodsources.com.sa" className="text-olive font-semibold hover:underline">
                 contact@foodsources.com.sa
               </a>
@@ -67,10 +70,10 @@ export default function ContactPage() {
               <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="text-green-600" size={32} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">WhatsApp</h3>
-              <p className="text-charcoal-600 mb-4">Chat with our team instantly</p>
+              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('whatsapp.title')}</h3>
+              <p className="text-charcoal-600 mb-4">{t('whatsapp.subtitle')}</p>
               <Button variant="primary" className="bg-green-600 hover:bg-green-700">
-                Open WhatsApp
+                {t('whatsapp.button')}
               </Button>
             </Card>
           </div>
@@ -79,9 +82,9 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2 space-y-6">
               <div>
-                <h2 className="text-3xl font-bold text-charcoal mb-4">Send Us a Message</h2>
+                <h2 className="text-3xl font-bold text-charcoal mb-4">{t('form.title')}</h2>
                 <p className="text-charcoal-600 mb-6">
-                  Fill out the form and we'll get back within 24 hours
+                  {t('form.subtitle')}
                 </p>
               </div>
 
@@ -89,16 +92,16 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3">
                   <Clock className="text-olive mt-1" size={20} />
                   <div>
-                    <p className="font-semibold text-charcoal">Office Hours</p>
-                    <p className="text-sm text-charcoal-600">Sunday - Thursday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-sm text-charcoal-600">Friday - Saturday: Closed</p>
+                    <p className="font-semibold text-charcoal">{t('form.officeHours')}</p>
+                    <p className="text-sm text-charcoal-600">{t('form.officeHoursWeekdays')}</p>
+                    <p className="text-sm text-charcoal-600">{t('form.officeHoursWeekend')}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <Mail className="text-olive mt-1" size={20} />
                   <div>
-                    <p className="font-semibold text-charcoal">Email</p>
+                    <p className="font-semibold text-charcoal">{t('form.email')}</p>
                     <p className="text-sm text-charcoal-600">contact@foodsources.com.sa</p>
                   </div>
                 </div>
@@ -109,13 +112,13 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Input
-                    label="Business Name *"
+                    label={`${t('form.businessName')} *`}
                     value={formData.businessName}
                     onChange={(e) => setFormData({...formData, businessName: e.target.value})}
                     required
                   />
                   <Input
-                    label="Contact Person *"
+                    label={`${t('form.contactPerson')} *`}
                     value={formData.contactPerson}
                     onChange={(e) => setFormData({...formData, contactPerson: e.target.value})}
                     required
@@ -124,14 +127,14 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Input
-                    label="Email *"
+                    label={`${t('form.email')} *`}
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
                   />
                   <Input
-                    label="Phone Number *"
+                    label={`${t('form.phone')} *`}
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -141,78 +144,78 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-charcoal-700 mb-2">Business Type</label>
+                    <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('form.businessType')}</label>
                     <select
                       value={formData.businessType}
                       onChange={(e) => setFormData({...formData, businessType: e.target.value})}
                       className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
                     >
-                      <option value="">Select type</option>
-                      <option value="hotel">Hotel</option>
-                      <option value="restaurant">Restaurant</option>
-                      <option value="cafe">Café</option>
-                      <option value="catering">Catering</option>
-                      <option value="retail">Retail</option>
-                      <option value="other">Other</option>
+                      <option value="">{t('form.selectType')}</option>
+                      <option value="hotel">{t('businessTypes.hotel')}</option>
+                      <option value="restaurant">{t('businessTypes.restaurant')}</option>
+                      <option value="cafe">{t('businessTypes.cafe')}</option>
+                      <option value="catering">{t('businessTypes.catering')}</option>
+                      <option value="retail">{t('businessTypes.retail')}</option>
+                      <option value="other">{t('businessTypes.other')}</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-charcoal-700 mb-2">City</label>
+                    <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('form.city')}</label>
                     <select
                       value={formData.city}
                       onChange={(e) => setFormData({...formData, city: e.target.value})}
                       className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
                     >
-                      <option value="">Select city</option>
-                      <option value="riyadh">Riyadh</option>
-                      <option value="jeddah">Jeddah</option>
-                      <option value="dammam">Dammam</option>
-                      <option value="other">Other</option>
+                      <option value="">{t('form.selectCity')}</option>
+                      <option value="riyadh">{t('cities.riyadh')}</option>
+                      <option value="jeddah">{t('cities.jeddah')}</option>
+                      <option value="dammam">{t('cities.dammam')}</option>
+                      <option value="other">{t('cities.other')}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-2">Inquiry Type</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('form.inquiryType')}</label>
                   <select
                     value={formData.inquiryType}
                     onChange={(e) => setFormData({...formData, inquiryType: e.target.value})}
                     className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
                   >
-                    <option value="">Select inquiry type</option>
-                    <option value="pricing">Pricing</option>
-                    <option value="product">Product Info</option>
-                    <option value="partnership">Partnership</option>
-                    <option value="support">Support</option>
-                    <option value="other">Other</option>
+                    <option value="">{t('form.selectInquiry')}</option>
+                    <option value="pricing">{t('inquiryTypes.pricing')}</option>
+                    <option value="product">{t('inquiryTypes.product')}</option>
+                    <option value="partnership">{t('inquiryTypes.partnership')}</option>
+                    <option value="support">{t('inquiryTypes.support')}</option>
+                    <option value="other">{t('inquiryTypes.other')}</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('form.message')}</label>
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive resize-none"
-                    placeholder="Tell us how we can help..."
+                    placeholder={t('form.messagePlaceholder')}
                   />
                 </div>
 
                 <div className="flex items-start gap-2">
                   <input type="checkbox" id="consent" className="mt-1" required />
                   <label htmlFor="consent" className="text-sm text-charcoal-600">
-                    I agree to receive communications from Food Sources Trading Co.
+                    {t('form.consent')}
                   </label>
                 </div>
 
                 <Button type="submit" variant="primary" size="lg" className="w-full">
                   <Send size={20} className="mr-2" />
-                  Send Message
+                  {t('form.submit')}
                 </Button>
 
                 <p className="text-xs text-charcoal-500 text-center">
-                  By submitting this form, you agree to our Privacy Policy and Terms of Service
+                  {t('form.privacy')}
                 </p>
               </form>
             </div>
@@ -224,7 +227,7 @@ export default function ContactPage() {
       <section className="section-padding bg-cream">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">Our Locations</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('locations.title')}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -234,16 +237,15 @@ export default function ContactPage() {
                   <MapPin className="text-olive" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-charcoal mb-2">Riyadh (HQ)</h3>
-                  <p className="text-charcoal-600 mb-4">
-                    King Fahd Road, Al Olaya District<br />
-                    Riyadh 12211, Saudi Arabia
+                  <h3 className="text-2xl font-semibold text-charcoal mb-2">{t('locations.riyadh.title')}</h3>
+                  <p className="text-charcoal-600 mb-4" style={{whiteSpace: 'pre-line'}}>
+                    {t('locations.riyadh.address')}
                   </p>
                   <p className="text-sm text-charcoal-600 mb-1">
-                    <strong>Phone:</strong> +966 XX XXX XXXX
+                    <strong>{t('locations.riyadh.phone')}:</strong> +966 XX XXX XXXX
                   </p>
                   <p className="text-sm text-charcoal-600">
-                    <strong>Hours:</strong> Sun-Thu: 9AM - 6PM
+                    <strong>{t('locations.riyadh.hours')}:</strong> {t('locations.riyadh.hoursValue')}
                   </p>
                 </div>
               </div>
@@ -255,16 +257,15 @@ export default function ContactPage() {
                   <MapPin className="text-olive" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-charcoal mb-2">Jeddah</h3>
-                  <p className="text-charcoal-600 mb-4">
-                    Al Andalus District<br />
-                    Jeddah 23326, Saudi Arabia
+                  <h3 className="text-2xl font-semibold text-charcoal mb-2">{t('locations.jeddah.title')}</h3>
+                  <p className="text-charcoal-600 mb-4" style={{whiteSpace: 'pre-line'}}>
+                    {t('locations.jeddah.address')}
                   </p>
                   <p className="text-sm text-charcoal-600 mb-1">
-                    <strong>Phone:</strong> +966 XX XXX XXXX
+                    <strong>{t('locations.riyadh.phone')}:</strong> +966 XX XXX XXXX
                   </p>
                   <p className="text-sm text-charcoal-600">
-                    <strong>Hours:</strong> Sun-Thu: 9AM - 6PM
+                    <strong>{t('locations.riyadh.hours')}:</strong> {t('locations.riyadh.hoursValue')}
                   </p>
                 </div>
               </div>
@@ -273,7 +274,7 @@ export default function ContactPage() {
 
           {/* Map Placeholder */}
           <div className="w-full h-96 bg-charcoal-200 rounded-2xl flex items-center justify-center">
-            <p className="text-charcoal-500">Google Maps Integration</p>
+            <p className="text-charcoal-500">{t('locations.mapPlaceholder')}</p>
           </div>
         </div>
       </section>
@@ -282,22 +283,22 @@ export default function ContactPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <Card className="p-8 md:p-12">
-            <h3 className="text-2xl font-bold text-charcoal mb-6 text-center">Other Inquiries</h3>
+            <h3 className="text-2xl font-bold text-charcoal mb-6 text-center">{t('otherInquiries.title')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
-                <p className="font-semibold text-charcoal mb-2">For Careers</p>
+                <p className="font-semibold text-charcoal mb-2">{t('otherInquiries.careers')}</p>
                 <a href="mailto:careers@foodsources.com.sa" className="text-olive hover:underline">
                   careers@foodsources.com.sa
                 </a>
               </div>
               <div>
-                <p className="font-semibold text-charcoal mb-2">For Suppliers</p>
+                <p className="font-semibold text-charcoal mb-2">{t('otherInquiries.suppliers')}</p>
                 <a href="mailto:suppliers@foodsources.com.sa" className="text-olive hover:underline">
                   suppliers@foodsources.com.sa
                 </a>
               </div>
               <div>
-                <p className="font-semibold text-charcoal mb-2">For Media</p>
+                <p className="font-semibold text-charcoal mb-2">{t('otherInquiries.media')}</p>
                 <a href="mailto:media@foodsources.com.sa" className="text-olive hover:underline">
                   media@foodsources.com.sa
                 </a>

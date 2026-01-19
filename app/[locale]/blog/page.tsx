@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Search, Clock, User, ArrowRight } from "lucide-react"
 import Button from "@/components/ui/Button"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')

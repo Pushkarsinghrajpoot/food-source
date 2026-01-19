@@ -1,0 +1,397 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact",
+    "quote": "Quote",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "portal": "Portal",
+    "requestQuote": "Request Quote"
+  },
+  "home": {
+    "hero": {
+      "badge": "Premium Mediterranean Ingredients",
+      "title": "Elevate Your Kitchen with the Finest",
+      "titleHighlight": "Olives, Cheeses & Pickles",
+      "subtitle": "Trusted by 500+ hotels and restaurants across Saudi Arabia. Fresh sourcing, reliable delivery, competitive wholesale pricing.",
+      "requestQuote": "Request a Quote",
+      "viewProducts": "View Products",
+      "years": "8+ Years",
+      "sfda": "SFDA Certified",
+      "nextDay": "Next-Day Delivery",
+      "imageAlt": "Mediterranean cheese board with olives and herbs"
+    },
+    "logoMarquee": "Trusted by leading establishments",
+    "features": {
+      "title": "Why Saudi's Top Chefs Choose Us",
+      "subtitle": "Delivering excellence in every aspect of our service",
+      "sourcing": {
+        "title": "Direct Mediterranean Sourcing",
+        "description": "Premium ingredients sourced directly from Greece, Turkey, and Morocco"
+      },
+      "certified": {
+        "title": "Food Safety Certified",
+        "description": "SFDA approved with full compliance and quality assurance"
+      },
+      "flexible": {
+        "title": "Flexible Order Quantities",
+        "description": "From small orders to bulk quantities, we accommodate your needs"
+      },
+      "manager": {
+        "title": "Dedicated Account Manager",
+        "description": "Personal support for all your ordering and delivery needs"
+      },
+      "delivery": {
+        "title": "Next-Day KSA Delivery",
+        "description": "Fast and reliable delivery across Saudi Arabia"
+      },
+      "pricing": {
+        "title": "Transparent Pricing",
+        "description": "Competitive wholesale pricing with no hidden fees"
+      }
+    },
+    "products": {
+      "title": "Our Premium Selection",
+      "filterAll": "All",
+      "filterOlives": "Olives",
+      "filterCheeses": "Cheeses",
+      "filterPickles": "Pickles",
+      "product1": {
+        "name": "Greek Kalamata Olives",
+        "origin": "Greece",
+        "category": "Olives"
+      },
+      "product2": {
+        "name": "Feta Cheese",
+        "origin": "Greece",
+        "category": "Cheese"
+      },
+      "product3": {
+        "name": "Mediterranean Pickles",
+        "origin": "Turkey",
+        "category": "Pickles"
+      },
+      "product4": {
+        "name": "Labneh",
+        "origin": "Lebanon",
+        "category": "Cheese"
+      },
+      "premiumQuality": "Premium Quality",
+      "viewDetails": "View Details",
+      "browseCatalog": "Browse Full Catalog"
+    },
+    "howItWorks": {
+      "title": "Start in 3 Simple Steps",
+      "step1": {
+        "title": "Browse & Select",
+        "description": "Explore our premium product catalog and select what you need"
+      },
+      "step2": {
+        "title": "Get Custom Quote",
+        "description": "Receive personalized pricing tailored to your business needs"
+      },
+      "step3": {
+        "title": "Receive & Reorder",
+        "description": "Fast delivery with easy reordering for regular customers"
+      }
+    },
+    "testimonial": {
+      "quote": "Food Sources has transformed our supply chain. The quality is exceptional, delivery is always on time, and their customer service is outstanding.",
+      "name": "Ahmad Al-Rashid",
+      "position": "Executive Chef, Riyadh Grand Hotel"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Supply Chain?",
+      "subtitle": "Join hundreds of satisfied partners across Saudi Arabia",
+      "button": "Get Started Today"
+    }
+  },
+  "footer": {
+    "about": "Premium Mediterranean ingredients for Saudi Arabia's finest establishments.",
+    "quickLinks": "Quick Links",
+    "productsTitle": "Products",
+    "olives": "Olives",
+    "cheeses": "Cheeses",
+    "pickles": "Pickles",
+    "labneh": "Labneh",
+    "contact": "Contact",
+    "email": "info@foodsources.sa",
+    "phone": "+966 XX XXX XXXX",
+    "address": "Riyadh, Saudi Arabia",
+    "rights": "All rights reserved."
+  },
+  "products": {
+    "breadcrumb": "Products",
+    "title": "Our Premium Selection",
+    "subtitle": "Handpicked Mediterranean ingredients for exceptional kitchens",
+    "all": "All",
+    "olives": "Olives",
+    "cheeses": "Cheeses",
+    "pickles": "Pickles",
+    "labneh": "Labneh",
+    "searchPlaceholder": "Search products...",
+    "quickView": "Quick View",
+    "viewDetails": "View Details",
+    "loadMore": "Load More Products",
+    "showing": "Showing",
+    "of": "of",
+    "productsCount": "products",
+    "bulkPricing": "Need Bulk Pricing?",
+    "bulkPricingDesc": "Contact our sales team for customized quotes on large orders and regular deliveries",
+    "requestCustomQuote": "Request Custom Quote"
+  },
+  "about": {
+    "hero": {
+      "title": "Our Story",
+      "subtitle": "A family's passion for bringing Mediterranean excellence to Saudi Arabia",
+      "imageAlt": "Mediterranean landscape"
+    },
+    "intro": {
+      "quote": "We believe every great dish starts with exceptional ingredients",
+      "paragraph1": "Founded in 2015, Food Sources Trading Co. began with a simple mission: to connect Saudi Arabia's finest culinary establishments with the authentic flavors of the Mediterranean.",
+      "paragraph2": "What started as a small family business has grown into one of the region's most trusted suppliers of premium olives, cheeses, and pickles. Today, we're proud to serve over 500 hotels, restaurants, and catering businesses across the Kingdom."
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "Building excellence, one milestone at a time",
+      "2015": {
+        "title": "Founded in Riyadh",
+        "description": "Started with a vision to bring authentic Mediterranean flavors to Saudi Arabia"
+      },
+      "2017": {
+        "title": "Expanded Product Range",
+        "description": "Added premium cheeses and pickles to our olive collection"
+      },
+      "2019": {
+        "title": "Jeddah Distribution Center",
+        "description": "Opened our second facility to serve the Western region"
+      },
+      "2021": {
+        "title": "200+ Partner Milestone",
+        "description": "Celebrated serving over 200 hotels and restaurants"
+      },
+      "2023": {
+        "title": "Digital Ordering Platform",
+        "description": "Launched our online portal for seamless ordering"
+      },
+      "2024": {
+        "title": "500+ Establishments",
+        "description": "Now proudly serving 500+ partners across KSA"
+      }
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading provider of Mediterranean ingredients in the Middle East, recognized for uncompromising quality and exceptional service."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower culinary professionals with premium Mediterranean ingredients, delivered with reliability and expertise that exceeds expectations."
+    },
+    "values": {
+      "title": "What Drives Us",
+      "quality": {
+        "title": "Quality First",
+        "description": "Never compromising on ingredient excellence"
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "Honest and transparent in all our dealings"
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "Building lasting relationships with our clients"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Constantly improving our service and offerings"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Responsible sourcing for future generations"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Exceeding expectations in everything we do"
+      }
+    },
+    "team": {
+      "title": "The People Behind the Passion",
+      "subtitle": "Meet the team dedicated to your success"
+    },
+    "certifications": {
+      "title": "Our Commitments",
+      "subtitle": "Certified excellence in every delivery",
+      "sfda": "SFDA Certified",
+      "halal": "Halal Approved",
+      "iso": "ISO 9001",
+      "quality": "Quality Assured"
+    },
+    "cta": {
+      "title": "Let's Write the Next Chapter Together",
+      "subtitle": "Partner with a team that cares as much about quality as you do",
+      "button": "Become a Partner"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Let's Start a Conversation",
+      "subtitle": "Whether you're ready to order or just have questions, we're here to help"
+    },
+    "callUs": {
+      "title": "Call Us",
+      "hours": "Available Sun-Thu, 9am-6pm"
+    },
+    "emailUs": {
+      "title": "Email Us",
+      "subtitle": "Get custom pricing for your business"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "subtitle": "Chat with our team instantly",
+      "button": "Open WhatsApp"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "subtitle": "Fill out the form and we'll get back within 24 hours",
+      "businessName": "Business Name",
+      "contactPerson": "Contact Person",
+      "email": "Email",
+      "phone": "Phone Number",
+      "businessType": "Business Type",
+      "city": "City",
+      "inquiryType": "Inquiry Type",
+      "message": "Message",
+      "selectType": "Select type",
+      "selectCity": "Select city",
+      "selectInquiry": "Select inquiry type",
+      "messagePlaceholder": "Tell us how we can help...",
+      "consent": "I agree to receive communications from Food Sources Trading Co.",
+      "submit": "Send Message",
+      "privacy": "By submitting this form, you agree to our Privacy Policy and Terms of Service",
+      "officeHours": "Office Hours",
+      "officeHoursWeekdays": "Sunday - Thursday: 9:00 AM - 6:00 PM",
+      "officeHoursWeekend": "Friday - Saturday: Closed"
+    },
+    "businessTypes": {
+      "hotel": "Hotel",
+      "restaurant": "Restaurant",
+      "cafe": "Café",
+      "catering": "Catering",
+      "retail": "Retail",
+      "other": "Other"
+    },
+    "cities": {
+      "riyadh": "Riyadh",
+      "jeddah": "Jeddah",
+      "dammam": "Dammam",
+      "other": "Other"
+    },
+    "inquiryTypes": {
+      "pricing": "Pricing",
+      "product": "Product Info",
+      "partnership": "Partnership",
+      "support": "Support",
+      "other": "Other"
+    },
+    "locations": {
+      "title": "Our Locations",
+      "riyadh": {
+        "title": "Riyadh (HQ)",
+        "address": "King Fahd Road, Al Olaya District\nRiyadh 12211, Saudi Arabia",
+        "phone": "Phone",
+        "hours": "Hours",
+        "hoursValue": "Sun-Thu: 9AM - 6PM"
+      },
+      "jeddah": {
+        "title": "Jeddah",
+        "address": "Al Andalus District\nJeddah 23326, Saudi Arabia"
+      },
+      "mapPlaceholder": "Google Maps Integration"
+    },
+    "otherInquiries": {
+      "title": "Other Inquiries",
+      "careers": "For Careers",
+      "suppliers": "For Suppliers",
+      "media": "For Media"
+    }
+  },
+  "quote": {
+    "backHome": "← Back to Home",
+    "needHelp": "Need help? Call us:",
+    "steps": {
+      "business": "Your Business",
+      "products": "Select Products",
+      "delivery": "Delivery Details",
+      "review": "Review & Submit"
+    },
+    "step1": {
+      "title": "First, tell us about your business",
+      "businessName": "Business Name",
+      "businessType": "Business Type",
+      "contactPerson": "Contact Person",
+      "email": "Email",
+      "phone": "Phone",
+      "city": "City",
+      "selectCity": "Select city"
+    },
+    "businessTypes": {
+      "hotel": "Hotel",
+      "restaurant": "Restaurant",
+      "cafe": "Café",
+      "catering": "Catering",
+      "retail": "Retail"
+    },
+    "step2": {
+      "title": "What products are you interested in?",
+      "selected": "product(s) selected"
+    },
+    "step3": {
+      "title": "Where and how often?",
+      "deliveryAddress": "Delivery Address",
+      "addressPlaceholder": "Enter full delivery address",
+      "deliveryFrequency": "Preferred Delivery Frequency",
+      "orderVolume": "Expected Order Volume",
+      "specialRequirements": "Special Requirements (Optional)",
+      "requirementsPlaceholder": "Any specific packaging, delivery time preferences, or other requirements?",
+      "frequencies": {
+        "oneTime": "one-time",
+        "weekly": "weekly",
+        "biWeekly": "bi-weekly",
+        "monthly": "monthly"
+      },
+      "volumes": {
+        "small": "small",
+        "medium": "medium",
+        "large": "large",
+        "veryLarge": "very-large"
+      }
+    },
+    "step4": {
+      "title": "Review your quote request",
+      "businessInfo": "Business Information",
+      "selectedProducts": "Selected Products",
+      "deliveryPrefs": "Delivery Preferences",
+      "edit": "Edit",
+      "business": "Business",
+      "type": "Type",
+      "contact": "Contact",
+      "frequency": "Frequency",
+      "volume": "Volume",
+      "terms": "I agree to the Terms and Privacy Policy",
+      "submit": "Submit Quote Request",
+      "response": "We'll respond within 24 hours"
+    },
+    "navigation": {
+      "back": "Back",
+      "continue": "Continue"
+    },
+    "why": {
+      "title": "Why request a quote?",
+      "reason1": "Get personalized pricing for your business",
+      "reason2": "No commitment required",
+      "reason3": "24-hour response time"
+    }
+  }
+}

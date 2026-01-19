@@ -2,12 +2,15 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { useTranslations, useLocale } from 'next-intl'
 import { CheckCircle2, ArrowRight, ArrowLeft, ShoppingCart, MapPin, FileText } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function QuotePage() {
+  const t = useTranslations('quote')
+  const locale = useLocale()
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     businessName: '',
@@ -24,18 +27,18 @@ export default function QuotePage() {
   })
 
   const steps = [
-    { number: 1, title: "Your Business", icon: FileText },
-    { number: 2, title: "Select Products", icon: ShoppingCart },
-    { number: 3, title: "Delivery Details", icon: MapPin },
-    { number: 4, title: "Review & Submit", icon: CheckCircle2 },
+    { number: 1, title: t('steps.business'), icon: FileText },
+    { number: 2, title: t('steps.products'), icon: ShoppingCart },
+    { number: 3, title: t('steps.delivery'), icon: MapPin },
+    { number: 4, title: t('steps.review'), icon: CheckCircle2 },
   ]
 
   const businessTypes = [
-    { id: 'hotel', name: 'Hotel', icon: '🏨' },
-    { id: 'restaurant', name: 'Restaurant', icon: '🍽️' },
-    { id: 'cafe', name: 'Café', icon: '☕' },
-    { id: 'catering', name: 'Catering', icon: '🎉' },
-    { id: 'retail', name: 'Retail', icon: '🏪' },
+    { id: 'hotel', name: t('businessTypes.hotel'), icon: '🏨' },
+    { id: 'restaurant', name: t('businessTypes.restaurant'), icon: '🍽️' },
+    { id: 'cafe', name: t('businessTypes.cafe'), icon: '☕' },
+    { id: 'catering', name: t('businessTypes.catering'), icon: '🎉' },
+    { id: 'retail', name: t('businessTypes.retail'), icon: '🏪' },
   ]
 
   const products = [
@@ -73,8 +76,8 @@ export default function QuotePage() {
       {/* Simplified Header */}
       <div className="bg-white border-b border-charcoal-100 py-4">
         <div className="container-custom flex items-center justify-between">
-          <Link href="/" className="text-olive font-semibold">← Back to Home</Link>
-          <p className="text-sm text-charcoal-600">Need help? Call us: <span className="font-semibold">+966 XX XXX XXXX</span></p>
+          <Link href={`/${locale}`} className="text-olive font-semibold">{t('backHome')}</Link>
+          <p className="text-sm text-charcoal-600">{t('needHelp')} <span className="font-semibold">+966 XX XXX XXXX</span></p>
         </div>
       </div>
 
@@ -122,17 +125,17 @@ export default function QuotePage() {
             {/* Step 1: Business Information */}
             {currentStep === 1 && (
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-charcoal mb-8">First, tell us about your business</h2>
+                <h2 className="text-3xl font-bold text-charcoal mb-8">{t('step1.title')}</h2>
                 
                 <Input
-                  label="Business Name *"
+                  label={`${t('step1.businessName')} *`}
                   value={formData.businessName}
                   onChange={(e) => setFormData({...formData, businessName: e.target.value})}
                   placeholder="e.g., Al Riyadh Grand Hotel"
                 />
 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-4">Business Type *</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-4">{t('step1.businessType')} *</label>
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                     {businessTypes.map((type) => (
                       <button
@@ -153,12 +156,12 @@ export default function QuotePage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Input
-                    label="Contact Person *"
+                    label={`${t('step1.contactPerson')} *`}
                     value={formData.contactPerson}
                     onChange={(e) => setFormData({...formData, contactPerson: e.target.value})}
                   />
                   <Input
-                    label="Email *"
+                    label={`${t('step1.email')} *`}
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -167,19 +170,19 @@ export default function QuotePage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Input
-                    label="Phone *"
+                    label={`${t('step1.phone')} *`}
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   />
                   <div>
-                    <label className="block text-sm font-medium text-charcoal-700 mb-2">City *</label>
+                    <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('step1.city')} *</label>
                     <select
                       value={formData.city}
                       onChange={(e) => setFormData({...formData, city: e.target.value})}
                       className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
                     >
-                      <option value="">Select city</option>
+                      <option value="">{t('step1.selectCity')}</option>
                       <option value="riyadh">Riyadh</option>
                       <option value="jeddah">Jeddah</option>
                       <option value="dammam">Dammam</option>
@@ -193,7 +196,7 @@ export default function QuotePage() {
             {/* Step 2: Select Products */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-charcoal mb-8">What products are you interested in?</h2>
+                <h2 className="text-3xl font-bold text-charcoal mb-8">{t('step2.title')}</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {products.map((product) => (
@@ -228,7 +231,7 @@ export default function QuotePage() {
                 {formData.selectedProducts.length > 0 && (
                   <div className="bg-cream-100 rounded-lg p-4">
                     <p className="text-sm font-medium text-charcoal">
-                      {formData.selectedProducts.length} product(s) selected
+                      {formData.selectedProducts.length} {t('step2.selected')}
                     </p>
                   </div>
                 )}
@@ -238,23 +241,23 @@ export default function QuotePage() {
             {/* Step 3: Delivery Details */}
             {currentStep === 3 && (
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-charcoal mb-8">Where and how often?</h2>
+                <h2 className="text-3xl font-bold text-charcoal mb-8">{t('step3.title')}</h2>
                 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-2">Delivery Address *</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('step3.deliveryAddress')} *</label>
                   <textarea
                     value={formData.deliveryAddress}
                     onChange={(e) => setFormData({...formData, deliveryAddress: e.target.value})}
                     rows={3}
                     className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
-                    placeholder="Enter full delivery address"
+                    placeholder={t('step3.addressPlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-4">Preferred Delivery Frequency *</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-4">{t('step3.deliveryFrequency')} *</label>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    {['one-time', 'weekly', 'bi-weekly', 'monthly'].map((freq) => (
+                    {['oneTime', 'weekly', 'biWeekly', 'monthly'].map((freq) => (
                       <button
                         key={freq}
                         onClick={() => setFormData({...formData, deliveryFrequency: freq})}
@@ -264,16 +267,16 @@ export default function QuotePage() {
                             : 'border-charcoal-200 hover:border-olive/50'
                         }`}
                       >
-                        {freq.replace('-', ' ')}
+                        {t(`step3.frequencies.${freq}`)}
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-4">Expected Order Volume</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-4">{t('step3.orderVolume')}</label>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    {['small', 'medium', 'large', 'very-large'].map((vol) => (
+                    {['small', 'medium', 'large', 'veryLarge'].map((vol) => (
                       <button
                         key={vol}
                         onClick={() => setFormData({...formData, orderVolume: vol})}
@@ -283,20 +286,20 @@ export default function QuotePage() {
                             : 'border-charcoal-200 hover:border-olive/50'
                         }`}
                       >
-                        {vol.replace('-', ' ')}
+                        {t(`step3.volumes.${vol}`)}
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-charcoal-700 mb-2">Special Requirements (Optional)</label>
+                  <label className="block text-sm font-medium text-charcoal-700 mb-2">{t('step3.specialRequirements')}</label>
                   <textarea
                     value={formData.specialRequirements}
                     onChange={(e) => setFormData({...formData, specialRequirements: e.target.value})}
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
-                    placeholder="Any specific packaging, delivery time preferences, or other requirements?"
+                    placeholder={t('step3.requirementsPlaceholder')}
                   />
                 </div>
               </div>
@@ -305,55 +308,55 @@ export default function QuotePage() {
             {/* Step 4: Review & Submit */}
             {currentStep === 4 && (
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-charcoal mb-8">Review your quote request</h2>
+                <h2 className="text-3xl font-bold text-charcoal mb-8">{t('step4.title')}</h2>
                 
                 <Card className="p-6 bg-cream-50">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-charcoal">Business Information</h3>
-                    <button onClick={() => setCurrentStep(1)} className="text-sm text-olive hover:underline">Edit</button>
+                    <h3 className="font-semibold text-charcoal">{t('step4.businessInfo')}</h3>
+                    <button onClick={() => setCurrentStep(1)} className="text-sm text-olive hover:underline">{t('step4.edit')}</button>
                   </div>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Business:</strong> {formData.businessName}</p>
-                    <p><strong>Type:</strong> {formData.businessType}</p>
-                    <p><strong>Contact:</strong> {formData.contactPerson}</p>
-                    <p><strong>Email:</strong> {formData.email}</p>
-                    <p><strong>Phone:</strong> {formData.phone}</p>
-                    <p><strong>City:</strong> {formData.city}</p>
+                    <p><strong>{t('step4.business')}:</strong> {formData.businessName}</p>
+                    <p><strong>{t('step4.type')}:</strong> {formData.businessType}</p>
+                    <p><strong>{t('step4.contact')}:</strong> {formData.contactPerson}</p>
+                    <p><strong>{t('step1.email')}:</strong> {formData.email}</p>
+                    <p><strong>{t('step1.phone')}:</strong> {formData.phone}</p>
+                    <p><strong>{t('step1.city')}:</strong> {formData.city}</p>
                   </div>
                 </Card>
 
                 <Card className="p-6 bg-cream-50">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-charcoal">Selected Products</h3>
-                    <button onClick={() => setCurrentStep(2)} className="text-sm text-olive hover:underline">Edit</button>
+                    <h3 className="font-semibold text-charcoal">{t('step4.selectedProducts')}</h3>
+                    <button onClick={() => setCurrentStep(2)} className="text-sm text-olive hover:underline">{t('step4.edit')}</button>
                   </div>
-                  <p className="text-sm">{formData.selectedProducts.length} products selected</p>
+                  <p className="text-sm">{formData.selectedProducts.length} {t('step2.selected')}</p>
                 </Card>
 
                 <Card className="p-6 bg-cream-50">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-charcoal">Delivery Preferences</h3>
-                    <button onClick={() => setCurrentStep(3)} className="text-sm text-olive hover:underline">Edit</button>
+                    <h3 className="font-semibold text-charcoal">{t('step4.deliveryPrefs')}</h3>
+                    <button onClick={() => setCurrentStep(3)} className="text-sm text-olive hover:underline">{t('step4.edit')}</button>
                   </div>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Frequency:</strong> {formData.deliveryFrequency}</p>
-                    <p><strong>Volume:</strong> {formData.orderVolume}</p>
+                    <p><strong>{t('step4.frequency')}:</strong> {formData.deliveryFrequency}</p>
+                    <p><strong>{t('step4.volume')}:</strong> {formData.orderVolume}</p>
                   </div>
                 </Card>
 
                 <div className="flex items-start gap-2 pt-4">
                   <input type="checkbox" id="terms" className="mt-1" required />
                   <label htmlFor="terms" className="text-sm text-charcoal-600">
-                    I agree to the Terms and Privacy Policy
+                    {t('step4.terms')}
                   </label>
                 </div>
 
                 <Button onClick={handleSubmit} variant="primary" size="lg" className="w-full">
-                  Submit Quote Request
+                  {t('step4.submit')}
                 </Button>
 
                 <p className="text-center text-sm text-charcoal-500">
-                  We'll respond within 24 hours
+                  {t('step4.response')}
                 </p>
               </div>
             )}
@@ -363,12 +366,12 @@ export default function QuotePage() {
               {currentStep > 1 && (
                 <Button onClick={handleBack} variant="ghost">
                   <ArrowLeft size={20} className="mr-2" />
-                  Back
+                  {t('navigation.back')}
                 </Button>
               )}
               {currentStep < 4 && (
                 <Button onClick={handleNext} variant="primary" className="ml-auto">
-                  Continue
+                  {t('navigation.continue')}
                   <ArrowRight size={20} className="ml-2" />
                 </Button>
               )}
@@ -377,19 +380,19 @@ export default function QuotePage() {
 
           {/* Sidebar Trust Elements */}
           <div className="mt-8 bg-cream-100 rounded-2xl p-6">
-            <h3 className="font-semibold text-charcoal mb-4">Why request a quote?</h3>
+            <h3 className="font-semibold text-charcoal mb-4">{t('why.title')}</h3>
             <ul className="space-y-3 text-sm text-charcoal-600">
               <li className="flex items-start gap-2">
                 <CheckCircle2 size={20} className="text-olive flex-shrink-0 mt-0.5" />
-                <span>Get personalized pricing for your business</span>
+                <span>{t('why.reason1')}</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 size={20} className="text-olive flex-shrink-0 mt-0.5" />
-                <span>No commitment required</span>
+                <span>{t('why.reason2')}</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 size={20} className="text-olive flex-shrink-0 mt-0.5" />
-                <span>24-hour response time</span>
+                <span>{t('why.reason3')}</span>
               </li>
             </ul>
           </div>

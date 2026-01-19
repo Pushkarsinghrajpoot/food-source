@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, Truck } from "lucide-react"
 import Button from "@/components/ui/Button"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const [selectedSize, setSelectedSize] = useState('5kg')

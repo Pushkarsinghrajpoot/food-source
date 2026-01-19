@@ -3,16 +3,26 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useTranslations, useLocale } from 'next-intl'
 import { Search, SlidersHorizontal, Grid, List, Package, ArrowRight } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function ProductsPage() {
+  const t = useTranslations('products')
+  const navT = useTranslations('nav')
+  const locale = useLocale()
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  const categories = ['all', 'olives', 'cheeses', 'pickles', 'labneh']
+  const categories = [
+    { id: 'all', label: t('all') },
+    { id: 'olives', label: t('olives') },
+    { id: 'cheeses', label: t('cheeses') },
+    { id: 'pickles', label: t('pickles') },
+    { id: 'labneh', label: t('labneh') }
+  ]
   
   const products = [
     { id: 1, name: "Greek Kalamata Olives", category: "olives", origin: "Greece", size: "5kg tin", certification: "SFDA", image: "https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=400&q=80" },
@@ -36,15 +46,15 @@ export default function ProductsPage() {
         <div className="container-custom">
           <div className="max-w-3xl">
             <nav className="text-sm text-charcoal-600 mb-4">
-              <Link href="/" className="hover:text-olive">Home</Link>
+              <Link href={`/${locale}`} className="hover:text-olive">{navT('home')}</Link>
               <span className="mx-2">/</span>
-              <span>Products</span>
+              <span>{t('breadcrumb')}</span>
             </nav>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal mb-4">
-              Our Premium Selection
+              {t('title')}
             </h1>
             <p className="text-xl text-charcoal-600">
-              Handpicked Mediterranean ingredients for exceptional kitchens
+              {t('subtitle')}
             </p>
           </div>
         </div>
@@ -58,15 +68,15 @@ export default function ProductsPage() {
             <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto">
               {categories.map((cat) => (
                 <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
                   className={`px-6 py-2 rounded-full font-medium whitespace-nowrap transition-all ${
-                    selectedCategory === cat
+                    selectedCategory === cat.id
                       ? 'bg-olive text-white'
                       : 'bg-cream-200 text-charcoal-700 hover:bg-cream-300'
                   }`}
                 >
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  {cat.label}
                 </button>
               ))}
             </div>
@@ -77,7 +87,7 @@ export default function ProductsPage() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal-400" size={20} />
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder={t('searchPlaceholder')}
                   className="w-full pl-10 pr-4 py-2 rounded-lg border border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive"
                 />
               </div>
@@ -114,9 +124,9 @@ export default function ProductsPage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                    <Link href={`/products/${product.id}`}>
+                    <Link href={`/${locale}/products/${product.id}`}>
                       <Button variant="primary" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                        Quick View
+                        {t('quickView')}
                       </Button>
                     </Link>
                   </div>
@@ -132,8 +142,8 @@ export default function ProductsPage() {
                   </div>
                   <h3 className="text-lg font-semibold text-charcoal mb-2">{product.name}</h3>
                   <p className="text-sm text-charcoal-600 mb-1">{product.origin} • {product.size}</p>
-                  <Link href={`/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center mt-3">
-                    View Details <ArrowRight size={16} className="ml-1" />
+                  <Link href={`/${locale}/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center mt-3">
+                    {t('viewDetails')} <ArrowRight size={16} className="ml-1" />
                   </Link>
                 </div>
               </Card>
@@ -143,9 +153,9 @@ export default function ProductsPage() {
           {/* Load More */}
           <div className="text-center mt-12">
             <Button variant="outline" size="lg">
-              Load More Products
+              {t('loadMore')}
             </Button>
-            <p className="text-sm text-charcoal-500 mt-4">Showing {filteredProducts.length} of {products.length} products</p>
+            <p className="text-sm text-charcoal-500 mt-4">{t('showing')} {filteredProducts.length} {t('of')} {products.length} {t('productsCount')}</p>
           </div>
         </div>
       </section>
@@ -154,13 +164,13 @@ export default function ProductsPage() {
       <section className="bg-cream py-16">
         <div className="container-custom">
           <Card className="p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold text-charcoal mb-4">Need Bulk Pricing?</h2>
+            <h2 className="text-3xl font-bold text-charcoal mb-4">{t('bulkPricing')}</h2>
             <p className="text-charcoal-600 mb-6 max-w-2xl mx-auto">
-              Contact our sales team for customized quotes on large orders and regular deliveries
+              {t('bulkPricingDesc')}
             </p>
-            <Link href="/quote">
+            <Link href={`/${locale}/quote`}>
               <Button variant="primary" size="lg">
-                Request Custom Quote
+                {t('requestCustomQuote')}
               </Button>
             </Link>
           </Card>

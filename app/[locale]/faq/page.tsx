@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Search, ShoppingCart, Truck, Package, CreditCard, User, Info, ChevronDown, MessageCircle, Mail } from "lucide-react"
 import Button from "@/components/ui/Button"
-import { Card } from "@/components/ui/Card"
+import Card from "@/components/ui/Card"
 
 export default function FAQPage() {
   const [searchQuery, setSearchQuery] = useState('')
