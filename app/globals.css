@@ -1,26 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-olive: #3D5A3D;
+  --color-olive-50: #E8F0E8;
+  --color-olive-100: #D1E1D1;
+  --color-olive-200: #A3C3A3;
+  --color-olive-300: #75A575;
+  --color-olive-400: #478747;
+  --color-olive-500: #3D5A3D;
+  --color-olive-600: #314831;
+  --color-olive-700: #253625;
+  --color-olive-800: #182418;
+  --color-olive-900: #0C120C;
+  
+  --color-terracotta: #C4572B;
+  --color-terracotta-50: #FCF1EC;
+  --color-terracotta-100: #F9E3D9;
+  --color-terracotta-200: #F3C7B3;
+  --color-terracotta-300: #EDAB8D;
+  --color-terracotta-400: #E78F67;
+  --color-terracotta-500: #C4572B;
+  --color-terracotta-600: #9D4622;
+  --color-terracotta-700: #76341A;
+  --color-terracotta-800: #4F2311;
+  --color-terracotta-900: #281109;
+  
+  --color-cream: #FAF8F5;
+  --color-cream-50: #FFFFFF;
+  --color-cream-100: #FAF8F5;
+  --color-cream-200: #F5F1EB;
+  --color-cream-300: #F0EAE1;
+  --color-cream-400: #EBE3D7;
+  --color-cream-500: #E6DCCD;
+  
+  --color-gold: #B8965A;
+  --color-gold-50: #F7F3EB;
+  --color-gold-100: #EFE7D7;
+  --color-gold-200: #DFCFAF;
+  --color-gold-300: #CFB787;
+  --color-gold-400: #BF9F5F;
+  --color-gold-500: #B8965A;
+  --color-gold-600: #937848;
+  --color-gold-700: #6E5A36;
+  --color-gold-800: #4A3C24;
+  --color-gold-900: #251E12;
+  
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-50: #F5F5F5;
+  --color-charcoal-100: #E0E0E0;
+  --color-charcoal-200: #CCCCCC;
+  --color-charcoal-300: #B3B3B3;
+  --color-charcoal-400: #999999;
+  --color-charcoal-500: #808080;
+  --color-charcoal-600: #666666;
+  --color-charcoal-700: #4D4D4D;
+  --color-charcoal-800: #333333;
+  --color-charcoal-900: #1A1A1A;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.glass-morphism {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.card-hover {
+  transition: all 300ms;
+}
+
+.card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
 }
