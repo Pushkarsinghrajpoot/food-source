@@ -15,6 +15,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [activeTab, setActiveTab] = useState('description')
+  const [selectedImage, setSelectedImage] = useState('')
 
   useEffect(() => {
     params.then(p => {
@@ -22,6 +23,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       const prod = getProductById(p.id)
       if (prod && prod.sizes.length > 0) {
         setSelectedSize(prod.sizes[0])
+      }
+      if (prod) {
+        setSelectedImage(prod.image)
       }
     })
   }, [])
@@ -67,16 +71,22 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             <div className="space-y-4">
               <div className="aspect-square bg-cream-200 rounded-2xl relative overflow-hidden">
                 <Image
-                  src={product.image}
+                  src={selectedImage || product.image}
                   alt={product.name}
                   fill
                   className="object-cover"
                   priority
                 />
               </div>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {product.images.map((img, i) => (
-                  <div key={i} className="aspect-square bg-cream-200 rounded-lg relative overflow-hidden cursor-pointer hover:ring-2 ring-olive transition-all">
+                  <div 
+                    key={i} 
+                    onClick={() => setSelectedImage(img)}
+                    className={`aspect-square bg-cream-200 rounded-lg relative overflow-hidden cursor-pointer hover:ring-2 transition-all ${
+                      selectedImage === img ? 'ring-2 ring-olive' : 'ring-olive/20'
+                    }`}
+                  >
                     <Image
                       src={img}
                       alt={`Product view ${i + 1}`}

@@ -9,6 +9,7 @@ import { Search, SlidersHorizontal, Grid, List, Package, ArrowRight } from "luci
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import Card from "@/components/ui/Card"
+import { products } from "@/data/products"
 
 function ProductsContent() {
   const t = useTranslations('products')
@@ -33,17 +34,6 @@ function ProductsContent() {
     { id: 'cheeses', label: t('cheeses') },
     { id: 'pickles', label: t('pickles') },
     { id: 'labneh', label: t('labneh') }
-  ]
-  
-  const products = [
-    { id: 1, name: "Greek Kalamata Olives", category: "olives", origin: "Greece", size: "5kg tin", certification: "SFDA", image: "https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=400&q=80" },
-    { id: 2, name: "Premium Feta Cheese", category: "cheeses", origin: "Greece", size: "2kg block", certification: "SFDA", image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80" },
-    { id: 3, name: "Turkish Pickled Cucumbers", category: "pickles", origin: "Turkey", size: "3kg jar", certification: "SFDA", image: "https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?w=400&q=80" },
-    { id: 4, name: "Lebanese Labneh", category: "labneh", origin: "Lebanon", size: "1kg tub", certification: "Halal", image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=400&q=80" },
-    { id: 5, name: "Green Olives Stuffed", category: "olives", origin: "Spain", size: "4kg tin", certification: "SFDA", image: "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=400&q=80" },
-    { id: 6, name: "Halloumi Cheese", category: "cheeses", origin: "Cyprus", size: "1.5kg", certification: "Halal", image: "https://images.unsplash.com/photo-1618164436241-4473940d1f5c?w=400&q=80" },
-    { id: 7, name: "Mixed Mediterranean Pickles", category: "pickles", origin: "Greece", size: "5kg bucket", certification: "SFDA", image: "https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=400&q=80" },
-    { id: 8, name: "Strained Labneh", category: "labneh", origin: "Lebanon", size: "2kg tub", certification: "Halal", image: "https://images.unsplash.com/photo-1571212515416-9cf500fe1dae?w=400&q=80" },
   ]
 
   const filteredProducts = products
@@ -159,7 +149,7 @@ function ProductsContent() {
                     </span>
                   </div>
                   <h3 className="text-lg font-semibold text-charcoal mb-2">{product.name}</h3>
-                  <p className="text-sm text-charcoal-600 mb-1">{product.origin} • {product.size}</p>
+                  <p className="text-sm text-charcoal-600 mb-1">{product.origin} • {product.sizes[0]}</p>
                   <Link href={`/${locale}/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center mt-3">
                     {t('viewDetails')} <ArrowRight size={16} className="ml-1" />
                   </Link>

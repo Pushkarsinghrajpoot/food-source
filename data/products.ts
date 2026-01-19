@@ -34,19 +34,18 @@ export const products: Product[] = [
   {
     id: '1',
     name: 'Greek Kalamata Olives',
-    category: 'Premium Olives',
+    category: 'olives',
     origin: 'Kalamata, Greece',
     description: 'Authentic Greek Kalamata olives, handpicked and naturally cured. These premium olives offer a rich, fruity flavor with a meaty texture, perfect for Mediterranean dishes and gourmet presentations.',
     sizes: ['5kg tin', '10kg bucket', '20kg barrel'],
     shelfLife: '24 months',
     storage: 'Cool, dry place',
     certification: 'SFDA Approved',
-    image: 'https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80',
+    image: '/All products/kalmata olives/kalmata_olives_2.png',
     images: [
-      'https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80',
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80',
-      'https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80',
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80'
+      '/All products/kalmata olives/kalmata_olives_2.png',
+      '/All products/kalmata olives/kalmata_olives_3.png',
+      '/All products/kalmata olives/kalmata_olives_4.png'
     ],
     nutritional: {
       energy: '115 kcal',
@@ -83,19 +82,18 @@ export const products: Product[] = [
   {
     id: '2',
     name: 'Premium Feta Cheese',
-    category: 'Cheese',
+    category: 'cheeses',
     origin: 'Thessaloniki, Greece',
     description: 'Authentic Greek Feta cheese made from sheep and goat milk. Creamy, tangy, and crumbly texture perfect for salads, pastries, and Mediterranean dishes.',
     sizes: ['2kg block', '5kg container', '10kg bulk'],
     shelfLife: '6 months refrigerated',
     storage: 'Keep refrigerated at 2-8°C',
     certification: 'SFDA Approved, Halal Certified',
-    image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800&q=80',
+    image: '/All products/premium feta cheese/premium_feta_cheese_2.png',
     images: [
-      'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800&q=80',
-      'https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80',
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80',
-      'https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80'
+      '/All products/premium feta cheese/premium_feta_cheese_2.png',
+      '/All products/premium feta cheese/premium_feta_cheese_3.png',
+      '/All products/premium feta cheese/premium_feta_cheese_4.png'
     ],
     nutritional: {
       energy: '264 kcal',
@@ -126,19 +124,18 @@ export const products: Product[] = [
   {
     id: '3',
     name: 'Turkish Pickled Cucumbers',
-    category: 'Pickles',
+    category: 'pickles',
     origin: 'Bursa, Turkey',
     description: 'Crisp Turkish-style pickled cucumbers with a perfect balance of tang and crunch. Made using traditional fermentation methods.',
     sizes: ['3kg jar', '5kg container', '15kg bucket'],
     shelfLife: '18 months',
     storage: 'Cool, dry place',
     certification: 'SFDA Approved',
-    image: 'https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?w=800&q=80',
+    image: '/All products/turkish pickled cucumbers/turkish_pickles_cucumbers_2.jpg',
     images: [
-      'https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?w=800&q=80',
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80',
-      'https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80',
-      'https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80'
+      '/All products/turkish pickled cucumbers/turkish_pickles_cucumbers_2.jpg',
+      '/All products/turkish pickled cucumbers/turkish_pickles_cucumbers_3.jpg',
+      '/All products/turkish pickled cucumbers/turkish_pickles_cucumbers_4.jpg'
     ],
     nutritional: {
       energy: '11 kcal',
@@ -169,19 +166,18 @@ export const products: Product[] = [
   {
     id: '4',
     name: 'Lebanese Labneh',
-    category: 'Labneh',
+    category: 'labneh',
     origin: 'Bekaa Valley, Lebanon',
     description: 'Thick, creamy Lebanese labneh made from strained yogurt. Rich in protein and perfect for breakfast spreads or dips.',
     sizes: ['2kg tub', '5kg container', '10kg bulk'],
     shelfLife: '45 days refrigerated',
     storage: 'Keep refrigerated at 2-8°C',
     certification: 'SFDA Approved, Halal Certified',
-    image: 'https://images.unsplash.com/photo-1571212515416-9cf500fe1dae?w=800&q=80',
+    image: '/All products/lebanese labneh/lebanese_labneh_2.jpg',
     images: [
-      'https://images.unsplash.com/photo-1571212515416-9cf500fe1dae?w=800&q=80',
-      'https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80',
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80',
-      'https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80'
+      '/All products/lebanese labneh/lebanese_labneh_2.jpg',
+      '/All products/lebanese labneh/lebanese_labneh_3.jpg',
+      '/All products/lebanese labneh/lebanese_labneh_4.jpg'
     ],
     nutritional: {
       energy: '159 kcal',
@@ -212,19 +208,18 @@ export const products: Product[] = [
   {
     id: '5',
     name: 'Green Olives Stuffed',
-    category: 'Premium Olives',
+    category: 'olives',
     origin: 'Seville, Spain',
     description: 'Spanish green olives stuffed with pimento peppers. Firm texture with a mild, slightly bitter taste perfect for cocktails and appetizers.',
     sizes: ['4kg jar', '8kg container', '20kg barrel'],
     shelfLife: '24 months',
     storage: 'Cool, dry place',
     certification: 'SFDA Approved',
-    image: 'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80',
+    image: '/All products/green olives stuffed/green_olives_stuffed_2.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80',
-      'https://images.unsplash.com/photo-1587411768339-e0ab6ad0bb3d?w=800&q=80',
-      'https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80',
-      'https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?w=800&q=80'
+      '/All products/green olives stuffed/green_olives_stuffed_2.jpeg',
+      '/All products/green olives stuffed/green_olives_stuffed_3.jpeg',
+      '/All products/green olives stuffed/green_olives_stuffed_4.png'
     ],
     nutritional: {
       energy: '145 kcal',
@@ -248,19 +243,18 @@ export const products: Product[] = [
   {
     id: '6',
     name: 'Halloumi Cheese',
-    category: 'Cheese',
+    category: 'cheeses',
     origin: 'Cyprus',
     description: 'Traditional Cypriot semi-hard cheese with high melting point. Perfect for grilling, frying, or eating fresh.',
     sizes: ['2kg block', '5kg bulk', '10kg wholesale'],
     shelfLife: '6 months refrigerated',
     storage: 'Keep refrigerated at 2-8°C',
     certification: 'SFDA Approved, Halal Certified',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f409b1?w=800&q=80',
+    image: '/All products/Halloumi cheese/halluomi_cheese_2.png',
     images: [
-      'https://images.unsplash.com/photo-1519085360753-af0119f409b1?w=800&q=80',
-      'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800&q=80',
-      'https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?w=800&q=80',
-      'https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?w=800&q=80'
+      '/All products/Halloumi cheese/halluomi_cheese_2.png',
+      '/All products/Halloumi cheese/halluomi_cheese_3.jpg',
+      '/All products/Halloumi cheese/halluomi_cheese_4.jpg'
     ],
     nutritional: {
       energy: '321 kcal',
@@ -278,6 +272,76 @@ export const products: Product[] = [
     reviews: {
       rating: 4.8,
       count: 41,
+      comments: []
+    }
+  },
+  {
+    id: '7',
+    name: 'Mixed Mediterranean Pickles',
+    category: 'pickles',
+    origin: 'Mediterranean Region',
+    description: 'A vibrant mix of Mediterranean pickled vegetables including cauliflower, carrots, peppers, and turnips. Perfectly balanced brine for authentic taste.',
+    sizes: ['3kg jar', '5kg container', '15kg bucket'],
+    shelfLife: '18 months',
+    storage: 'Cool, dry place',
+    certification: 'SFDA Approved',
+    image: '/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_2.jpg',
+    images: [
+      '/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_2.jpg',
+      '/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_3.jpg',
+      '/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_4.jpg'
+    ],
+    nutritional: {
+      energy: '25 kcal',
+      fat: '0.3g',
+      carbohydrates: '5.2g',
+      protein: '0.8g',
+      sodium: '980mg'
+    },
+    suggestedUses: [
+      'Meze platters',
+      'Side dishes',
+      'Sandwiches',
+      'Mediterranean buffets'
+    ],
+    reviews: {
+      rating: 4.7,
+      count: 34,
+      comments: []
+    }
+  },
+  {
+    id: '8',
+    name: 'Strained Labneh',
+    category: 'labneh',
+    origin: 'Lebanon',
+    description: 'Extra thick and creamy strained labneh with rich flavor. Made from premium yogurt using traditional straining methods for superior texture.',
+    sizes: ['2kg tub', '5kg container', '10kg bulk'],
+    shelfLife: '45 days refrigerated',
+    storage: 'Keep refrigerated at 2-8°C',
+    certification: 'SFDA Approved, Halal Certified',
+    image: '/All products/strained labneh/strained_labneh_2.jpg',
+    images: [
+      '/All products/strained labneh/strained_labneh_2.jpg',
+      '/All products/strained labneh/strained_labneh_3.jpg',
+      '/All products/strained labneh/strained_labneh_4.png'
+    ],
+    nutritional: {
+      energy: '175 kcal',
+      fat: '12.1g',
+      carbohydrates: '4.9g',
+      protein: '12.3g',
+      sodium: '95mg'
+    },
+    suggestedUses: [
+      'Dips and spreads',
+      'Breakfast with honey',
+      'Cooking ingredient',
+      'Mediterranean mezze'
+    ],
+    reviews: {
+      rating: 4.8,
+      count: 45,
       comments: []
     }
   }

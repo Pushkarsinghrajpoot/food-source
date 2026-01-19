@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { ArrowRight, CheckCircle2, Star, TrendingUp, Package, Truck, Shield, Users, Clock, Award } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
+import { products as productData } from "@/data/products"
 
 export default function Home() {
   const t = useTranslations('home')
@@ -19,12 +20,8 @@ export default function Home() {
     { icon: Award, title: t("features.pricing.title"), description: t("features.pricing.description") },
   ]
 
-  const products = [
-    { name: t("products.product1.name"), origin: t("products.product1.origin"), category: t("products.product1.category"), image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80" },
-    { name: t("products.product2.name"), origin: t("products.product2.origin"), category: t("products.product2.category"), image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80" },
-    { name: t("products.product3.name"), origin: t("products.product3.origin"), category: t("products.product3.category"), image: "https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?w=400&q=80" },
-    { name: t("products.product4.name"), origin: t("products.product4.origin"), category: t("products.product4.category"), image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=400&q=80" },
-  ]
+  // Get first 4 products to display on home page
+  const featuredProducts = productData.slice(0, 4)
 
   return (
     <div className="pt-20">
@@ -137,8 +134,8 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product, index) => (
-              <Card key={index} hover className="overflow-hidden">
+            {featuredProducts.map((product) => (
+              <Card key={product.id} hover className="overflow-hidden">
                 <div className="aspect-square bg-cream-300 relative overflow-hidden">
                   <Image
                     src={product.image}
@@ -153,7 +150,7 @@ export default function Home() {
                   </span>
                   <h3 className="text-lg font-semibold text-charcoal mt-3 mb-2">{product.name}</h3>
                   <p className="text-sm text-charcoal-600 mb-4">{product.origin} • {t("products.premiumQuality")}</p>
-                  <Link href={`/${locale}/products`} className="text-olive font-medium text-sm hover:underline inline-flex items-center">
+                  <Link href={`/${locale}/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center">
                     {t("products.viewDetails")} <ArrowRight size={16} className="ml-1" />
                   </Link>
                 </div>
