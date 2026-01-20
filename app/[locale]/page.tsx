@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useTranslations, useLocale } from 'next-intl'
 import { ArrowRight, CheckCircle2, Star, TrendingUp, Package, Truck, Shield, Users, Clock, Award } from "lucide-react"
+import { useState } from "react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
 import { products as productData } from "@/data/products"
@@ -11,6 +12,8 @@ import { products as productData } from "@/data/products"
 export default function Home() {
   const t = useTranslations('home')
   const locale = useLocale()
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  
   const features = [
     { icon: Package, title: t("features.sourcing.title"), description: t("features.sourcing.description") },
     { icon: Shield, title: t("features.certified.title"), description: t("features.certified.description") },
@@ -20,8 +23,10 @@ export default function Home() {
     { icon: Award, title: t("features.pricing.title"), description: t("features.pricing.description") },
   ]
 
-  // Get first 4 products to display on home page
-  const featuredProducts = productData.slice(0, 4)
+  // Filter products based on selected category
+  const filteredProducts = selectedCategory === 'all' 
+    ? productData.slice(0, 4) 
+    : productData.filter(product => product.category === selectedCategory).slice(0, 4)
 
   return (
     <div className="pt-20">
@@ -129,36 +134,84 @@ export default function Home() {
               {t("products.title")}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 mt-6 flex-wrap">
-              <button className="px-4 sm:px-5 md:px-6 py-2 rounded-full bg-olive text-white font-medium text-sm sm:text-base">{t("products.filterAll")}</button>
-              <button className="px-4 sm:px-5 md:px-6 py-2 rounded-full hover:bg-white transition-colors font-medium text-charcoal-700 text-sm sm:text-base">{t("products.filterOlives")}</button>
-              <button className="px-4 sm:px-5 md:px-6 py-2 rounded-full hover:bg-white transition-colors font-medium text-charcoal-700 text-sm sm:text-base">{t("products.filterCheeses")}</button>
-              <button className="px-4 sm:px-5 md:px-6 py-2 rounded-full hover:bg-white transition-colors font-medium text-charcoal-700 text-sm sm:text-base">{t("products.filterPickles")}</button>
+              <button 
+                onClick={() => setSelectedCategory('all')}
+                className={`px-4 sm:px-5 md:px-6 py-2 rounded-full transition-colors font-medium text-sm sm:text-base ${
+                  selectedCategory === 'all' 
+                    ? 'bg-olive text-white' 
+                    : 'hover:bg-white text-charcoal-700'
+                }`}
+              >
+                {t("products.filterAll")}
+              </button>
+              <button 
+                onClick={() => setSelectedCategory('olives')}
+                className={`px-4 sm:px-5 md:px-6 py-2 rounded-full transition-colors font-medium text-sm sm:text-base ${
+                  selectedCategory === 'olives' 
+                    ? 'bg-olive text-white' 
+                    : 'hover:bg-white text-charcoal-700'
+                }`}
+              >
+                {t("products.filterOlives")}
+              </button>
+              <button 
+                onClick={() => setSelectedCategory('cheeses')}
+                className={`px-4 sm:px-5 md:px-6 py-2 rounded-full transition-colors font-medium text-sm sm:text-base ${
+                  selectedCategory === 'cheeses' 
+                    ? 'bg-olive text-white' 
+                    : 'hover:bg-white text-charcoal-700'
+                }`}
+              >
+                {t("products.filterCheeses")}
+              </button>
+              <button 
+                onClick={() => setSelectedCategory('pickles')}
+                className={`px-4 sm:px-5 md:px-6 py-2 rounded-full transition-colors font-medium text-sm sm:text-base ${
+                  selectedCategory === 'pickles' 
+                    ? 'bg-olive text-white' 
+                    : 'hover:bg-white text-charcoal-700'
+                }`}
+              >
+                {t("products.filterPickles")}
+              </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredProducts.map((product) => (
-              <Card key={product.id} hover className="overflow-hidden">
-                <div className="aspect-square bg-cream-300 relative overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <span className="text-xs font-medium text-olive bg-olive/10 px-3 py-1 rounded-full">
-                    {product.category}
-                  </span>
-                  <h3 className="text-lg font-semibold text-charcoal mt-3 mb-2">{product.name}</h3>
-                  <p className="text-sm text-charcoal-600 mb-4">{product.origin} • {t("products.premiumQuality")}</p>
-                  <Link href={`/${locale}/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center">
-                    {t("products.viewDetails")} <ArrowRight size={16} className="ml-1" />
-                  </Link>
-                </div>
-              </Card>
-            ))}
-          </div>
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {filteredProducts.map((product) => (
+                <Card key={product.id} hover className="overflow-hidden">
+                  <div className="aspect-square bg-cream-300 relative overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-xs font-medium text-olive bg-olive/10 px-3 py-1 rounded-full">
+                      {product.category}
+                    </span>
+                    <h3 className="text-lg font-semibold text-charcoal mt-3 mb-2">{product.name}</h3>
+                    <p className="text-sm text-charcoal-600 mb-4">{product.origin} • {t("products.premiumQuality")}</p>
+                    <Link href={`/${locale}/products/${product.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center">
+                      {t("products.viewDetails")} <ArrowRight size={16} className="ml-1" />
+                    </Link>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-charcoal-600 text-lg">No products found in this category.</p>
+              <button 
+                onClick={() => setSelectedCategory('all')}
+                className="mt-4 text-olive font-medium hover:underline"
+              >
+                View all products
+              </button>
+            </div>
+          )}
           <div className="text-center mt-12">
             <Link href={`/${locale}/products`}>
               <Button variant="primary" size="lg">
