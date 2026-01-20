@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Globe, ChevronDown } from 'lucide-react'
@@ -37,8 +38,14 @@ export default function Navigation({ locale }: NavigationProps) {
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-soft z-50">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
-          <Link href={`/${locale}`} className="text-2xl font-bold text-olive">
-            Food Sources
+          <Link href={`/${locale}`} className="relative w-40 h-12">
+            <Image
+              src="/main-logo.png"
+              alt="Food Sources"
+              fill
+              className="object-contain"
+              priority
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
