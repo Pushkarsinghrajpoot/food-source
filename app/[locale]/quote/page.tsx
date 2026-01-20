@@ -1,16 +1,19 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
 import Link from "next/link"
 import { useTranslations, useLocale } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 import { CheckCircle2, ArrowRight, ArrowLeft, ShoppingCart, MapPin, FileText } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import Card from "@/components/ui/Card"
+import { products as allProducts } from "@/data/products"
 
-export default function QuotePage() {
+function QuotePageContent() {
   const t = useTranslations('quote')
   const locale = useLocale()
+  const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState(1)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success'>('idle')
   const [formData, setFormData] = useState({
@@ -27,6 +30,19 @@ export default function QuotePage() {
     specialRequirements: '',
   })
 
+  // Check for pre-selected product from URL parameters
+  useEffect(() => {
+    const productParam = searchParams.get('product')
+    if (productParam) {
+      setFormData(prev => ({
+        ...prev,
+        selectedProducts: prev.selectedProducts.includes(productParam)
+          ? prev.selectedProducts
+          : [...prev.selectedProducts, productParam]
+      }))
+    }
+  }, [searchParams])
+
   const steps = [
     { number: 1, title: t('steps.business'), icon: FileText },
     { number: 2, title: t('steps.products'), icon: ShoppingCart },
@@ -42,14 +58,11 @@ export default function QuotePage() {
     { id: 'retail', name: t('businessTypes.retail'), icon: '🏪' },
   ]
 
-  const products = [
-    { id: '1', name: 'Greek Kalamata Olives', category: 'Olives' },
-    { id: '2', name: 'Premium Feta Cheese', category: 'Cheese' },
-    { id: '3', name: 'Turkish Pickled Cucumbers', category: 'Pickles' },
-    { id: '4', name: 'Lebanese Labneh', category: 'Labneh' },
-    { id: '5', name: 'Green Olives Stuffed', category: 'Olives' },
-    { id: '6', name: 'Halloumi Cheese', category: 'Cheese' },
-  ]
+  const products = allProducts.map(p => ({
+    id: p.id,
+    name: p.name,
+    category: p.category
+  }))
 
   const handleNext = () => {
     if (currentStep < 4) setCurrentStep(currentStep + 1)
@@ -377,7 +390,23 @@ export default function QuotePage() {
                     <h3 className="font-semibold text-charcoal">{t('step4.selectedProducts')}</h3>
                     <button onClick={() => setCurrentStep(2)} className="text-sm text-olive hover:underline">{t('step4.edit')}</button>
                   </div>
-                  <p className="text-sm">{formData.selectedProducts.length} {t('step2.selected')}</p>
+                  {formData.selectedProducts.length > 0 ? (
+                    <div className="space-y-2">
+                      {formData.selectedProducts.map(productId => {
+                        const product = products.find(p => p.id === productId)
+                        return product ? (
+                          <div key={productId} className="flex items-center justify-between text-sm py-2 border-b border-charcoal-200">
+                            <span className="font-medium">{product.name}</span>
+                            <span className="text-charcoal-600 bg-olive/10 px-2 py-1 rounded-full text-xs">
+                              {product.category}
+                            </span>
+                          </div>
+                        ) : null
+                      })}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-charcoal-500">{t('step4.noProductsSelected')}</p>
+                  )}
                 </Card>
 
                 <Card className="p-6 bg-cream-50">
@@ -446,5 +475,13 @@ export default function QuotePage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function QuotePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-olive"></div></div>}>
+      <QuotePageContent />
+    </Suspense>
   )
 }

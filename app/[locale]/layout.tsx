@@ -20,15 +20,11 @@ export default async function LocaleLayout({
   const isRTL = locale === 'ar';
 
   return (
-    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} className={`${inter.variable} ${playfair.variable}`}>
-      <body>
-        <NextIntlClientProvider messages={messages} locale={locale}>
-          <Navigation locale={locale} />
-          {children}
-          <Footer locale={locale} />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages} locale={locale}>
+      <Navigation locale={locale} />
+      {children}
+      <Footer locale={locale} />
+    </NextIntlClientProvider>
   );
 }
 

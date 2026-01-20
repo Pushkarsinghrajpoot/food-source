@@ -175,7 +175,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
               {/* Actions */}
               <div className="space-y-3 pt-4">
-                <Link href="/quote">
+                <Link href={`/${locale}/quote?product=${product.id}`}>
                   <Button variant="primary" size="lg" className="w-full">
                     Add to Quote Request
                   </Button>

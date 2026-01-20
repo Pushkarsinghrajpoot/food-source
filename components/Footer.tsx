@@ -78,7 +78,7 @@ export default function Footer({ locale }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=cheese`} className="text-charcoal-300 hover:text-olive transition-colors">
+                <Link href={`/${locale}/products?category=cheeses`} className="text-charcoal-300 hover:text-olive transition-colors">
                   {t('cheeses')}
                 </Link>
               </li>

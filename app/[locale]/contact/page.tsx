@@ -294,9 +294,19 @@ export default function ContactPage() {
             </Card>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="w-full h-96 bg-charcoal-200 rounded-2xl flex items-center justify-center">
-            <p className="text-charcoal-500">{t('locations.mapPlaceholder')}</p>
+          {/* Google Maps */}
+          <div className="w-full h-96 rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.8486139658!2d46.8660674!3d24.6104515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2fa6e2fabc3c55:0x4779c1e161dd963a!2s%D8%B4%D8%B1%D9%83%D8%A9+%D9%85%D8%B5%D8%A7%D8%AF%D8%B1+%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85%E2%80%AD!5e0!3m2!1sen!2ssa!4v1705781234567!5m2!1sen!2ssa"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full"
+              title="Food Sources Location Map"
+            />
           </div>
         </div>
       </section>

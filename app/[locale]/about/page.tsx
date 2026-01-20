@@ -29,9 +29,24 @@ export default function AboutPage() {
   ]
 
   const team = [
-    { name: "Omar Al-Saud", title: "Founder & CEO", bio: "20+ years in food distribution with a passion for Mediterranean cuisine" },
-    { name: "Sarah Hassan", title: "Head of Operations", bio: "Expert in supply chain management and quality assurance" },
-    { name: "Michel Dubois", title: "Chief Product Officer", bio: "Sourcing specialist with deep connections in Mediterranean regions" },
+    { 
+      name: "Omar Al-Saud", 
+      title: "Founder & CEO", 
+      bio: "20+ years in food distribution with a passion for Mediterranean cuisine",
+      image: "https://res.cloudinary.com/dnijbboek/image/upload/v1768900292/omar_al-saud_bakve4.jpg"
+    },
+    { 
+      name: "Sarah Hassan", 
+      title: "Head of Operations", 
+      bio: "Expert in supply chain management and quality assurance",
+      image: "https://res.cloudinary.com/dnijbboek/image/upload/v1768900464/sarah_hassan_gkfbjm.jpg"
+    },
+    { 
+      name: "Michel Dubois", 
+      title: "Chief Product Officer", 
+      bio: "Sourcing specialist with deep connections in Mediterranean regions",
+      image: "https://res.cloudinary.com/dnijbboek/image/upload/v1768900473/Michel_dubois_ukpmid.jpg"
+    },
   ]
 
   return (
@@ -164,7 +179,7 @@ export default function AboutPage() {
               <Card key={index} className="overflow-hidden">
                 <div className="aspect-square bg-olive/10 relative">
                   <Image
-                    src={`https://images.unsplash.com/photo-${['1560250097-0b93528c311a', '1573496799652-408c2ac9fe98', '1519085360753-af0119f409b1'][index]}?w=400&q=80`}
+                    src={member.image}
                     alt={member.name}
                     fill
                     className="object-cover"

@@ -88,10 +88,12 @@ export default function Home() {
       <section className="py-12 bg-charcoal-50">
         <div className="container-custom text-center">
           <p className="text-sm text-charcoal-600 font-medium mb-6">{t("logoMarquee")}</p>
-          <div className="flex items-center justify-center gap-12 flex-wrap opacity-50">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="w-24 h-12 bg-charcoal-200 rounded" />
-            ))}
+          <div className="flex items-center justify-center gap-12 flex-wrap opacity-60">
+            <img src="/trusted-partners/almarai-logo.png" alt="Almarai" className="h-12 object-contain" />
+            <img src="/trusted-partners/almunajem.png" alt="Almunajem" className="h-12 object-contain" />
+            <img src="/trusted-partners/nadec.png" alt="Nadec" className="h-12 object-contain" />
+            <img src="/trusted-partners/sadafco.png" alt="Sadafco" className="h-12 object-contain" />
+            <img src="/trusted-partners/savola.png" alt="Savola" className="h-12 object-contain" />
           </div>
         </div>
       </section>

@@ -126,14 +126,31 @@ export default function FAQPage() {
           <div className="max-w-4xl mx-auto space-y-12">
             {Object.entries(faqs).map(([categoryId, questions]) => {
               const category = categories.find(c => c.id === categoryId)
+              
+              // Filter questions based on search query
+              const filteredQuestions = searchQuery === '' 
+                ? questions 
+                : questions.filter(faq => 
+                    faq.q.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    faq.a.toLowerCase().includes(searchQuery.toLowerCase())
+                  )
+              
+              // Only show category if there are filtered questions
+              if (filteredQuestions.length === 0) return null
+              
               return (
                 <div key={categoryId} id={categoryId}>
                   <div className="flex items-center gap-3 mb-6">
                     {category && <category.icon className="text-olive" size={28} />}
                     <h2 className="text-3xl font-bold text-charcoal">{category?.name}</h2>
+                    {searchQuery !== '' && (
+                      <span className="text-sm text-charcoal-500 bg-cream-100 px-3 py-1 rounded-full">
+                        {filteredQuestions.length} results
+                      </span>
+                    )}
                   </div>
                   <div className="space-y-4">
-                    {questions.map((faq, index) => {
+                    {filteredQuestions.map((faq, index) => {
                       const faqId = `${categoryId}-${index}`
                       const isOpen = openFaq === faqId
                       return (
@@ -162,6 +179,20 @@ export default function FAQPage() {
                 </div>
               )
             })}
+            
+            {/* Show no results message if search returns nothing */}
+            {searchQuery !== '' && Object.entries(faqs).every(([categoryId, questions]) => {
+              const filteredQuestions = questions.filter(faq => 
+                faq.q.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                faq.a.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              return filteredQuestions.length === 0
+            }) && (
+              <div className="text-center py-12">
+                <p className="text-charcoal-600 text-lg">No results found for "{searchQuery}"</p>
+                <p className="text-charcoal-500 mt-2">Try searching with different keywords</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
