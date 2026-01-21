@@ -126,10 +126,10 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="section-padding bg-white">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-12" style={{ background: 'linear-gradient(to bottom right, var(--color-primary), var(--color-primary-hover))', color: 'var(--color-text-on-primary)' }}>
+            <Card className="p-12" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text-on-primary)' }}>
               <Target size={48} className="mb-6" />
               <h2 className="text-3xl font-bold mb-4">{t('vision.title')}</h2>
               <p className="text-lg leading-relaxed opacity-95">
@@ -215,7 +215,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding" style={{ background: 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover))' }}>
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-primary)' }}>
         <div className="container-custom text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-on-primary)' }}>
             {t('cta.title')}
@@ -224,7 +224,28 @@ export default function AboutPage() {
             {t('cta.subtitle')}
           </p>
           <Link href={`/${locale}/contact`}>
-            <Button variant="secondary" size="lg">
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="group transition-all duration-300"
+              style={{ 
+                backgroundColor: 'var(--color-surface)', 
+                color: 'var(--color-primary)',
+                border: '2px solid var(--color-primary)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--color-primary)';
+                e.currentTarget.style.color = 'var(--color-text-on-primary)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--color-surface)';
+                e.currentTarget.style.color = 'var(--color-primary)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
               {t('cta.button')}
             </Button>
           </Link>

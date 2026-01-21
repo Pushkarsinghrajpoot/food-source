@@ -62,6 +62,11 @@ export default function Footer({ locale }: FooterProps) {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/blog`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                  {navT('blog')}
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/faq`} className="transition-colors" style={{ color: '#CCCCCC' }}>
                   {navT('faq')}
                 </Link>

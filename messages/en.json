@@ -1,4 +1,34 @@
 {
+  "hero": {
+    "slide1": {
+      "badge": "PREMIUM QUALITY",
+      "discount": "20% OFF",
+      "headline": "Artisanal Greek Olives",
+      "subtext": "Handpicked from the finest Mediterranean groves, delivering authentic flavors to your table",
+      "requestQuote": "Request Quote",
+      "viewOlives": "View Olives"
+    },
+    "slide2": {
+      "badge": "FRESH DAILY",
+      "discount": "NEW ARRIVAL",
+      "headline": "Premium Feta Cheese",
+      "subtext": "Creamy, tangy perfection sourced directly from Greek dairy farms",
+      "requestQuote": "Request Quote",
+      "viewCheese": "View Cheese"
+    },
+    "slide3": {
+      "badge": "TRADITIONAL RECIPE",
+      "discount": "LIMITED STOCK",
+      "headline": "Mediterranean Pickles",
+      "subtext": "Crisp, flavorful pickles made with time-honored techniques and fresh ingredients",
+      "requestQuote": "Request Quote",
+      "viewPickles": "View Pickles"
+    },
+    "requestQuote": "Request Quote",
+    "viewOlives": "View Olives",
+    "viewCheese": "View Cheese",
+    "viewPickles": "View Pickles"
+  },
   "nav": {
     "home": "Home",
     "products": "Products",
@@ -21,7 +51,31 @@
       "years": "8+ Years",
       "sfda": "SFDA Certified",
       "nextDay": "Next-Day Delivery",
-      "imageAlt": "Mediterranean cheese board with olives and herbs"
+      "imageAlt": "Mediterranean cheese board with olives and herbs",
+      "slide1": {
+        "badge": "PREMIUM QUALITY",
+        "discount": "20% OFF",
+        "headline": "Artisanal Greek Olives",
+        "subtext": "Handpicked from the finest Mediterranean groves, delivering authentic flavors to your table",
+        "requestQuote": "Request Quote",
+        "viewOlives": "View Olives"
+      },
+      "slide2": {
+        "badge": "FRESH DAILY",
+        "discount": "NEW ARRIVAL",
+        "headline": "Premium Feta Cheese",
+        "subtext": "Creamy, tangy perfection sourced directly from Greek dairy farms",
+        "requestQuote": "Request Quote",
+        "viewCheese": "View Cheese"
+      },
+      "slide3": {
+        "badge": "TRADITIONAL RECIPE",
+        "discount": "LIMITED STOCK",
+        "headline": "Mediterranean Pickles",
+        "subtext": "Crisp, flavorful pickles made with time-honored techniques and fresh ingredients",
+        "requestQuote": "Request Quote",
+        "viewPickles": "View Pickles"
+      }
     },
     "logoMarquee": "Trusted by leading establishments",
     "features": {

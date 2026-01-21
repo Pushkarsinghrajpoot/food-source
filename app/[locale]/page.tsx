@@ -8,6 +8,7 @@ import { useState } from "react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
 import ProductMarquee from "@/components/ProductMarquee"
+import HeroSlider from "@/components/HeroSlider"
 import { products as productData } from "@/data/products"
 
 export default function Home() {
@@ -32,95 +33,8 @@ export default function Home() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="min-h-[90vh] relative overflow-hidden" style={{ background: 'linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%)' }}>
-        <div className="container-custom h-full py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[80vh]">
-            {/* Left Column - Content (45%) */}
-            <div className="lg:col-span-5 space-y-6 lg:space-y-8 z-10">
-              {/* Eyebrow with badges */}
-              <div className="flex items-center gap-3 flex-wrap">
-                <span 
-                  className="text-xs uppercase tracking-wider font-semibold"
-                  style={{ color: 'var(--color-text-muted)', letterSpacing: '2px' }}
-                >
-                  PREMIUM QUALITY
-                </span>
-                <span 
-                  className="text-xs font-semibold px-3 py-1.5 rounded-full"
-                  style={{ 
-                    backgroundColor: 'rgba(61, 90, 61, 0.15)',
-                    color: 'var(--color-primary)'
-                  }}
-                >
-                  WHOLESALE PRICES
-                </span>
-              </div>
-              
-              {/* Main Headline */}
-              <h1 
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-                style={{ 
-                  color: 'var(--color-text-primary)',
-                  fontFamily: 'Playfair Display, serif'
-                }}
-              >
-                Premium Mediterranean Ingredients for Your Kitchen
-              </h1>
-              
-              {/* Subheadline */}
-              <p 
-                className="text-lg sm:text-xl leading-relaxed max-w-xl"
-                style={{ color: 'var(--color-text-secondary)' }}
-              >
-                Supplying Saudi Arabia's finest hotels & restaurants with artisanal olives, cheeses, and pickles
-              </p>
-              
-              {/* Trust Indicators */}
-              <div className="flex items-center gap-6 flex-wrap pt-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
-                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>8+ Years</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
-                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>500+ Partners</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
-                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>Next-Day Delivery</span>
-                </div>
-              </div>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link href={`/${locale}/quote`}>
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto group rounded-full">
-                    Request Quote
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                  </Button>
-                </Link>
-                <Link href={`/${locale}/products`}>
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto rounded-full">
-                    View Products
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            
-            {/* Right Column - Animated Product Showcase (55%) */}
-            <div className="lg:col-span-7 relative h-[400px] lg:h-[600px]">
-              <ProductMarquee />
-            </div>
-          </div>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-xs uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>Scroll to explore</span>
-          <div className="w-6 h-10 rounded-full border-2 flex items-start justify-center p-2" style={{ borderColor: 'var(--color-border)' }}>
-            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
-          </div>
-        </div>
+      <section className="min-h-[90vh] relative overflow-hidden">
+        <HeroSlider />
       </section>
 
 
@@ -325,7 +239,7 @@ export default function Home() {
       </section>
 
       {/* CTA Banner */}
-      <section className="section-padding" style={{ background: 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover))' }}>
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-primary)' }}>
         <div className="container-custom text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-on-primary)' }}>
             {t("cta.title")}
@@ -334,7 +248,28 @@ export default function Home() {
             {t("cta.subtitle")}
           </p>
           <Link href={`/${locale}/quote`}>
-            <Button variant="secondary" size="lg">
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="group transition-all duration-300"
+              style={{ 
+                backgroundColor: 'var(--color-surface)', 
+                color: 'var(--color-primary)',
+                border: '2px solid var(--color-primary)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--color-primary)';
+                e.currentTarget.style.color = 'var(--color-text-on-primary)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--color-surface)';
+                e.currentTarget.style.color = 'var(--color-primary)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
               {t("cta.button")}
             </Button>
           </Link>
