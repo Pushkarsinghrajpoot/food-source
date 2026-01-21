@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, Star, TrendingUp, Package, Truck, Shield, Use
 import { useState } from "react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
+import ProductMarquee from "@/components/ProductMarquee"
 import { products as productData } from "@/data/products"
 
 export default function Home() {
@@ -31,63 +32,97 @@ export default function Home() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-primary))' }}>
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="inline-block">
-                <span className="text-sm font-medium px-4 py-2 rounded-full" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
-                  {t("hero.badge")}
+      <section className="min-h-[90vh] relative overflow-hidden" style={{ background: 'linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%)' }}>
+        <div className="container-custom h-full py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[80vh]">
+            {/* Left Column - Content (45%) */}
+            <div className="lg:col-span-5 space-y-6 lg:space-y-8 z-10">
+              {/* Eyebrow with badges */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <span 
+                  className="text-xs uppercase tracking-wider font-semibold"
+                  style={{ color: 'var(--color-text-muted)', letterSpacing: '2px' }}
+                >
+                  PREMIUM QUALITY
+                </span>
+                <span 
+                  className="text-xs font-semibold px-3 py-1.5 rounded-full"
+                  style={{ 
+                    backgroundColor: 'rgba(61, 90, 61, 0.15)',
+                    color: 'var(--color-primary)'
+                  }}
+                >
+                  WHOLESALE PRICES
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
-                {t("hero.title")}{" "}
-                <span style={{ color: 'var(--color-primary)' }}>{t("hero.titleHighlight")}</span>
+              
+              {/* Main Headline */}
+              <h1 
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+                style={{ 
+                  color: 'var(--color-text-primary)',
+                  fontFamily: 'Playfair Display, serif'
+                }}
+              >
+                Premium Mediterranean Ingredients for Your Kitchen
               </h1>
-              <p className="text-lg sm:text-xl leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                {t("hero.subtitle")}
+              
+              {/* Subheadline */}
+              <p 
+                className="text-lg sm:text-xl leading-relaxed max-w-xl"
+                style={{ color: 'var(--color-text-secondary)' }}
+              >
+                Supplying Saudi Arabia's finest hotels & restaurants with artisanal olives, cheeses, and pickles
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              
+              {/* Trust Indicators */}
+              <div className="flex items-center gap-6 flex-wrap pt-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
+                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>8+ Years</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
+                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>500+ Partners</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
+                  <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>Next-Day Delivery</span>
+                </div>
+              </div>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link href={`/${locale}/quote`}>
-                  <Button variant="primary" size="lg" className="group">
-                    {t("hero.requestQuote")}
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto group rounded-full">
+                    Request Quote
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                   </Button>
                 </Link>
                 <Link href={`/${locale}/products`}>
-                  <Button variant="secondary" size="lg">
-                    {t("hero.viewProducts")}
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto rounded-full">
+                    View Products
                   </Button>
                 </Link>
               </div>
-              <div className="flex items-center gap-4 pt-4 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={20} style={{ color: 'var(--color-primary)' }} />
-                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>{t("hero.years")}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={20} style={{ color: 'var(--color-primary)' }} />
-                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>{t("hero.sfda")}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={20} style={{ color: 'var(--color-primary)' }} />
-                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>{t("hero.nextDay")}</span>
-                </div>
-              </div>
             </div>
-            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl lg:shadow-2xl">
-              <Image
-                src="/hero.png"
-                alt={t("hero.imageAlt")}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-olive/20 to-terracotta/20" />
+            
+            {/* Right Column - Animated Product Showcase (55%) */}
+            <div className="lg:col-span-7 relative h-[400px] lg:h-[600px]">
+              <ProductMarquee />
             </div>
           </div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-xs uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>Scroll to explore</span>
+          <div className="w-6 h-10 rounded-full border-2 flex items-start justify-center p-2" style={{ borderColor: 'var(--color-border)' }}>
+            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
+          </div>
+        </div>
       </section>
+
 
       {/* Logo Marquee */}
       <section className="py-12" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
