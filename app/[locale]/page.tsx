@@ -31,7 +31,7 @@ export default function Home() {
     : productData.filter(product => product.category === selectedCategory).slice(0, 4)
 
   return (
-    <div className="pt-20">
+    <div className="pt-16">
       {/* Hero Section */}
       <section className="min-h-[90vh] relative overflow-hidden">
         <HeroSlider />
@@ -39,7 +39,7 @@ export default function Home() {
 
 
       {/* Logo Marquee */}
-      <section className="py-12" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
+      <section className="py-2" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
         <div className="container-custom text-center">
           <p className="text-sm font-medium mb-6" style={{ color: 'var(--color-text-secondary)' }}>{t("logoMarquee")}</p>
           <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 flex-wrap opacity-60">
@@ -52,28 +52,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-              {t("features.title")}
-            </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
-              {t("features.subtitle")}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} hover className="p-8">
-                <feature.icon className="mb-4" size={40} strokeWidth={1.5} style={{ color: 'var(--color-primary)' }} />
-                <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>{feature.title}</h3>
-                <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{feature.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Product Showcase */}
       <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
@@ -175,6 +153,31 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Features Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+              {t("features.title")}
+            </h2>
+            <p className="text-lg sm:text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
+              {t("features.subtitle")}
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} hover className="p-8">
+                <feature.icon className="mb-4" size={40} strokeWidth={1.5} style={{ color: 'var(--color-primary)' }} />
+                <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>{feature.title}</h3>
+                <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{feature.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
 
       {/* How It Works */}
       <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
