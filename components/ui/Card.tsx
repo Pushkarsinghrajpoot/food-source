@@ -9,10 +9,15 @@ export default function Card({ className, hover = false, children, ...props }: C
   return (
     <div
       className={cn(
-        "bg-white rounded-2xl shadow-soft",
+        "rounded-2xl",
         hover && "card-hover cursor-pointer",
         className
       )}
+      style={{
+        backgroundColor: 'var(--color-surface)',
+        boxShadow: 'var(--shadow-md)',
+        border: '1px solid var(--color-border)'
+      }}
       {...props}
     >
       {children}
