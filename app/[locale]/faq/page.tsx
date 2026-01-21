@@ -64,32 +64,39 @@ export default function FAQPage() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-cream to-white py-16 md:py-24">
+      <section className="py-16 md:py-24" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-primary))' }}>
         <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>
             {t('hero.title')}
           </h1>
           
           {/* Search Bar */}
           <div className="max-w-3xl mx-auto relative mb-6">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-charcoal-400" size={24} />
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2" size={24} style={{ color: 'var(--color-text-muted)' }} />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('hero.searchPlaceholder')}
-              className="w-full pl-16 pr-6 py-5 rounded-xl border-2 border-charcoal-200 focus:outline-none focus:ring-2 focus:ring-olive text-lg shadow-sm"
+              className="w-full pl-16 pr-6 py-5 rounded-xl focus:outline-none focus:ring-2 text-lg"
+              style={{
+                backgroundColor: 'var(--color-surface)',
+                color: 'var(--color-text-primary)',
+                border: '2px solid var(--color-border)',
+                boxShadow: 'var(--shadow-sm)'
+              }}
             />
           </div>
 
           {/* Popular Searches */}
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            <span className="text-sm text-charcoal-600">{t('hero.popularLabel')}</span>
+            <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('hero.popularLabel')}</span>
             {popularSearches.map((search, index) => (
               <button
                 key={index}
                 onClick={() => setSearchQuery(search)}
-                className="text-sm text-olive hover:underline"
+                className="text-sm hover:underline"
+                style={{ color: 'var(--color-primary)' }}
               >
                 {search}
               </button>
@@ -99,7 +106,7 @@ export default function FAQPage() {
       </section>
 
       {/* Category Cards */}
-      <section className="section-padding bg-white">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {categories.map((category) => (
@@ -113,10 +120,10 @@ export default function FAQPage() {
                 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-olive/10 flex items-center justify-center">
-                    <category.icon className="text-olive" size={24} />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--color-primary-light)' }}>
+                    <category.icon size={24} style={{ color: 'var(--color-primary)' }} />
                   </div>
-                  <h3 className="font-semibold text-charcoal text-lg">{category.name}</h3>
+                  <h3 className="font-semibold text-lg" style={{ color: 'var(--color-text-primary)' }}>{category.name}</h3>
                 </div>
               </Card>
             ))}
@@ -141,10 +148,10 @@ export default function FAQPage() {
               return (
                 <div key={categoryId} id={categoryId}>
                   <div className="flex items-center gap-3 mb-6">
-                    {category && <category.icon className="text-olive" size={28} />}
-                    <h2 className="text-3xl font-bold text-charcoal">{category?.name}</h2>
+                    {category && <category.icon size={28} style={{ color: 'var(--color-primary)' }} />}
+                    <h2 className="text-3xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{category?.name}</h2>
                     {searchQuery !== '' && (
-                      <span className="text-sm text-charcoal-500 bg-cream-100 px-3 py-1 rounded-full">
+                      <span className="text-sm px-3 py-1 rounded-full" style={{ color: 'var(--color-text-muted)', backgroundColor: 'var(--color-bg-tertiary)' }}>
                         {filteredQuestions.length} results
                       </span>
                     )}
@@ -157,18 +164,21 @@ export default function FAQPage() {
                         <Card key={index} className="overflow-hidden">
                           <button
                             onClick={() => setOpenFaq(isOpen ? null : faqId)}
-                            className="w-full p-6 text-left flex items-center justify-between hover:bg-cream-50 transition-colors"
+                            className="w-full p-6 text-left flex items-center justify-between transition-colors"
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-tertiary)'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                           >
-                            <h3 className="font-semibold text-charcoal pr-4">{faq.q}</h3>
+                            <h3 className="font-semibold pr-4" style={{ color: 'var(--color-text-primary)' }}>{faq.q}</h3>
                             <ChevronDown
-                              className={`text-olive flex-shrink-0 transition-transform ${
+                              className={`flex-shrink-0 transition-transform ${
                                 isOpen ? 'rotate-180' : ''
                               }`}
                               size={24}
+                              style={{ color: 'var(--color-primary)' }}
                             />
                           </button>
                           {isOpen && (
-                            <div className="px-6 pb-6 text-charcoal-600 leading-relaxed animate-fade-in">
+                            <div className="px-6 pb-6 leading-relaxed animate-fade-in" style={{ color: 'var(--color-text-secondary)' }}>
                               {faq.a}
                             </div>
                           )}
@@ -189,8 +199,8 @@ export default function FAQPage() {
               return filteredQuestions.length === 0
             }) && (
               <div className="text-center py-12">
-                <p className="text-charcoal-600 text-lg">No results found for "{searchQuery}"</p>
-                <p className="text-charcoal-500 mt-2">Try searching with different keywords</p>
+                <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>No results found for "{searchQuery}"</p>
+                <p className="mt-2" style={{ color: 'var(--color-text-muted)' }}>Try searching with different keywords</p>
               </div>
             )}
           </div>
@@ -198,24 +208,24 @@ export default function FAQPage() {
       </section>
 
       {/* Still Need Help */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-charcoal mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
               {t('help.title')}
             </h2>
-            <p className="text-xl text-charcoal-600">
+            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>
               {t('help.subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="p-8 text-center">
-              <div className="w-16 h-16 rounded-full bg-olive/10 flex items-center justify-center mx-auto mb-4">
-                <Mail className="text-olive" size={32} />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-primary-light)' }}>
+                <Mail size={32} style={{ color: 'var(--color-primary)' }} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('help.emailTitle')}</h3>
-              <p className="text-charcoal-600 mb-6">
+              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('help.emailTitle')}</h3>
+              <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('help.emailSubtitle')}
               </p>
               <a href="mailto:support@foodsources.com.sa?subject=FAQ Support Request">
@@ -226,16 +236,19 @@ export default function FAQPage() {
             </Card>
 
             <Card className="p-8 text-center">
-              <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="text-green-600" size={32} />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(34, 197, 94, 0.1)' }}>
+                <MessageCircle size={32} style={{ color: '#16a34a' }} />
               </div>
-              <h3 className="text-xl font-semibold text-charcoal mb-2">{t('help.whatsappTitle')}</h3>
-              <p className="text-charcoal-600 mb-6">
+              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('help.whatsappTitle')}</h3>
+              <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('help.whatsappSubtitle')}
               </p>
               <button 
                 onClick={() => window.open('https://wa.me/966XXXXXXXXX?text=' + encodeURIComponent('Hi, I have a question regarding your products and services.'), '_blank')}
-                className="w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+                className="w-full px-6 py-3 rounded-lg font-medium transition-colors"
+                style={{ backgroundColor: '#16a34a', color: 'white' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#15803d'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#16a34a'}
               >
                 {t('help.whatsappButton')}
               </button>
@@ -243,11 +256,11 @@ export default function FAQPage() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-charcoal-600 mb-2">{t('help.callLabel')}</p>
-            <a href="tel:+966XXXXXXXX" className="text-2xl font-bold text-olive hover:underline">
+            <p className="mb-2" style={{ color: 'var(--color-text-secondary)' }}>{t('help.callLabel')}</p>
+            <a href="tel:+966XXXXXXXX" className="text-2xl font-bold hover:underline" style={{ color: 'var(--color-primary)' }}>
               +966 XX XXX XXXX
             </a>
-            <p className="text-sm text-charcoal-500 mt-2">{t('help.hours')}</p>
+            <p className="text-sm mt-2" style={{ color: 'var(--color-text-muted)' }}>{t('help.hours')}</p>
           </div>
         </div>
       </section>

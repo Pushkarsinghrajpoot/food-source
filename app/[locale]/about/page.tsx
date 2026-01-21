@@ -52,7 +52,7 @@ export default function AboutPage() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-olive/20 to-cream overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden" style={{ background: 'linear-gradient(to bottom right, var(--color-primary-light), var(--color-bg-secondary))' }}>
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80"
@@ -64,10 +64,10 @@ export default function AboutPage() {
         </div>
         <div className="container-custom relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style={{ color: 'var(--color-text-primary)' }}>
               {t('hero.title')}
             </h1>
-            <p className="text-2xl text-charcoal-600 leading-relaxed">
+            <p className="text-2xl leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
               {t('hero.subtitle')}
             </p>
           </div>
@@ -75,15 +75,15 @@ export default function AboutPage() {
       </section>
 
       {/* Introduction */}
-      <section className="section-padding bg-white">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <blockquote className="text-3xl md:text-4xl font-serif text-olive leading-relaxed">
+              <blockquote className="text-3xl md:text-4xl font-serif leading-relaxed" style={{ color: 'var(--color-primary)' }}>
                 "{t('intro.quote')}"
               </blockquote>
             </div>
-            <div className="space-y-4 text-charcoal-700 leading-relaxed text-lg">
+            <div className="space-y-4 leading-relaxed text-lg" style={{ color: 'var(--color-text-secondary)' }}>
               <p>
                 {t('intro.paragraph1')}
               </p>
@@ -96,26 +96,26 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('timeline.title')}</h2>
-            <p className="text-xl text-charcoal-600">{t('timeline.subtitle')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('timeline.title')}</h2>
+            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('timeline.subtitle')}</p>
           </div>
           <div className="max-w-4xl mx-auto space-y-12">
             {timeline.map((milestone, index) => (
               <div key={index} className={`flex gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                 <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                  <div className="inline-block bg-olive text-white px-4 py-2 rounded-full font-bold mb-3">
+                  <div className="inline-block px-4 py-2 rounded-full font-bold mb-3" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text-on-primary)' }}>
                     {milestone.year}
                   </div>
-                  <h3 className="text-2xl font-semibold text-charcoal mb-2">{milestone.title}</h3>
-                  <p className="text-charcoal-600">{milestone.description}</p>
+                  <h3 className="text-2xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{milestone.title}</h3>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>{milestone.description}</p>
                 </div>
                 <div className="w-4 relative">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-olive" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
                   {index !== timeline.length - 1 && (
-                    <div className="absolute top-4 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-olive/30" />
+                    <div className="absolute top-4 bottom-0 left-1/2 -translate-x-1/2 w-0.5" style={{ backgroundColor: 'var(--color-primary)', opacity: 0.3 }} />
                   )}
                 </div>
                 <div className="flex-1" />
@@ -129,17 +129,17 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-12 bg-gradient-to-br from-olive to-olive-600 text-white">
+            <Card className="p-12" style={{ background: 'linear-gradient(to bottom right, var(--color-primary), var(--color-primary-hover))', color: 'var(--color-text-on-primary)' }}>
               <Target size={48} className="mb-6" />
               <h2 className="text-3xl font-bold mb-4">{t('vision.title')}</h2>
               <p className="text-lg leading-relaxed opacity-95">
                 {t('vision.description')}
               </p>
             </Card>
-            <Card className="p-12 bg-white border-2 border-olive/20">
-              <Heart size={48} className="mb-6 text-olive" />
-              <h2 className="text-3xl font-bold text-charcoal mb-4">{t('mission.title')}</h2>
-              <p className="text-lg text-charcoal-700 leading-relaxed">
+            <Card className="p-12" style={{ border: '2px solid var(--color-border)' }}>
+              <Heart size={48} className="mb-6" style={{ color: 'var(--color-primary)' }} />
+              <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('mission.title')}</h2>
+              <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('mission.description')}
               </p>
             </Card>
@@ -148,19 +148,19 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('values.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('values.title')}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <Card key={index} className="p-8 text-center hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 rounded-full bg-olive/10 flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="text-olive" size={32} />
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-primary-light)' }}>
+                  <value.icon size={32} style={{ color: 'var(--color-primary)' }} />
                 </div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">{value.title}</h3>
-                <p className="text-charcoal-600">{value.description}</p>
+                <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>{value.title}</h3>
+                <p style={{ color: 'var(--color-text-secondary)' }}>{value.description}</p>
               </Card>
             ))}
           </div>
@@ -168,16 +168,16 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="section-padding bg-white">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('team.title')}</h2>
-            <p className="text-xl text-charcoal-600">{t('team.subtitle')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('team.title')}</h2>
+            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('team.subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {team.map((member, index) => (
               <Card key={index} className="overflow-hidden">
-                <div className="aspect-square bg-olive/10 relative">
+                <div className="aspect-square relative" style={{ backgroundColor: 'var(--color-primary-light)' }}>
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -186,9 +186,9 @@ export default function AboutPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-charcoal mb-1">{member.name}</h3>
-                  <p className="text-sm text-olive font-medium mb-3">{member.title}</p>
-                  <p className="text-charcoal-600 text-sm">{member.bio}</p>
+                  <h3 className="text-xl font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{member.name}</h3>
+                  <p className="text-sm font-medium mb-3" style={{ color: 'var(--color-primary)' }}>{member.title}</p>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{member.bio}</p>
                 </div>
               </Card>
             ))}
@@ -197,17 +197,17 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">{t('certifications.title')}</h2>
-            <p className="text-xl text-charcoal-600">{t('certifications.subtitle')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('certifications.title')}</h2>
+            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('certifications.subtitle')}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[t('certifications.sfda'), t('certifications.halal'), t('certifications.iso'), t('certifications.quality')].map((cert, index) => (
               <Card key={index} className="p-6 text-center">
-                <Award className="text-olive mx-auto mb-3" size={40} />
-                <p className="font-semibold text-charcoal text-sm">{cert}</p>
+                <Award className="mx-auto mb-3" size={40} style={{ color: 'var(--color-primary)' }} />
+                <p className="font-semibold text-sm" style={{ color: 'var(--color-text-primary)' }}>{cert}</p>
               </Card>
             ))}
           </div>
@@ -215,16 +215,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gradient-to-r from-olive to-olive-600 text-white">
+      <section className="section-padding" style={{ background: 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover))' }}>
         <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-on-primary)' }}>
             {t('cta.title')}
           </h2>
-          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto" style={{ color: 'var(--color-text-on-primary)' }}>
             {t('cta.subtitle')}
           </p>
           <Link href={`/${locale}/contact`}>
-            <Button className="bg-white text-olive hover:bg-cream-100" size="lg">
+            <Button variant="secondary" size="lg">
               {t('cta.button')}
             </Button>
           </Link>

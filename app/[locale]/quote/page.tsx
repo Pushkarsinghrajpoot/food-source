@@ -93,24 +93,24 @@ function QuotePageContent() {
   // Success Screen
   if (submitStatus === 'success') {
     return (
-      <div className="pt-20 min-h-screen bg-cream-50 flex items-center justify-center">
+      <div className="pt-20 min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-white rounded-2xl shadow-xl p-12">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="text-green-600" size={48} />
+            <div className="rounded-2xl p-12" style={{ backgroundColor: 'var(--color-surface)', boxShadow: 'var(--shadow-xl)' }}>
+              <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'rgba(34, 197, 94, 0.1)' }}>
+                <CheckCircle2 size={48} style={{ color: '#16a34a' }} />
               </div>
-              <h1 className="text-4xl font-bold text-charcoal mb-4">
+              <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
                 {t('success.title') || 'Quote Request Submitted!'}
               </h1>
-              <p className="text-xl text-charcoal-600 mb-8">
+              <p className="text-xl mb-8" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('success.message') || 'Thank you for your interest. Our team will review your request and get back to you within 24 hours.'}
               </p>
-              <div className="bg-cream p-6 rounded-lg mb-8">
-                <p className="text-sm text-charcoal-600 mb-2">
+              <div className="p-6 rounded-lg mb-8" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
+                <p className="text-sm mb-2" style={{ color: 'var(--color-text-secondary)' }}>
                   {t('success.confirmation') || 'A confirmation email has been sent to:'}
                 </p>
-                <p className="text-lg font-semibold text-olive">{formData.email}</p>
+                <p className="text-lg font-semibold" style={{ color: 'var(--color-primary)' }}>{formData.email}</p>
               </div>
               <div className="flex gap-4 justify-center">
                 <Link href={`/${locale}`}>
@@ -132,44 +132,42 @@ function QuotePageContent() {
   }
 
   return (
-    <div className="pt-20 min-h-screen bg-cream-50">
+    <div className="pt-20 min-h-screen" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
       {/* Simplified Header */}
-      <div className="bg-white border-b border-charcoal-100 py-4">
+      <div className="py-4" style={{ backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container-custom flex items-center justify-between">
-          <Link href={`/${locale}`} className="text-olive font-semibold">{t('backHome')}</Link>
-          <p className="text-sm text-charcoal-600">{t('needHelp')} <span className="font-semibold">+966 XX XXX XXXX</span></p>
+          <Link href={`/${locale}`} className="font-semibold" style={{ color: 'var(--color-primary)' }}>{t('backHome')}</Link>
+          <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('needHelp')} <span className="font-semibold">+966 XX XXX XXXX</span></p>
         </div>
       </div>
 
       {/* Progress Indicator */}
-      <div className="bg-white py-8 border-b border-charcoal-100">
+      <div className="py-8" style={{ backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-between">
               {steps.map((step, index) => (
                 <div key={step.number} className="flex items-center flex-1">
                   <div className="flex flex-col items-center flex-1">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all ${
-                      currentStep >= step.number
-                        ? 'bg-olive text-white'
-                        : 'bg-charcoal-200 text-charcoal-500'
-                    }`}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all"
+                      style={{
+                        backgroundColor: currentStep >= step.number ? 'var(--color-primary)' : 'var(--color-bg-tertiary)',
+                        color: currentStep >= step.number ? 'var(--color-text-on-primary)' : 'var(--color-text-muted)'
+                      }}>
                       {currentStep > step.number ? (
                         <CheckCircle2 size={24} />
                       ) : (
                         step.number
                       )}
                     </div>
-                    <p className={`text-sm mt-2 font-medium ${
-                      currentStep >= step.number ? 'text-olive' : 'text-charcoal-500'
-                    }`}>
+                    <p className="text-sm mt-2 font-medium"
+                      style={{ color: currentStep >= step.number ? 'var(--color-primary)' : 'var(--color-text-muted)' }}>
                       {step.title}
                     </p>
                   </div>
                   {index < steps.length - 1 && (
-                    <div className={`h-0.5 flex-1 mx-2 ${
-                      currentStep > step.number ? 'bg-olive' : 'bg-charcoal-200'
-                    }`} />
+                    <div className="h-0.5 flex-1 mx-2"
+                      style={{ backgroundColor: currentStep > step.number ? 'var(--color-primary)' : 'var(--color-border)' }} />
                   )}
                 </div>
               ))}

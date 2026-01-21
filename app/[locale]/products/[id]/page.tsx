@@ -36,7 +36,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   if (!product) {
     return (
       <div className="pt-20 min-h-screen flex items-center justify-center">
-        <p className="text-xl text-charcoal-600">Product not found</p>
+        <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>Product not found</p>
       </div>
     )
   }
@@ -49,27 +49,27 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   return (
     <div className="pt-20">
       {/* Breadcrumb */}
-      <div className="bg-cream-100 py-4">
+      <div className="py-4" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
         <div className="container-custom">
-          <nav className="text-sm text-charcoal-600">
-            <Link href="/" className="hover:text-olive">Home</Link>
+          <nav className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+            <Link href="/" className="hover:underline">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/products" className="hover:text-olive">Products</Link>
+            <Link href="/products" className="hover:underline">Products</Link>
             <span className="mx-2">/</span>
-            <Link href="/products?category=olives" className="hover:text-olive">Olives</Link>
+            <Link href="/products?category=olives" className="hover:underline">Olives</Link>
             <span className="mx-2">/</span>
-            <span className="text-charcoal-900">Greek Kalamata Olives</span>
+            <span style={{ color: 'var(--color-text-primary)' }}>Greek Kalamata Olives</span>
           </nav>
         </div>
       </div>
 
       {/* Product Hero */}
-      <section className="section-padding bg-white">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column - Images */}
             <div className="space-y-4">
-              <div className="aspect-square bg-cream-200 rounded-2xl relative overflow-hidden">
+              <div className="aspect-square rounded-2xl relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
                 <Image
                   src={selectedImage || product.image}
                   alt={product.name}
@@ -83,9 +83,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   <div 
                     key={i} 
                     onClick={() => setSelectedImage(img)}
-                    className={`aspect-square bg-cream-200 rounded-lg relative overflow-hidden cursor-pointer hover:ring-2 transition-all ${
-                      selectedImage === img ? 'ring-2 ring-olive' : 'ring-olive/20'
-                    }`}
+                    className="aspect-square rounded-lg relative overflow-hidden cursor-pointer hover:ring-2 transition-all"
+                    style={{
+                      backgroundColor: 'var(--color-bg-tertiary)',
+                      boxShadow: selectedImage === img ? '0 0 0 2px var(--color-primary)' : '0 0 0 1px var(--color-border)'
+                    }}
                   >
                     <Image
                       src={img}
@@ -101,49 +103,50 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             {/* Right Column - Details */}
             <div className="space-y-6">
               <div>
-                <span className="inline-block text-sm font-medium text-olive bg-olive/10 px-4 py-2 rounded-full mb-4">
+                <span className="inline-block text-sm font-medium px-4 py-2 rounded-full mb-4" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
                   {product.category}
                 </span>
-                <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-3">{product.name}</h1>
-                <p className="text-lg text-charcoal-600">Sourced from {product.origin}</p>
+                <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{product.name}</h1>
+                <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>Sourced from {product.origin}</p>
               </div>
 
-              <p className="text-charcoal-700 leading-relaxed">{product.description}</p>
+              <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{product.description}</p>
 
-              <div className="border-t border-b border-charcoal-200 py-6 space-y-4">
+              <div className="py-6 space-y-4" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-charcoal-500 mb-1">Available Sizes</p>
-                    <p className="font-medium text-charcoal-900">{product.sizes.join(', ')}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Available Sizes</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.sizes.join(', ')}</p>
                   </div>
                   <div>
-                    <p className="text-charcoal-500 mb-1">Shelf Life</p>
-                    <p className="font-medium text-charcoal-900">{product.shelfLife}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Shelf Life</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.shelfLife}</p>
                   </div>
                   <div>
-                    <p className="text-charcoal-500 mb-1">Storage</p>
-                    <p className="font-medium text-charcoal-900">{product.storage}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Storage</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.storage}</p>
                   </div>
                   <div>
-                    <p className="text-charcoal-500 mb-1">Certification</p>
-                    <p className="font-medium text-charcoal-900">{product.certification}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Certification</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.certification}</p>
                   </div>
                 </div>
               </div>
 
               {/* Pack Size Selector */}
               <div>
-                <label className="block text-sm font-medium text-charcoal-700 mb-3">Select Pack Size</label>
+                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>Select Pack Size</label>
                 <div className="grid grid-cols-3 gap-3">
                   {product.sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-3 rounded-lg border-2 font-medium transition-all ${
-                        selectedSize === size
-                          ? 'border-olive bg-olive/5 text-olive'
-                          : 'border-charcoal-200 text-charcoal-700 hover:border-olive/50'
-                      }`}
+                      className="px-4 py-3 rounded-lg font-medium transition-all"
+                      style={{
+                        border: selectedSize === size ? '2px solid var(--color-primary)' : '2px solid var(--color-border)',
+                        backgroundColor: selectedSize === size ? 'var(--color-primary-light)' : 'transparent',
+                        color: selectedSize === size ? 'var(--color-primary)' : 'var(--color-text-secondary)'
+                      }}
                     >
                       {size}
                     </button>
@@ -153,19 +156,23 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
               {/* Quantity */}
               <div>
-                <label className="block text-sm font-medium text-charcoal-700 mb-3">Quantity</label>
+                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>Quantity</label>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center border-2 border-charcoal-200 rounded-lg">
+                  <div className="flex items-center rounded-lg" style={{ border: '2px solid var(--color-border)' }}>
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="p-3 hover:bg-cream-100 transition-colors"
+                      className="p-3 transition-colors"
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-tertiary)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                     >
                       <Minus size={20} />
                     </button>
-                    <span className="px-6 font-semibold text-lg">{quantity}</span>
+                    <span className="px-6 font-semibold text-lg" style={{ color: 'var(--color-text-primary)' }}>{quantity}</span>
                     <button
                       onClick={() => setQuantity(quantity + 1)}
-                      className="p-3 hover:bg-cream-100 transition-colors"
+                      className="p-3 transition-colors"
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-tertiary)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                     >
                       <Plus size={20} />
                     </button>
@@ -185,25 +192,25 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   Download Product Spec Sheet (PDF)
                 </Button>
                 <Link href="/contact">
-                  <Button variant="ghost" size="lg" className="w-full text-olive hover:bg-olive/5">
+                  <Button variant="ghost" size="lg" className="w-full">
                     Contact for Bulk Pricing
                   </Button>
                 </Link>
               </div>
 
               {/* Trust Icons */}
-              <div className="flex items-center gap-6 pt-6 border-t border-charcoal-200">
+              <div className="flex items-center gap-6 pt-6" style={{ borderTop: '1px solid var(--color-border)' }}>
                 <div className="flex items-center gap-2">
-                  <Shield size={24} className="text-olive" />
-                  <span className="text-sm font-medium">Food Safe</span>
+                  <Shield size={24} style={{ color: 'var(--color-primary)' }} />
+                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Food Safe</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Award size={24} className="text-olive" />
-                  <span className="text-sm font-medium">Halal</span>
+                  <Award size={24} style={{ color: 'var(--color-primary)' }} />
+                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Halal</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Package size={24} className="text-olive" />
-                  <span className="text-sm font-medium">Premium</span>
+                  <Package size={24} style={{ color: 'var(--color-primary)' }} />
+                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Premium</span>
                 </div>
               </div>
             </div>
@@ -212,38 +219,35 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       </section>
 
       {/* Product Details Tabs */}
-      <section className="bg-cream-50 py-16">
+      <section className="py-16" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom max-w-5xl">
-          <div className="border-b border-charcoal-200 mb-8">
+          <div className="mb-8" style={{ borderBottom: '1px solid var(--color-border)' }}>
             <div className="flex gap-8 overflow-x-auto">
               {['description', 'nutritional', 'shipping', 'reviews'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`pb-4 font-medium capitalize transition-colors relative ${
-                    activeTab === tab
-                      ? 'text-olive'
-                      : 'text-charcoal-600 hover:text-charcoal-900'
-                  }`}
+                  className="pb-4 font-medium capitalize transition-colors relative"
+                  style={{ color: activeTab === tab ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
                 >
                   {tab}
                   {activeTab === tab && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-olive" />
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ backgroundColor: 'var(--color-primary)' }} />
                   )}
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-8">
+          <div className="rounded-2xl p-8" style={{ backgroundColor: 'var(--color-surface)' }}>
             {activeTab === 'description' && (
               <div className="prose max-w-none">
-                <h3 className="text-2xl font-bold text-charcoal mb-4">Product Description</h3>
-                <p className="text-charcoal-700 leading-relaxed mb-4">
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Product Description</h3>
+                <p className="leading-relaxed mb-4" style={{ color: 'var(--color-text-secondary)' }}>
                   {product.description}
                 </p>
-                <h4 className="text-xl font-semibold text-charcoal mt-6 mb-3">Suggested Uses</h4>
-                <ul className="list-disc list-inside space-y-2 text-charcoal-700">
+                <h4 className="text-xl font-semibold mt-6 mb-3" style={{ color: 'var(--color-text-primary)' }}>Suggested Uses</h4>
+                <ul className="list-disc list-inside space-y-2" style={{ color: 'var(--color-text-secondary)' }}>
                   {product.suggestedUses.map((use, idx) => (
                     <li key={idx}>{use}</li>
                   ))}
@@ -252,26 +256,26 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             )}
             {activeTab === 'nutritional' && (
               <div>
-                <h3 className="text-2xl font-bold text-charcoal mb-4">Nutritional Information</h3>
-                <p className="text-charcoal-600 mb-4">Per 100g serving</p>
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Nutritional Information</h3>
+                <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>Per 100g serving</p>
                 {product.nutritional ? (
                   <table className="w-full">
-                    <tbody className="divide-y divide-charcoal-200">
-                      <tr><td className="py-3 text-charcoal-700">Energy</td><td className="py-3 text-right font-medium">{product.nutritional.energy}</td></tr>
-                      <tr><td className="py-3 text-charcoal-700">Fat</td><td className="py-3 text-right font-medium">{product.nutritional.fat}</td></tr>
-                      <tr><td className="py-3 text-charcoal-700">Carbohydrates</td><td className="py-3 text-right font-medium">{product.nutritional.carbohydrates}</td></tr>
-                      <tr><td className="py-3 text-charcoal-700">Protein</td><td className="py-3 text-right font-medium">{product.nutritional.protein}</td></tr>
-                      <tr><td className="py-3 text-charcoal-700">Sodium</td><td className="py-3 text-right font-medium">{product.nutritional.sodium}</td></tr>
+                    <tbody style={{ borderTop: '1px solid var(--color-border)' }}>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Energy</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.energy}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Fat</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.fat}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Carbohydrates</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.carbohydrates}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Protein</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.protein}</td></tr>
+                      <tr><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Sodium</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.sodium}</td></tr>
                     </tbody>
                   </table>
                 ) : (
-                  <p className="text-charcoal-600">Nutritional information not available</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>Nutritional information not available</p>
                 )}
               </div>
             )}
             {activeTab === 'reviews' && (
               <div>
-                <h3 className="text-2xl font-bold text-charcoal mb-4">Customer Reviews</h3>
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Customer Reviews</h3>
                 {product.reviews && product.reviews.count > 0 ? (
                   <>
                     <div className="flex items-center gap-4 mb-6">
@@ -284,15 +288,15 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                           />
                         ))}
                       </div>
-                      <span className="text-2xl font-bold text-charcoal">{product.reviews.rating}</span>
-                      <span className="text-charcoal-600">({product.reviews.count} reviews)</span>
+                      <span className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{product.reviews.rating}</span>
+                      <span style={{ color: 'var(--color-text-secondary)' }}>({product.reviews.count} reviews)</span>
                     </div>
                     <div className="space-y-6">
                       {product.reviews.comments.map((review, idx) => (
-                        <div key={idx} className="border-b border-charcoal-200 pb-6 last:border-0">
+                        <div key={idx} className="pb-6 last:border-0" style={{ borderBottom: '1px solid var(--color-border)' }}>
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="font-semibold text-charcoal-900">{review.author}</span>
-                            <span className="text-sm text-charcoal-500">{review.date}</span>
+                            <span className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{review.author}</span>
+                            <span className="text-sm" style={{ color: 'var(--color-text-muted)' }}>{review.date}</span>
                           </div>
                           <div className="flex items-center gap-1 mb-2">
                             {[...Array(5)].map((_, i) => (
@@ -303,32 +307,32 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                               />
                             ))}
                           </div>
-                          <p className="text-charcoal-700">{review.comment}</p>
+                          <p style={{ color: 'var(--color-text-secondary)' }}>{review.comment}</p>
                         </div>
                       ))}
                     </div>
                   </>
                 ) : (
-                  <p className="text-charcoal-600">No reviews yet. Be the first to review this product!</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>No reviews yet. Be the first to review this product!</p>
                 )}
               </div>
             )}
             {activeTab === 'shipping' && (
               <div>
-                <h3 className="text-2xl font-bold text-charcoal mb-4">Shipping Information</h3>
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Shipping Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Truck className="text-olive mt-1" size={24} />
+                    <Truck className="mt-1" size={24} style={{ color: 'var(--color-primary)' }} />
                     <div>
-                      <p className="font-semibold text-charcoal-900 mb-1">Delivery Time</p>
-                      <p className="text-charcoal-600">Next-day delivery available across Riyadh, Jeddah, and Dammam. 2-3 days for other locations in KSA.</p>
+                      <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>Delivery Time</p>
+                      <p style={{ color: 'var(--color-text-secondary)' }}>Next-day delivery available across Riyadh, Jeddah, and Dammam. 2-3 days for other locations in KSA.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Package className="text-olive mt-1" size={24} />
+                    <Package className="mt-1" size={24} style={{ color: 'var(--color-primary)' }} />
                     <div>
-                      <p className="font-semibold text-charcoal-900 mb-1">Minimum Order</p>
-                      <p className="text-charcoal-600">Minimum order quantity: 2 units. Free delivery on orders above 500 SAR.</p>
+                      <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>Minimum Order</p>
+                      <p style={{ color: 'var(--color-text-secondary)' }}>Minimum order quantity: 2 units. Free delivery on orders above 500 SAR.</p>
                     </div>
                   </div>
                 </div>
@@ -339,13 +343,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       </section>
 
       {/* Related Products */}
-      <section className="section-padding bg-white">
+      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-8">You May Also Like</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--color-text-primary)' }}>You May Also Like</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {relatedProducts.map((prod) => (
               <Card key={prod.id} hover className="overflow-hidden group">
-                <div className="aspect-square bg-cream-200 relative overflow-hidden">
+                <div className="aspect-square relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
                   <Image
                     src={prod.image}
                     alt={prod.name}
@@ -354,12 +358,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   />
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-medium text-olive bg-olive/10 px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium px-3 py-1 rounded-full" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
                     {prod.category}
                   </span>
-                  <h3 className="text-lg font-semibold text-charcoal mt-3 mb-2">{prod.name}</h3>
-                  <p className="text-sm text-charcoal-600 mb-4">{prod.origin}</p>
-                  <Link href={`/${locale}/products/${prod.id}`} className="text-olive font-medium text-sm hover:underline inline-flex items-center gap-1">
+                  <h3 className="text-lg font-semibold mt-3 mb-2" style={{ color: 'var(--color-text-primary)' }}>{prod.name}</h3>
+                  <p className="text-sm mb-4" style={{ color: 'var(--color-text-secondary)' }}>{prod.origin}</p>
+                  <Link href={`/${locale}/products/${prod.id}`} className="font-medium text-sm hover:underline inline-flex items-center gap-1" style={{ color: 'var(--color-primary)' }}>
                     View Details <ArrowRight size={16} />
                   </Link>
                 </div>
