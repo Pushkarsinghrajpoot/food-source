@@ -101,7 +101,7 @@ export default function PortalPage() {
             </nav>
 
             <div className="mt-8 pt-8 border-t border-charcoal-100">
-              <Link href="/quote">
+              <Link href="/onboarding">
                 <Button variant="primary" className="w-full">
                   <ShoppingCart size={20} className="mr-2" />
                   Quick Order
@@ -163,10 +163,10 @@ export default function PortalPage() {
                     <p className="text-sm text-charcoal-600">Quick reorder</p>
                   </Card>
                 </button>
-                <Link href="/en/quote">
+                <Link href="/en/onboarding">
                   <Card hover className="p-6 text-center border-2 border-olive/20 cursor-pointer">
                     <FileText size={32} className="mx-auto mb-3 text-olive" />
-                    <h3 className="font-semibold mb-1 text-charcoal">Request Quote</h3>
+                    <h3 className="font-semibold mb-1 text-charcoal">Open Account</h3>
                     <p className="text-sm text-charcoal-600">Get pricing</p>
                   </Card>
                 </Link>

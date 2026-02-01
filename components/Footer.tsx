@@ -29,12 +29,39 @@ export default function Footer({ locale }: FooterProps) {
 
   return (
     <footer style={{ backgroundColor: '#1A1A1A', color: '#F5F5F5' }}>
+      {/* Pre-Footer CTA Strip */}
+      <div className="py-8" style={{ backgroundColor: '#0D0D0D', borderBottom: '1px solid #333333' }}>
+        <div className="container-custom text-center">
+          <h3 className="text-xl font-semibold mb-4" style={{ color: '#F5F5F5' }}>
+            Ready to partner with us?
+          </h3>
+          <Link href={`/${locale}/onboarding`}>
+            <button className="px-8 py-3 rounded-lg transition-all font-medium"
+              style={{
+                backgroundColor: 'var(--color-primary)',
+                color: '#F5F5F5'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--color-primary)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Open Your Account →
+            </button>
+          </Link>
+        </div>
+      </div>
+
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-4">
             <h3 className="text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>Food Sources</h3>
             <p style={{ color: '#CCCCCC' }}>
-              {t('about')}
+              Premium Mediterranean ingredients for Saudi Arabia's finest kitchens.
             </p>
           </div>
 
@@ -75,26 +102,26 @@ export default function Footer({ locale }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">{t('productsTitle')}</h4>
+            <h4 className="font-semibold text-lg mb-4">PARTNERSHIP</h4>
             <ul className="space-y-2">
               <li>
-                <Link href={`/${locale}/products?category=olives`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {t('olives')}
+                <Link href={`/${locale}/onboarding`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                  Open Account
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=cheeses`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {t('cheeses')}
+                <Link href={`/${locale}/about`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                  Benefits
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=pickles`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {t('pickles')}
+                <Link href={`/${locale}/faq`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=labneh`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {t('labneh')}
+                <Link href={`/${locale}/contact`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                  Contact Sales
                 </Link>
               </li>
             </ul>

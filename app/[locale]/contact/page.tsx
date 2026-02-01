@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useTranslations, useLocale } from 'next-intl'
+import Link from 'next/link'
 import { Phone, Mail, MessageCircle, MapPin, Clock, Send } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
@@ -38,10 +39,10 @@ export default function ContactPage() {
       <section className="py-16" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-tertiary))' }}>
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-            {t('hero.title')}
+            Let's Start Your Partnership
           </h1>
           <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
-            {t('hero.subtitle')}
+            Open an account or get in touch with our team
           </p>
         </div>
       </section>
@@ -50,6 +51,23 @@ export default function ContactPage() {
       <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <Card hover className="p-8 text-center" style={{ border: '2px solid var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-primary)' }}>
+                <Mail size={32} style={{ color: 'white' }} />
+              </div>
+              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>Open Account</h3>
+              <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>Start your partnership application</p>
+              <Link href={`/${locale}/onboarding`} className="inline-block">
+                <button className="px-6 py-2 rounded-lg transition-colors font-medium"
+                  style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
+                >
+                  Start →
+                </button>
+              </Link>
+            </Card>
+
             <Card hover className="p-8 text-center">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-accent-light)' }}>
                 <Phone size={32} style={{ color: 'var(--color-accent)' }} />
@@ -58,17 +76,6 @@ export default function ContactPage() {
               <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>{t('callUs.hours')}</p>
               <a href="tel:+966XXXXXXXX" className="font-semibold text-lg hover:underline" style={{ color: 'var(--color-primary)' }}>
                 +966 XX XXX XXXX
-              </a>
-            </Card>
-
-            <Card hover className="p-8 text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-primary-light)' }}>
-                <Mail size={32} style={{ color: 'var(--color-primary)' }} />
-              </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('emailUs.title')}</h3>
-              <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>{t('emailUs.subtitle')}</p>
-              <a href="mailto:contact@foodsources.com.sa" className="font-semibold hover:underline" style={{ color: 'var(--color-primary)' }}>
-                contact@foodsources.com.sa
               </a>
             </Card>
 

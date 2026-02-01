@@ -5,7 +5,7 @@
       "discount": "20% OFF",
       "headline": "Artisanal Greek Olives",
       "subtext": "Handpicked from the finest Mediterranean groves, delivering authentic flavors to your table",
-      "requestQuote": "Request Quote",
+      "openAccount": "Open Account",
       "viewOlives": "View Olives"
     },
     "slide2": {
@@ -13,7 +13,7 @@
       "discount": "NEW ARRIVAL",
       "headline": "Premium Feta Cheese",
       "subtext": "Creamy, tangy perfection sourced directly from Greek dairy farms",
-      "requestQuote": "Request Quote",
+      "openAccount": "Open Account",
       "viewCheese": "View Cheese"
     },
     "slide3": {
@@ -21,10 +21,10 @@
       "discount": "LIMITED STOCK",
       "headline": "Mediterranean Pickles",
       "subtext": "Crisp, flavorful pickles made with time-honored techniques and fresh ingredients",
-      "requestQuote": "Request Quote",
+      "openAccount": "Open Account",
       "viewPickles": "View Pickles"
     },
-    "requestQuote": "Request Quote",
+    "openAccount": "Open Account",
     "viewOlives": "View Olives",
     "viewCheese": "View Cheese",
     "viewPickles": "View Pickles"
@@ -38,7 +38,7 @@
     "blog": "Blog",
     "faq": "FAQ",
     "portal": "Portal",
-    "requestQuote": "Request Quote"
+    "openAccount": "Open Account"
   },
   "home": {
     "hero": {

@@ -69,9 +69,9 @@ export default function Navigation({ locale }: NavigationProps) {
             {/* Theme Toggle */}
             <ThemeToggle />
             
-            {/* Quote Button */}
+            {/* Open Account Button */}
             <Link
-              href={`/${locale}/quote`}
+              href={`/${locale}/onboarding`}
               className="px-6 py-2.5 rounded-lg transition-all font-medium font-accent"
               style={{ 
                 backgroundColor: 'var(--color-accent)',
@@ -80,7 +80,7 @@ export default function Navigation({ locale }: NavigationProps) {
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-accent)'}
             >
-              {t('requestQuote')}
+              {t('openAccount')}
             </Link>
             
             {/* Language Dropdown */}
@@ -153,6 +153,19 @@ export default function Navigation({ locale }: NavigationProps) {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Mobile Open Account Button */}
+            <Link
+              href={`/${locale}/onboarding`}
+              className="block px-6 py-2.5 rounded-lg transition-all font-medium font-accent text-center"
+              style={{ 
+                backgroundColor: 'var(--color-accent)',
+                color: 'var(--color-text-on-accent)'
+              }}
+              onClick={() => setIsOpen(false)}
+            >
+              {t('openAccount')}
+            </Link>
             
             {/* Mobile Language Selector */}
             <div className="pt-4 mt-4" style={{ borderTop: '1px solid var(--color-border)' }}>

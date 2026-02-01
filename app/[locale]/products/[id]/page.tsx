@@ -182,16 +182,19 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
               {/* Actions */}
               <div className="space-y-3 pt-4">
-                <Link href={`/${locale}/quote?product=${product.id}`}>
+                <div className="text-center mb-4 p-4 rounded-lg" style={{ backgroundColor: 'var(--color-primary-light)', border: '1px solid var(--color-primary)' }}>
+                  <p className="text-sm font-medium mb-2" style={{ color: 'var(--color-primary)' }}>Interested in this product?</p>
+                </div>
+                <Link href={`/${locale}/onboarding?product=${product.id}`}>
                   <Button variant="primary" size="lg" className="w-full">
-                    Add to Quote Request
+                    Open Account to Order
                   </Button>
                 </Link>
                 <Button onClick={handleDownloadPDF} variant="outline" size="lg" className="w-full">
                   <Download size={20} className="mr-2" />
                   Download Product Spec Sheet (PDF)
                 </Button>
-                <Link href="/contact">
+                <Link href={`/${locale}/contact?product=${product.id}`}>
                   <Button variant="ghost" size="lg" className="w-full">
                     Contact for Bulk Pricing
                   </Button>

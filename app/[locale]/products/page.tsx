@@ -189,9 +189,9 @@ function ProductsContent() {
             <p className="text-charcoal-600 mb-6 max-w-2xl mx-auto">
               {t('bulkPricingDesc')}
             </p>
-            <Link href={`/${locale}/quote`}>
+            <Link href={`/${locale}/onboarding`}>
               <Button variant="primary" size="lg">
-                {t('requestCustomQuote')}
+                Open Account for Bulk Pricing
               </Button>
             </Link>
           </Card>

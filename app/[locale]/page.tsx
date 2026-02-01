@@ -250,7 +250,7 @@ export default function Home() {
           <p className="text-lg sm:text-xl opacity-90 mb-8" style={{ color: 'var(--color-text-on-primary)' }}>
             {t("cta.subtitle")}
           </p>
-          <Link href={`/${locale}/quote`}>
+          <Link href={`/${locale}/onboarding`}>
             <Button 
               variant="secondary" 
               size="lg" 
@@ -273,7 +273,7 @@ export default function Home() {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              {t("cta.button")}
+              Open Your Account
             </Button>
           </Link>
         </div>
