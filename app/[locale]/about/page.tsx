@@ -50,73 +50,68 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden" style={{ background: 'linear-gradient(to bottom right, var(--color-primary-light), var(--color-bg-secondary))' }}>
-        <div className="absolute inset-0">
+    <div className="pt-18">
+      {/* Hero Section - Cinematic with Gradient */}
+      <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
+        <div className="absolute inset-0 opacity-20">
           <Image
             src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80"
-            alt={t('hero.imageAlt')}
+            alt="Mediterranean landscape"
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             priority
           />
         </div>
-        <div className="container-custom relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style={{ color: 'var(--color-text-primary)' }}>
-              {t('hero.title')}
-            </h1>
-            <p className="text-2xl leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              {t('hero.subtitle')}
+        <div className="max-w-container mx-auto px-6 lg:px-12 relative z-10 text-center">
+          <div className="inline-block px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold mb-8" style={{ backgroundColor: 'rgba(201, 169, 97, 0.2)', color: '#C9A961', border: '1px solid rgba(201, 169, 97, 0.3)' }}>
+            About Food Sources
+          </div>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight text-white">
+            Our Story
+          </h1>
+          <p className="text-2xl max-w-3xl mx-auto text-gray-300">
+            Bringing Mediterranean excellence to Saudi Arabia since 2015
+          </p>
+        </div>
+      </section>
+
+      {/* Introduction - Large Text Block */}
+      <section className="py-32 bg-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <blockquote className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-16 text-gray-900">
+            "We believe exceptional ingredients are the foundation of memorable dining experiences."
+          </blockquote>
+          
+          <div className="space-y-6 text-lg leading-relaxed text-gray-600">
+            <p>
+              Founded in 2015, Food Sources Trading Co. was born from a simple observation: Saudi Arabia's finest restaurants deserved access to the same premium Mediterranean ingredients found in Europe's best kitchens.
+            </p>
+            <p>
+              Today, we're proud to partner with over 500 businesses across the Kingdom, delivering authentic olives, artisan cheeses, and traditional pickles sourced directly from family producers in Greece, Spain, Morocco, and Turkey.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Introduction */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <blockquote className="text-3xl md:text-4xl font-serif leading-relaxed" style={{ color: 'var(--color-primary)' }}>
-                "{t('intro.quote')}"
-              </blockquote>
-            </div>
-            <div className="space-y-4 leading-relaxed text-lg" style={{ color: 'var(--color-text-secondary)' }}>
-              <p>
-                {t('intro.paragraph1')}
-              </p>
-              <p>
-                {t('intro.paragraph2')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('timeline.title')}</h2>
-            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('timeline.subtitle')}</p>
-          </div>
-          <div className="max-w-4xl mx-auto space-y-12">
+      {/* Timeline - Visual Journey */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-gray-900">
+            Our Journey
+          </h2>
+          
+          <div className="max-w-3xl mx-auto space-y-16">
             {timeline.map((milestone, index) => (
               <div key={index} className={`flex gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                 <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                  <div className="inline-block px-4 py-2 rounded-full font-bold mb-3" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text-on-primary)' }}>
+                  <div className="text-5xl font-bold mb-4 text-orange-600" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                     {milestone.year}
                   </div>
-                  <h3 className="text-2xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{milestone.title}</h3>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>{milestone.description}</p>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">{milestone.title}</h3>
+                  <p className="text-lg text-gray-600">{milestone.description}</p>
                 </div>
-                <div className="w-4 relative">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full" style={{ backgroundColor: 'var(--color-primary)' }} />
-                  {index !== timeline.length - 1 && (
-                    <div className="absolute top-4 bottom-0 left-1/2 -translate-x-1/2 w-0.5" style={{ backgroundColor: 'var(--color-primary)', opacity: 0.3 }} />
-                  )}
+                <div className="w-1 relative bg-emerald-200">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-orange-600" />
                 </div>
                 <div className="flex-1" />
               </div>
@@ -125,129 +120,127 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-12" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text-on-primary)' }}>
-              <Target size={48} className="mb-6" />
-              <h2 className="text-3xl font-bold mb-4">{t('vision.title')}</h2>
-              <p className="text-lg leading-relaxed opacity-95">
-                {t('vision.description')}
+      {/* Vision & Mission - Side-by-Side Cards */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 rounded-3xl p-12 shadow-md">
+              <Target size={48} className="mb-6 text-emerald-600" />
+              <h2 className="text-3xl font-bold mb-4 text-gray-900">Our Vision</h2>
+              <p className="text-lg leading-relaxed text-gray-600">
+                To be the most trusted partner for premium food distribution in the region.
               </p>
-            </Card>
-            <Card className="p-12" style={{ border: '2px solid var(--color-border)' }}>
-              <Heart size={48} className="mb-6" style={{ color: 'var(--color-primary)' }} />
-              <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('mission.title')}</h2>
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                {t('mission.description')}
+            </div>
+            <div className="bg-gray-50 rounded-3xl p-12 shadow-md">
+              <Heart size={48} className="mb-6 text-emerald-600" />
+              <h2 className="text-3xl font-bold mb-4 text-gray-900">Our Mission</h2>
+              <p className="text-lg leading-relaxed text-gray-600">
+                To provide Saudi businesses with premium ingredients and exceptional service.
               </p>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('values.title')}</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Values - Icon Grid */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-gray-900">
+            What Drives Us
+          </h2>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {values.map((value, index) => (
-              <Card key={index} className="p-8 text-center hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-primary-light)' }}>
-                  <value.icon size={32} style={{ color: 'var(--color-primary)' }} />
+              <div key={index} className="text-center space-y-4">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-transform hover:scale-110 bg-emerald-100">
+                  <value.icon size={32} className="text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>{value.title}</h3>
-                <p style={{ color: 'var(--color-text-secondary)' }}>{value.description}</p>
-              </Card>
+                <h3 className="text-xl font-bold text-gray-900">{value.title}</h3>
+                <p className="text-sm text-gray-600">{value.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('team.title')}</h2>
-            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('team.subtitle')}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {/* Team Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-900">
+            The People Behind Food Sources
+          </h2>
+          <p className="text-xl text-center mb-16 max-w-2xl mx-auto text-gray-600">
+            Our experienced team is dedicated to bringing you the finest Mediterranean products
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {team.map((member, index) => (
-              <Card key={index} className="overflow-hidden">
-                <div className="aspect-square relative" style={{ backgroundColor: 'var(--color-primary-light)' }}>
+              <div key={index} className="text-center">
+                <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 bg-gray-200">
                   <Image
                     src={member.image}
                     alt={member.name}
-                    fill
-                    className="object-cover"
+                    width={192}
+                    height={192}
+                    className="object-cover grayscale hover:grayscale-0 transition-all"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{member.name}</h3>
-                  <p className="text-sm font-medium mb-3" style={{ color: 'var(--color-primary)' }}>{member.title}</p>
-                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{member.bio}</p>
+                <h3 className="text-xl font-bold mb-1 text-gray-900">{member.name}</h3>
+                <p className="text-sm font-semibold mb-3 text-orange-600">{member.title}</p>
+                <p className="text-sm text-gray-600">{member.bio}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sourcing Story - Full-Width Feature */}
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative h-96 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-sm">
+            </div>
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                From Farm to Kitchen
+              </h2>
+              <p className="text-lg leading-relaxed mb-8 text-gray-300">
+                We personally visit every supplier to ensure quality standards are met. Our partnerships with Mediterranean producers span generations, ensuring authentic flavors and sustainable practices.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                  <span className="text-gray-300">Greece</span>
                 </div>
-              </Card>
-            ))}
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                  <span className="text-gray-300">Morocco</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                  <span className="text-gray-300">Spain</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                  <span className="text-gray-300">Turkey</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('certifications.title')}</h2>
-            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('certifications.subtitle')}</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[t('certifications.sfda'), t('certifications.halal'), t('certifications.iso'), t('certifications.quality')].map((cert, index) => (
-              <Card key={index} className="p-6 text-center">
-                <Award className="mx-auto mb-3" size={40} style={{ color: 'var(--color-primary)' }} />
-                <p className="font-semibold text-sm" style={{ color: 'var(--color-text-primary)' }}>{cert}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-primary)' }}>
-        <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-on-primary)' }}>
-            {t('cta.title')}
+      {/* CTA Section */}
+      <section className="py-24 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Let's Write the Next Chapter Together
           </h2>
-          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto" style={{ color: 'var(--color-text-on-primary)' }}>
-            {t('cta.subtitle')}
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
+            Partner with a team that's as passionate about quality as you are.
           </p>
-          <Link href={`/${locale}/contact`}>
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="group transition-all duration-300"
-              style={{ 
-                backgroundColor: 'var(--color-surface)', 
-                color: 'var(--color-primary)',
-                border: '2px solid var(--color-primary)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-primary)';
-                e.currentTarget.style.color = 'var(--color-text-on-primary)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-surface)';
-                e.currentTarget.style.color = 'var(--color-primary)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              {t('cta.button')}
-            </Button>
+          <Link href={`/${locale}/onboarding`}>
+            <button className="px-12 py-5 rounded-full font-bold text-lg transition-all hover:shadow-2xl hover:-translate-y-1 bg-orange-600 text-white">
+              Become a Partner
+            </button>
           </Link>
         </div>
       </section>

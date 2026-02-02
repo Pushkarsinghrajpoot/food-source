@@ -34,95 +34,87 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="pt-20">
-      {/* Hero */}
-      <section className="py-16" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-tertiary))' }}>
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-            Let's Start Your Partnership
+    <div className="pt-18">
+      {/* Hero - Modern Gradient */}
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
+        <div className="max-w-container mx-auto px-6 lg:px-12 text-center">
+          <div className="inline-block px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold mb-8" style={{ backgroundColor: 'rgba(201, 169, 97, 0.2)', color: '#C9A961', border: '1px solid rgba(201, 169, 97, 0.3)' }}>
+            Contact Us
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black mb-6 text-white">
+            Get in Touch
           </h1>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
-            Open an account or get in touch with our team
+          <p className="text-xl max-w-2xl mx-auto text-gray-300">
+            We're here to help with your partnership inquiries
           </p>
         </div>
       </section>
 
-      {/* Contact Options */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card hover className="p-8 text-center" style={{ border: '2px solid var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-primary)' }}>
-                <Mail size={32} style={{ color: 'white' }} />
+      {/* Contact Options - 3 Cards */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-24">
+            <div className="bg-white rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-orange-100">
+                <Mail size={32} className="text-orange-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>Open Account</h3>
-              <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>Start your partnership application</p>
-              <Link href={`/${locale}/onboarding`} className="inline-block">
-                <button className="px-6 py-2 rounded-lg transition-colors font-medium"
-                  style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
-                >
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">Open Account</h3>
+              <p className="mb-4 text-sm text-gray-600">Start your partnership</p>
+              <p className="text-sm mb-6 text-gray-500">Sun-Thu: 9am-6pm</p>
+              <Link href={`/${locale}/onboarding`}>
+                <button className="px-6 py-2.5 rounded-full border-2 border-gray-900 text-gray-900 transition-all font-semibold hover:bg-gray-900 hover:text-white">
                   Start →
                 </button>
               </Link>
-            </Card>
+            </div>
 
-            <Card hover className="p-8 text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-accent-light)' }}>
-                <Phone size={32} style={{ color: 'var(--color-accent)' }} />
+            <div className="bg-white rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-orange-100">
+                <Phone size={32} className="text-orange-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('callUs.title')}</h3>
-              <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>{t('callUs.hours')}</p>
-              <a href="tel:+966XXXXXXXX" className="font-semibold text-lg hover:underline" style={{ color: 'var(--color-primary)' }}>
-                +966 XX XXX XXXX
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">Call Us</h3>
+              <p className="mb-4 text-lg font-semibold text-orange-600">+966 XX XXX XXXX</p>
+              <p className="text-sm mb-6 text-gray-500">Sun-Thu: 9am-6pm</p>
+              <a href="tel:+966XXXXXXXX">
+                <button className="px-6 py-2.5 rounded-full border-2 border-gray-900 text-gray-900 transition-all font-semibold hover:bg-gray-900 hover:text-white">
+                  Call →
+                </button>
               </a>
-            </Card>
+            </div>
 
-            <Card hover className="p-8 text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(34, 197, 94, 0.1)' }}>
+            <div className="bg-white rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-green-100">
                 <MessageCircle size={32} style={{ color: '#16a34a' }} />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('whatsapp.title')}</h3>
-              <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>{t('whatsapp.subtitle')}</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">WhatsApp</h3>
+              <p className="mb-4 text-sm text-gray-600">Chat with our team</p>
+              <p className="text-sm mb-6 text-gray-500">Instant response</p>
               <button 
-                onClick={() => window.open('https://wa.me/966XXXXXXXXX?text=' + encodeURIComponent('Hello, I would like to inquire about your products and services.'), '_blank')}
-                className="px-6 py-2 rounded-lg transition-colors font-medium"
-                style={{ backgroundColor: '#16a34a', color: 'white' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#15803d'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#16a34a'}
+                onClick={() => window.open('https://wa.me/966XXXXXXXXX', '_blank')}
+                className="px-6 py-2.5 rounded-full border-2 border-gray-900 text-gray-900 transition-all font-semibold hover:bg-gray-50"
               >
-                {t('whatsapp.button')}
+                Open →
               </button>
-            </Card>
+            </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2 space-y-6">
-              <div>
-                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('form.title')}</h2>
-                <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
-                  {t('form.subtitle')}
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Clock className="mt-1" size={20} style={{ color: 'var(--color-primary)' }} />
-                  <div>
-                    <p className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('form.officeHours')}</p>
-                    <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('form.officeHoursWeekdays')}</p>
-                    <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('form.officeHoursWeekend')}</p>
-                  </div>
+          {/* Contact Form - Two Column */}
+          <div className="grid lg:grid-cols-5 gap-12">
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl font-bold mb-4 text-gray-900">Send Us a Message</h2>
+              <p className="mb-8 text-lg text-gray-600">
+                Fill out the form and we'll respond within 24 hours.
+              </p>
+              
+              <div className="space-y-6">
+                <div>
+                  <p className="font-semibold mb-1 text-gray-900">Office Hours:</p>
+                  <p className="text-sm text-gray-600">Sun-Thu: 9am-6pm KSA</p>
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-1" size={20} style={{ color: 'var(--color-primary)' }} />
-                  <div>
-                    <p className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('form.email')}</p>
-                    <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>contact@foodsources.com.sa</p>
-                  </div>
+                
+                <div>
+                  <p className="font-semibold mb-1 text-gray-900">Email:</p>
+                  <p className="text-sm text-gray-600">contact@foodsources.com.sa</p>
                 </div>
               </div>
             </div>

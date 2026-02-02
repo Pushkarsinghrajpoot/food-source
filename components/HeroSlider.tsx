@@ -3,73 +3,63 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
-import Button from '@/components/ui/Button'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useLocale } from 'next-intl'
 
 interface Slide {
   id: number
-  badgeKey: string
-  discountKey?: string
-  headlineKey: string
-  subtextKey: string
-  ctaKey: string
+  badge: string
+  headline: string
+  subtext: string
+  ctaText: string
   ctaLink: string
-  productKey: string
+  productText: string
   productLink: string
   productImage: string
-  backgroundLight: string
-  backgroundDark: string
+  bgGradient: string
 }
 
-const slides = [
+const slides: Slide[] = [
   {
     id: 1,
-    badgeKey: 'slide1.badge',
-    discountKey: 'slide1.discount',
-    headlineKey: 'slide1.headline',
-    subtextKey: 'slide1.subtext',
-    ctaKey: 'openAccount',
+    badge: 'Premium Mediterranean Products',
+    headline: 'Wholesale Mediterranean Ingredients for Saudi Arabia\'s Finest Kitchens',
+    subtext: 'Partner with 500+ restaurants, hotels, and catering companies. Premium olives, cheeses, and pickles delivered fresh.',
+    ctaText: 'Open Business Account',
     ctaLink: '/onboarding',
-    productKey: 'viewOlives',
-    productLink: '/products?category=olives',
-    productImage: '/All products/kalmata olives/kalmata_olives_3.png',
-    backgroundLight: '#F5F7FA',
-    backgroundDark: '#0F1419'
+    productText: 'View All Products',
+    productLink: '/products',
+    productImage: '/hero.png',
+    bgGradient: 'from-emerald-900 to-slate-900'
   },
   {
     id: 2,
-    badgeKey: 'slide2.badge',
-    discountKey: 'slide2.discount',
-    headlineKey: 'slide2.headline',
-    subtextKey: 'slide2.subtext',
-    ctaKey: 'openAccount',
+    badge: 'B2B Food Distribution',
+    headline: 'Direct Sourcing from Mediterranean Family Producers',
+    subtext: 'Authentic ingredients sourced from Greece, Spain, Morocco & Turkey. SFDA certified with next-day delivery across KSA.',
+    ctaText: 'Start Partnering',
     ctaLink: '/onboarding',
-    productKey: 'viewCheese',
-    productLink: '/products?category=cheeses',
+    productText: 'Our Story',
+    productLink: '/about',
     productImage: '/All products/premium feta cheese/premium_feta_cheese_3.png',
-    backgroundLight: '#FAF8F5',
-    backgroundDark: '#141210'
+    bgGradient: 'from-amber-900 to-slate-900'
   },
   {
     id: 3,
-    badgeKey: 'slide3.badge',
-    discountKey: 'slide3.discount',
-    headlineKey: 'slide3.headline',
-    subtextKey: 'slide3.subtext',
-    ctaKey: 'openAccount',
+    badge: 'Trusted Since 2015',
+    headline: 'Your Strategic Partner for Quality Food Ingredients',
+    subtext: 'Competitive wholesale pricing, flexible payment terms, and dedicated account managers for your business success.',
+    ctaText: 'Get Started',
     ctaLink: '/onboarding',
-    productKey: 'viewPickles',
-    productLink: '/products?category=pickles',
-    productImage: '/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_3.jpg',
-    backgroundLight: '#F0F7F4',
-    backgroundDark: '#0D1412'
+    productText: 'Contact Sales',
+    productLink: '/contact',
+    productImage: '/All products/kalmata olives/kalmata_olives_3.png',
+    bgGradient: 'from-lime-900 to-slate-900'
   }
 ]
 
 export default function HeroSlider() {
   const locale = useLocale()
-  const t = useTranslations('hero')
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
 
@@ -77,8 +67,7 @@ export default function HeroSlider() {
     if (!isPaused) {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length)
-      }, 5000) // Auto-advance every 5 seconds
-
+      }, 6000)
       return () => clearInterval(interval)
     }
   }, [isPaused])
@@ -95,162 +84,112 @@ export default function HeroSlider() {
     goToSlide((currentSlide - 1 + slides.length) % slides.length)
   }
 
-  const currentSlideData = slides[currentSlide]
+  const slide = slides[currentSlide]
 
   return (
     <div 
-      className={`relative w-full h-full min-h-[600px] lg:min-h-[700px] overflow-hidden slide-${currentSlide + 1}`}
+      className="relative w-full min-h-screen overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background gradient overlay */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          background: 'linear-gradient(135deg, var(--color-bg-primary) 0%, transparent 50%, var(--color-bg-secondary) 100%)'
-        }}
-      />
+      {/* Background Image with Ken Burns effect */}
+      <div className="absolute inset-0">
+        <Image
+          src={slide.productImage}
+          alt={slide.headline}
+          fill
+          className="object-cover transition-transform duration-[20000ms] ease-out scale-105 hover:scale-110"
+          sizes="100vw"
+          priority
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+      </div>
 
-      {/* Slide Content */}
-      <div className="relative h-full container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[600px] lg:min-h-[700px] py-12 lg:py-20">
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 min-h-screen flex items-center">
+        <div className="max-w-4xl py-32">
           
-          {/* Left Column - Text Content (40%) */}
-          <div className="lg:col-span-5 space-y-6 lg:space-y-8 z-10">
-            {/* Badge */}
-            <div className="flex items-center gap-3 flex-wrap">
-              <span 
-                className="text-xs uppercase tracking-wider font-semibold"
-                style={{ 
-                  color: 'var(--color-text-muted)', 
-                  letterSpacing: '1.5px',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                {t(currentSlideData.badgeKey)}
-              </span>
-              {currentSlideData.discountKey && (
-                <span 
-                  className="text-xs font-semibold px-3 py-1.5 rounded-full"
-                  style={{ 
-                    backgroundColor: 'var(--discount-bg)',
-                    color: 'var(--discount-text)'
-                  }}
-                >
-                  {t(currentSlideData.discountKey)}
-                </span>
-              )}
-            </div>
-            
-            {/* Headline */}
-            <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-              style={{ 
-                color: 'var(--color-text-primary)',
-                fontFamily: 'Playfair Display, serif',
-                lineHeight: '1.1'
-              }}
-            >
-              {t(currentSlideData.headlineKey)}
-            </h1>
-            
-            {/* Subtext */}
-            <p 
-              className="text-lg sm:text-xl leading-relaxed max-w-xl"
-              style={{ 
-                color: 'var(--color-text-secondary)',
-                fontFamily: 'Inter, sans-serif'
-              }}
-            >
-              {t(currentSlideData.subtextKey)}
-            </p>
-            
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={`/${locale}${currentSlideData.ctaLink}`}>
-                <Button 
-                  variant="primary" 
-                  size="lg" 
-                  className="group rounded-full inline-flex items-center gap-2"
-                  style={{
-                    backgroundColor: 'var(--cta-bg)',
-                    color: 'var(--cta-text)',
-                    fontFamily: 'Montserrat, sans-serif'
-                  }}
-                >
-                  {t(currentSlideData.ctaKey)}
-                  <ArrowRight 
-                    className="group-hover:translate-x-1 transition-transform" 
-                    size={20} 
-                  />
-                </Button>
-              </Link>
-              <Link href={`/${locale}${currentSlideData.productLink}`}>
-                <Button 
-                  variant="secondary" 
-                  size="lg" 
-                  className="group rounded-full inline-flex items-center gap-2"
-                  style={{
-                    fontFamily: 'Montserrat, sans-serif'
-                  }}
-                >
-                  {t(currentSlideData.productKey)}
-                  <ArrowRight 
-                    className="group-hover:translate-x-1 transition-transform" 
-                    size={20} 
-                  />
-                </Button>
-              </Link>
-            </div>
+          {/* Badge - Animated */}
+          <div className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-fade-in">
+            <span className="text-sm uppercase tracking-wider font-semibold text-amber-400">
+              {slide.badge}
+            </span>
           </div>
           
-          {/* Right Column - Product Image (60%) */}
-          <div className="lg:col-span-7 relative h-[300px] lg:h-[500px] flex items-center justify-center">
-            <div 
-              className="relative w-full h-full max-w-md lg:max-w-lg transition-all duration-500"
-              style={{
-                transform: 'rotate(-5deg) translateY(-20px)',
-                filter: 'var(--product-shadow)'
-              }}
-            >
-              <Image
-                src={currentSlideData.productImage}
-                alt={t(currentSlideData.headlineKey)}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                priority
-              />
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full opacity-20" style={{ backgroundColor: 'var(--color-primary)' }} />
-              <div className="absolute -bottom-6 -left-6 w-12 h-12 rounded-full opacity-15" style={{ backgroundColor: 'var(--color-accent)' }} />
+          {/* Headline - Animated */}
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black leading-tight text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {slide.headline}
+          </h1>
+          
+          {/* Subtext - Animated */}
+          <p className="text-lg md:text-xl leading-relaxed text-gray-200 mb-12 max-w-2xl animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            {slide.subtext}
+          </p>
+          
+          {/* Buttons - Animated */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <Link href={`/${locale}${slide.ctaLink}`}>
+              <button className="group px-8 py-4 rounded-full font-bold text-lg transition-all hover:shadow-2xl hover:-translate-y-1 hover:scale-105 bg-orange-600 text-white flex items-center gap-2 justify-center">
+                {slide.ctaText}
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+              </button>
+            </Link>
+            <Link href={`/${locale}${slide.productLink}`}>
+              <button className="group px-8 py-4 rounded-full font-semibold text-lg transition-all border-2 border-white/40 hover:bg-white/20 hover:border-white text-white flex items-center gap-2 justify-center backdrop-blur-sm">
+                {slide.productText}
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+              </button>
+            </Link>
+          </div>
+          
+          {/* Stats - Animated */}
+          <div className="flex items-center gap-8 pt-6 border-t border-white/20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: 'Space Grotesk, monospace' }}>500+</div>
+              <div className="text-xs text-gray-300 uppercase tracking-wide">Partners</div>
+            </div>
+            <div className="w-px h-12 bg-white/30"></div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: 'Space Grotesk, monospace' }}>8+</div>
+              <div className="text-xs text-gray-300 uppercase tracking-wide">Years</div>
+            </div>
+            <div className="w-px h-12 bg-white/30"></div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: 'Space Grotesk, monospace' }}>24hrs</div>
+              <div className="text-xs text-gray-300 uppercase tracking-wide">Delivery</div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+      >
+        <ChevronRight size={24} />
+      </button>
+
       {/* Navigation Dots */}
-      <div className="absolute bottom-8 left-8 flex items-center gap-3 z-20">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className="transition-all duration-300 hover:scale-110"
             style={{
-              width: currentSlide === index ? '32px' : '12px',
+              width: currentSlide === index ? '40px' : '12px',
               height: '12px',
               borderRadius: '999px',
-              backgroundColor: currentSlide === index ? 'var(--dot-active)' : 'var(--dot-inactive)',
+              backgroundColor: currentSlide === index ? '#FFFFFF' : 'rgba(255, 255, 255, 0.3)',
               cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => {
-              if (currentSlide !== index) {
-                e.currentTarget.style.backgroundColor = 'var(--dot-hover)'
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = currentSlide === index ? 'var(--dot-active)' : 'var(--dot-inactive)'
             }}
           />
         ))}
@@ -259,61 +198,14 @@ export default function HeroSlider() {
       {/* Pause Indicator */}
       {isPaused && (
         <div className="absolute top-8 right-8 z-20">
-          <div 
-            className="w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'var(--color-surface)', opacity: 0.8 }}
-          >
+          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
             <div className="flex gap-1">
-              <div className="w-1 h-4 rounded-full" style={{ backgroundColor: 'var(--color-text-primary)' }} />
-              <div className="w-1 h-4 rounded-full" style={{ backgroundColor: 'var(--color-text-primary)' }} />
+              <div className="w-1 h-4 rounded-full bg-white" />
+              <div className="w-1 h-4 rounded-full bg-white" />
             </div>
           </div>
         </div>
       )}
-
-      {/* Theme-specific CSS variables */}
-      <style jsx global>{`
-        :root {
-          /* Light theme defaults */
-          --hero-bg: #F5F7FA;
-          --discount-bg: #E8F5E8;
-          --discount-text: #22C55E;
-          --price-color: #DC2626;
-          --cta-bg: #06B6D4;
-          --cta-text: white;
-          --dot-active: #1A1A1A;
-          --dot-inactive: #CCCCCC;
-          --dot-hover: #666666;
-          --product-shadow: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
-        }
-        
-        [data-theme="dark"] {
-          /* Dark theme overrides */
-          --hero-bg: #0F1419;
-          --discount-bg: #1B3D1C;
-          --discount-text: #7DA47D;
-          --price-color: #EF4444;
-          --cta-bg: #22D3EE;
-          --cta-text: #0F1419;
-          --dot-active: #F5F5F5;
-          --dot-inactive: #4B5563;
-          --dot-hover: #9CA3AF;
-          --product-shadow: drop-shadow(0 20px 60px rgba(0,0,0,0.4)) drop-shadow(0 0 30px rgba(125,164,125,0.2));
-        }
-        
-        /* Slide-specific backgrounds */
-        .slide-1 { --hero-bg: var(--slide-1-bg); }
-        .slide-2 { --hero-bg: var(--slide-2-bg); }
-        .slide-3 { --hero-bg: var(--slide-3-bg); }
-        
-        :root .slide-1 { --slide-1-bg: #F5F7FA; }
-        :root .slide-2 { --slide-2-bg: #FAF8F5; }
-        :root .slide-3 { --slide-3-bg: #F0F7F4; }
-        
-        [data-theme="dark"] .slide-1 { --slide-1-bg: #0F1419; }
-        [data-theme="dark"] .slide-2 { --slide-2-bg: #141210; }
-        [data-theme="dark"] .slide-3 { --slide-3-bg: #0D1412; }
-      `}</style>
     </div>
   )
 }

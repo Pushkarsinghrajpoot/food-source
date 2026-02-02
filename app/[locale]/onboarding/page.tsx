@@ -168,36 +168,51 @@ export default function OnboardingPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen pt-20" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom py-16">
-          <Card className="max-w-2xl mx-auto p-12 text-center">
-            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'var(--color-primary-light)' }}>
-              <Check size={40} style={{ color: 'var(--color-primary)' }} />
+      <div className="min-h-screen pt-18" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
+        <div className="max-w-2xl mx-auto px-6 py-16">
+          <div className="text-center">
+            <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce" style={{ backgroundColor: 'var(--color-secondary-light)' }}>
+              <Check size={48} style={{ color: 'var(--color-secondary)' }} />
             </div>
-            <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-4xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>
               Application Submitted Successfully!
             </h1>
-            <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-xl mb-12" style={{ color: 'var(--color-text-secondary)' }}>
               Thank you for your interest in partnering with Food Sources Trading Co.
             </p>
             
-            <div className="text-left mb-8 p-6 rounded-lg" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
-              <p className="font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+            <div className="text-left mb-12 p-8 rounded-2xl bg-white shadow-md">
+              <p className="font-bold text-lg mb-8" style={{ color: 'var(--color-accent)' }}>
                 Reference Number: FST-2024-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}
               </p>
-              <h3 className="font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>
+              <h3 className="font-bold text-xl mb-6" style={{ color: 'var(--color-text-primary)' }}>
                 What happens next?
               </h3>
-              <ol className="space-y-2" style={{ color: 'var(--color-text-secondary)' }}>
-                <li>1. Our team will review your application (1-2 business days)</li>
-                <li>2. You'll receive a confirmation call on your registered mobile number</li>
-                <li>3. Once approved, your account credentials will be sent to your email</li>
-              </ol>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-light)' }}>
+                    <span className="font-bold text-sm" style={{ color: 'var(--color-accent)' }}>1</span>
+                  </div>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>Our team reviews your application (1-2 days)</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-light)' }}>
+                    <span className="font-bold text-sm" style={{ color: 'var(--color-accent)' }}>2</span>
+                  </div>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>You'll receive a confirmation call</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-light)' }}>
+                    <span className="font-bold text-sm" style={{ color: 'var(--color-accent)' }}>3</span>
+                  </div>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>Account credentials sent to your email</p>
+                </div>
+              </div>
             </div>
 
-            <div className="mb-8">
-              <h3 className="font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>
-                Questions? Contact us:
+            <div className="mb-12 p-6 rounded-xl" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
+              <h3 className="font-bold text-lg mb-3" style={{ color: 'var(--color-text-primary)' }}>
+                Questions?
               </h3>
               <div className="flex items-center justify-center gap-6" style={{ color: 'var(--color-text-secondary)' }}>
                 <div className="flex items-center gap-2">
@@ -213,79 +228,67 @@ export default function OnboardingPage() {
 
             <div className="flex gap-4 justify-center">
               <Link href={`/${locale}`}>
-                <Button variant="primary" size="lg">
+                <button className="px-8 py-3 rounded-full font-semibold transition-all hover:shadow-lift hover:-translate-y-1" style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-text-on-accent)' }}>
                   Return to Homepage
-                </Button>
+                </button>
               </Link>
               <Link href={`/${locale}/products`}>
-                <Button variant="secondary" size="lg">
+                <button className="px-8 py-3 rounded-full border-2 font-semibold transition-all hover:bg-gray-50" style={{ borderColor: 'var(--color-text-primary)', color: 'var(--color-text-primary)' }}>
                   Browse Products
-                </Button>
+                </button>
               </Link>
             </div>
-          </Card>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen pt-20" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-      {/* Header */}
-      <header className="border-b" style={{ borderColor: 'var(--color-border)' }}>
-        <div className="container-custom py-4">
-          <div className="flex items-center justify-between">
-            <Link href={`/${locale}`} className="text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>
-              Food Sources Trading Co.
-            </Link>
-            <div className="flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
-              <Phone size={16} />
-              <span>Need help? Call +966 XX XXX XXXX</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-screen pt-18" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
       {/* Progress Stepper */}
-      <div className="container-custom py-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
+      <div className="py-12" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
+        <div className="max-w-4xl mx-auto px-6">
+          <h1 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--color-text-primary)' }}>
+            Partnership Application
+          </h1>
+          <div className="flex items-center justify-between mb-6">
             {[1, 2, 3, 4, 5].map((step) => (
-              <div key={step} className="flex items-center">
+              <div key={step} className="flex items-center flex-1">
                 <div 
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all ${
-                    step <= currentStep ? 'text-white' : ''
-                  }`}
+                  className="w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all relative z-10"
                   style={{
-                    backgroundColor: step <= currentStep ? 'var(--color-primary)' : 'var(--color-bg-tertiary)',
-                    color: step > currentStep ? 'var(--color-text-secondary)' : 'white'
+                    backgroundColor: step <= currentStep ? 'var(--color-accent)' : 'var(--color-bg-tertiary)',
+                    color: step <= currentStep ? 'white' : 'var(--color-text-tertiary)'
                   }}
                 >
-                  {step < currentStep ? <Check size={16} /> : step}
+                  {step < currentStep ? <Check size={20} /> : step}
                 </div>
-                <div 
-                  className="flex-1 h-1 mx-2"
-                  style={{
-                    backgroundColor: step < currentStep ? 'var(--color-primary)' : 'var(--color-border)',
-                    display: step === 5 ? 'none' : 'block'
-                  }}
-                />
+                {step !== 5 && (
+                  <div 
+                    className="flex-1 h-1 mx-2"
+                    style={{
+                      backgroundColor: step < currentStep ? 'var(--color-accent)' : 'var(--color-border)'
+                    }}
+                  />
+                )}
               </div>
             ))}
           </div>
-          <div className="flex justify-between text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-            <span>Customer Status</span>
-            <span>Account Type</span>
-            <span>Business Info</span>
-            <span>Contact Details</span>
-            <span>Documents</span>
+          <div className="flex justify-between text-xs text-center" style={{ color: 'var(--color-text-tertiary)' }}>
+            <span className="w-12">Status</span>
+            <span className="w-12">Type</span>
+            <span className="w-12">Info</span>
+            <span className="w-12">Contact</span>
+            <span className="w-12">Docs</span>
           </div>
         </div>
       </div>
 
       {/* Form Container */}
-      <div className="container-custom pb-16">
-        <Card className="max-w-4xl mx-auto p-8">
+      <div className="py-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
           {/* Step 1: Customer Status */}
           {currentStep === 1 && (
             <div>
@@ -913,7 +916,8 @@ export default function OnboardingPage() {
               </div>
             </div>
           )}
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   )

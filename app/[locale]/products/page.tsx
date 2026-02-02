@@ -46,155 +46,115 @@ function ProductsContent() {
     )
 
   return (
-    <div className="pt-20">
-      {/* Hero Banner */}
-      <section className="py-16 md:py-24" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-tertiary))' }}>
-        <div className="container-custom">
-          <div className="max-w-3xl">
-            <nav className="text-sm mb-4" style={{ color: 'var(--color-text-secondary)' }}>
-              <Link href={`/${locale}`} className="hover:underline" style={{ color: 'var(--color-text-secondary)' }}>{navT('home')}</Link>
-              <span className="mx-2">/</span>
-              <span>{t('breadcrumb')}</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-              {t('title')}
-            </h1>
-            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>
-              {t('subtitle')}
-            </p>
+    <div className="pt-18">
+      {/* Page Hero - Modern Gradient */}
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
+        <div className="max-w-container mx-auto px-6 lg:px-12 text-center">
+          <div className="inline-block px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold mb-8" style={{ backgroundColor: 'rgba(201, 169, 97, 0.2)', color: '#C9A961', border: '1px solid rgba(201, 169, 97, 0.3)' }}>
+            Our Catalog
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black mb-6 text-white">
+            Products
+          </h1>
+          <p className="text-xl mb-12 max-w-2xl mx-auto text-gray-300">
+            Browse our premium Mediterranean selection
+          </p>
+          
+          {/* Search Bar */}
+          <div className="relative max-w-xl mx-auto">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              className="w-full pl-12 pr-4 py-4 rounded-2xl focus:outline-none focus:ring-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400"
+              style={{
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+              }}
+            />
           </div>
         </div>
       </section>
 
-      {/* Filter & Search Bar */}
-      <div className="sticky top-20 z-40 shadow-sm" style={{ backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)' }}>
-        <div className="container-custom py-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Categories */}
-            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className="px-6 py-2 rounded-full font-medium whitespace-nowrap transition-all"
-                  style={{
-                    backgroundColor: selectedCategory === cat.id ? 'var(--color-primary)' : 'var(--color-bg-tertiary)',
-                    color: selectedCategory === cat.id ? 'var(--color-text-on-primary)' : 'var(--color-text-secondary)'
-                  }}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Search & View Toggle */}
-            <div className="flex items-center gap-4 w-full md:w-auto">
-              <div className="relative flex-1 md:w-64">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2" size={20} style={{ color: 'var(--color-text-muted)' }} />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t('searchPlaceholder')}
-                  className="w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2"
-                  style={{
-                    backgroundColor: 'var(--color-surface)',
-                    color: 'var(--color-text-primary)',
-                    border: '1px solid var(--color-border)'
-                  }}
-                />
-              </div>
-              <div className="flex items-center gap-2 rounded-lg p-1" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className="p-2 rounded"
-                  style={{
-                    backgroundColor: viewMode === 'grid' ? 'var(--color-surface)' : 'transparent',
-                    boxShadow: viewMode === 'grid' ? 'var(--shadow-sm)' : 'none'
-                  }}
-                >
-                  <Grid size={20} style={{ color: 'var(--color-text-secondary)' }} />
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className="p-2 rounded"
-                  style={{
-                    backgroundColor: viewMode === 'list' ? 'var(--color-surface)' : 'transparent',
-                    boxShadow: viewMode === 'list' ? 'var(--shadow-sm)' : 'none'
-                  }}
-                >
-                  <List size={20} style={{ color: 'var(--color-text-secondary)' }} />
-                </button>
-              </div>
-            </div>
+      {/* Filter Bar - Sticky */}
+      <div className="sticky top-20 z-40 shadow-sm bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4">
+          <div className="flex items-center gap-3 overflow-x-auto">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-6 py-2.5 rounded-full font-medium whitespace-nowrap transition-all ${
+                  selectedCategory === cat.id 
+                    ? 'bg-orange-600 text-white' 
+                    : 'bg-transparent text-gray-600 border border-gray-300 hover:border-orange-600'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Products Grid */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="container-custom">
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' : 'space-y-6'}>
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <Card key={product.id} hover className="overflow-hidden">
-                <div className="aspect-square relative group overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                    <Link href={`/${locale}/products/${product.id}`}>
-                      <Button variant="primary" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                        {t('quickView')}
-                      </Button>
-                    </Link>
+              <Link key={product.id} href={`/${locale}/products/${product.id}`}>
+                <div className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lift cursor-pointer">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-medium px-3 py-1 rounded-full" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
+                  <div className="p-6">
+                    <span className="text-xs font-semibold px-3 py-1.5 rounded-full inline-block mb-3 bg-emerald-100 text-emerald-700">
                       {product.category}
                     </span>
-                    <span className="text-xs px-2 py-1 rounded" style={{ color: 'var(--color-text-muted)', border: '1px solid var(--color-border)' }}>
-                      {product.certification}
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">{product.name}</h3>
+                    <p className="text-sm mb-4 text-gray-500">{product.origin} • {product.sizes[0]}</p>
+                    <span className="inline-flex items-center gap-2 font-medium text-sm text-orange-600">
+                      View Details <ArrowRight size={16} />
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{product.name}</h3>
-                  <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>{product.origin} • {product.sizes[0]}</p>
-                  <Link href={`/${locale}/products/${product.id}`} className="font-medium text-sm hover:underline inline-flex items-center mt-3" style={{ color: 'var(--color-primary)' }}>
-                    {t('viewDetails')} <ArrowRight size={16} className="ml-1" />
-                  </Link>
                 </div>
-              </Card>
+              </Link>
             ))}
           </div>
 
-          {/* Load More */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              {t('loadMore')}
-            </Button>
-            <p className="text-sm text-charcoal-500 mt-4">{t('showing')} {filteredProducts.length} {t('of')} {products.length} {t('productsCount')}</p>
-          </div>
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-20">
+              <Package size={64} className="mx-auto mb-4 text-gray-400" />
+              <h3 className="text-2xl font-bold mb-2 text-gray-900">No products found</h3>
+              <p className="mb-6 text-gray-600">Try adjusting your search or filters</p>
+              <button onClick={() => { setSelectedCategory('all'); setSearchQuery(''); }} className="px-6 py-3 rounded-full font-semibold transition-all bg-orange-600 text-white hover:bg-orange-700">
+                Clear All Filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-cream py-16">
-        <div className="container-custom">
-          <Card className="p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold text-charcoal mb-4">{t('bulkPricing')}</h2>
-            <p className="text-charcoal-600 mb-6 max-w-2xl mx-auto">
-              {t('bulkPricingDesc')}
-            </p>
-            <Link href={`/${locale}/onboarding`}>
-              <Button variant="primary" size="lg">
-                Open Account for Bulk Pricing
-              </Button>
-            </Link>
-          </Card>
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            Interested in bulk orders?
+          </h2>
+          <p className="text-xl mb-8 text-gray-600">
+            Our team can provide custom pricing and packaging options for your business needs.
+          </p>
+          <Link href={`/${locale}/contact`}>
+            <button className="px-8 py-4 rounded-full font-semibold border-2 border-gray-900 text-gray-900 transition-all hover:bg-gray-900 hover:text-white">
+              Contact Sales Team
+            </button>
+          </Link>
         </div>
       </section>
     </div>

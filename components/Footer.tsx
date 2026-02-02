@@ -28,192 +28,115 @@ export default function Footer({ locale }: FooterProps) {
   }
 
   return (
-    <footer style={{ backgroundColor: '#1A1A1A', color: '#F5F5F5' }}>
-      {/* Pre-Footer CTA Strip */}
-      <div className="py-8" style={{ backgroundColor: '#0D0D0D', borderBottom: '1px solid #333333' }}>
-        <div className="container-custom text-center">
-          <h3 className="text-xl font-semibold mb-4" style={{ color: '#F5F5F5' }}>
-            Ready to partner with us?
-          </h3>
-          <Link href={`/${locale}/onboarding`}>
-            <button className="px-8 py-3 rounded-lg transition-all font-medium"
-              style={{
-                backgroundColor: 'var(--color-primary)',
-                color: '#F5F5F5'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-primary)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Open Your Account →
-            </button>
-          </Link>
-        </div>
-      </div>
-
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>Food Sources</h3>
-            <p style={{ color: '#CCCCCC' }}>
-              Premium Mediterranean ingredients for Saudi Arabia's finest kitchens.
+    <footer className="bg-slate-900">
+      <div className="max-w-container mx-auto px-6 lg:px-12 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white">Food Sources</h3>
+            <p className="text-sm leading-relaxed text-gray-400">
+              Premium Mediterranean ingredients for Saudi Arabia's finest kitchens since 2015.
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">{t('quickLinks')}</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">PRODUCTS</h4>
+            <ul className="space-y-3">
               <li>
-                <Link href={`/${locale}`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {navT('home')}
+                <Link href={`/${locale}/products?category=olives`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  Olives
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {navT('products')}
+                <Link href={`/${locale}/products?category=cheeses`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  Cheeses
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/about`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {navT('about')}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/contact`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {navT('contact')}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/blog`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {navT('blog')}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/faq`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  {navT('faq')}
+                <Link href={`/${locale}/products?category=pickles`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  Pickles
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">PARTNERSHIP</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">COMPANY</h4>
+            <ul className="space-y-3">
               <li>
-                <Link href={`/${locale}/onboarding`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                <Link href={`/${locale}/about`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/careers`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/blog`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">PARTNERSHIP</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link href={`/${locale}/onboarding`} className="text-sm transition-colors hover:text-white text-gray-400">
                   Open Account
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/about`} className="transition-colors" style={{ color: '#CCCCCC' }}>
+                <Link href={`/${locale}/about`} className="text-sm transition-colors hover:text-white text-gray-400">
                   Benefits
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/faq`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/contact`} className="transition-colors" style={{ color: '#CCCCCC' }}>
-                  Contact Sales
+                <Link href={`/${locale}/faq`} className="text-sm transition-colors hover:text-white text-gray-400">
+                  FAQ
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">{t('contact')}</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">CONTACT</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2" style={{ color: '#CCCCCC' }}>
-                <Mail size={18} className="mt-1 flex-shrink-0" />
-                <span>{t('email')}</span>
+              <li className="text-sm text-gray-400">
+                Riyadh HQ
               </li>
-              <li className="flex items-start gap-2" style={{ color: '#CCCCCC' }}>
-                <Phone size={18} className="mt-1 flex-shrink-0" />
-                <span>{t('phone')}</span>
+              <li>
+                <a href="tel:+966XXXXXXX" className="text-sm transition-colors hover:text-white text-gray-400">
+                  +966 XX XXX XXXX
+                </a>
               </li>
-              <li className="flex items-start gap-2" style={{ color: '#CCCCCC' }}>
-                <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span>{t('address')}</span>
+              <li>
+                <a href="mailto:contact@foodsources.com.sa" className="text-sm transition-colors hover:text-white text-gray-400">
+                  contact@foodsources.com.sa
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="mt-12 pt-8" style={{ borderTop: '1px solid #333333' }}>
-          <div className="max-w-md mx-auto text-center mb-8">
-            <h4 className="font-semibold text-lg mb-2">{t('newsletter.title') || 'Stay Updated'}</h4>
-            <p className="text-sm mb-4" style={{ color: '#999999' }}>{t('newsletter.description') || 'Subscribe to our newsletter for exclusive offers'}</p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t('newsletter.placeholder') || 'Enter your email'}
-                className="flex-1 px-4 py-2 rounded-lg focus:outline-none"
-                style={{ 
-                  backgroundColor: '#2A2A2A', 
-                  border: '1px solid #444444',
-                  color: '#F5F5F5'
-                }}
-                required
-                disabled={subscribeStatus === 'loading'}
-              />
-              <button
-                type="submit"
-                disabled={subscribeStatus === 'loading'}
-                className="px-6 py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center gap-2"
-                style={{
-                  backgroundColor: 'var(--color-primary)',
-                  color: '#F5F5F5'
-                }}
-              >
-                <Send size={18} />
-                {subscribeStatus === 'loading' ? (t('newsletter.subscribing') || 'Subscribing...') : (t('newsletter.subscribe') || 'Subscribe')}
-              </button>
-            </form>
-            {subscribeStatus === 'success' && (
-              <p className="text-sm mt-2" style={{ color: 'var(--color-success)' }}>{t('newsletter.success') || 'Successfully subscribed!'}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Bottom Footer */}
-        <div className="pt-8" style={{ borderTop: '1px solid #333333' }}>
+        <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm" style={{ color: '#999999' }}>&copy; {new Date().getFullYear()} Food Sources. {t('rights')}</p>
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} Food Sources  |  <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors text-gray-400">Privacy</Link>  |  <Link href={`/${locale}/terms`} className="hover:text-white transition-colors text-gray-400">Terms</Link>
+            </p>
             
-            {/* Social Media Links */}
-            <div className="flex items-center gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: '#999999' }}>
-                <Facebook size={20} />
+            <div className="flex items-center gap-6">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white opacity-60 hover:opacity-100 transition-opacity">
+                <Facebook size={24} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: '#999999' }}>
-                <Instagram size={20} />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white opacity-60 hover:opacity-100 transition-opacity">
+                <Instagram size={24} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: '#999999' }}>
-                <Linkedin size={20} />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white opacity-60 hover:opacity-100 transition-opacity">
+                <Linkedin size={24} />
               </a>
-            </div>
-            
-            {/* Legal Links */}
-            <div className="flex items-center gap-4 text-sm">
-              <Link href={`/${locale}/careers`} className="transition-colors" style={{ color: '#999999' }}>
-                {t('careers')}
-              </Link>
-              <Link href={`/${locale}/privacy`} className="transition-colors" style={{ color: '#999999' }}>
-                {t('privacy')}
-              </Link>
-              <Link href={`/${locale}/terms`} className="transition-colors" style={{ color: '#999999' }}>
-                {t('terms')}
-              </Link>
             </div>
           </div>
         </div>

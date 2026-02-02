@@ -34,13 +34,8 @@ export default function Navigation({ locale }: NavigationProps) {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 backdrop-blur-sm z-50" style={{ 
-      backgroundColor: 'var(--color-surface)',
-      opacity: 0.95,
-      boxShadow: 'var(--shadow-sm)',
-      borderBottom: '1px solid var(--color-border)'
-    }}>
-      <div className="container-custom">
+    <nav className="fixed top-0 left-0 right-0 backdrop-blur-md z-50 bg-white/90 shadow-sm">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           <Link href={`/${locale}`} className="relative w-40 h-12">
             <Image
@@ -52,15 +47,12 @@ export default function Navigation({ locale }: NavigationProps) {
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-medium transition-colors"
-                style={{ color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+                className="text-sm font-medium transition-colors text-gray-600 hover:text-gray-900"
               >
                 {link.label}
               </Link>
@@ -72,13 +64,7 @@ export default function Navigation({ locale }: NavigationProps) {
             {/* Open Account Button */}
             <Link
               href={`/${locale}/onboarding`}
-              className="px-6 py-2.5 rounded-lg transition-all font-medium font-accent"
-              style={{ 
-                backgroundColor: 'var(--color-accent)',
-                color: 'var(--color-text-on-accent)'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-accent)'}
+              className="px-6 py-3 rounded-full transition-all font-semibold hover:shadow-lg hover:-translate-y-0.5 bg-orange-600 text-white"
             >
               {t('openAccount')}
             </Link>
@@ -87,8 +73,7 @@ export default function Navigation({ locale }: NavigationProps) {
             <div className="relative">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-2 font-medium transition-colors"
-                style={{ color: 'var(--color-text-secondary)' }}
+                className="flex items-center gap-2 font-medium transition-colors text-gray-600 hover:text-gray-900"
               >
                 <Globe size={18} />
                 <span>{locale === 'en' ? 'English' : 'العربية'}</span>
@@ -96,30 +81,24 @@ export default function Navigation({ locale }: NavigationProps) {
               </button>
               
               {langDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 rounded-lg py-2 z-50" style={{
-                  backgroundColor: 'var(--color-surface-elevated)',
-                  boxShadow: 'var(--shadow-lg)',
-                  border: '1px solid var(--color-border)'
-                }}>
+                <div className="absolute right-0 mt-2 w-40 rounded-lg py-2 z-50 bg-white shadow-lg border border-gray-200">
                   <button
                     onClick={() => switchLocale('en')}
-                    className="w-full px-4 py-2 text-left transition-colors"
-                    style={{
-                      backgroundColor: locale === 'en' ? 'var(--color-primary-light)' : 'transparent',
-                      color: locale === 'en' ? 'var(--color-primary)' : 'var(--color-text-secondary)',
-                      fontWeight: locale === 'en' ? '600' : '400'
-                    }}
+                    className={`w-full px-4 py-2 text-left transition-colors ${
+                      locale === 'en' 
+                        ? 'bg-emerald-50 text-emerald-700 font-semibold' 
+                        : 'text-gray-600 hover:bg-gray-50'
+                    }`}
                   >
                     English
                   </button>
                   <button
                     onClick={() => switchLocale('ar')}
-                    className="w-full px-4 py-2 text-left transition-colors"
-                    style={{
-                      backgroundColor: locale === 'ar' ? 'var(--color-primary-light)' : 'transparent',
-                      color: locale === 'ar' ? 'var(--color-primary)' : 'var(--color-text-secondary)',
-                      fontWeight: locale === 'ar' ? '600' : '400'
-                    }}
+                    className={`w-full px-4 py-2 text-left transition-colors ${
+                      locale === 'ar' 
+                        ? 'bg-emerald-50 text-emerald-700 font-semibold' 
+                        : 'text-gray-600 hover:bg-gray-50'
+                    }`}
                   >
                     العربية
                   </button>
@@ -131,8 +110,7 @@ export default function Navigation({ locale }: NavigationProps) {
           <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
             <button
-              className="transition-colors"
-              style={{ color: 'var(--color-text-primary)' }}
+              className="transition-colors text-gray-900"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -146,8 +124,7 @@ export default function Navigation({ locale }: NavigationProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block font-medium transition-colors"
-                style={{ color: 'var(--color-text-secondary)' }}
+                className="block font-medium transition-colors text-gray-600 hover:text-gray-900"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -157,38 +134,32 @@ export default function Navigation({ locale }: NavigationProps) {
             {/* Mobile Open Account Button */}
             <Link
               href={`/${locale}/onboarding`}
-              className="block px-6 py-2.5 rounded-lg transition-all font-medium font-accent text-center"
-              style={{ 
-                backgroundColor: 'var(--color-accent)',
-                color: 'var(--color-text-on-accent)'
-              }}
+              className="block px-6 py-3 rounded-full transition-all font-semibold text-center bg-orange-600 text-white"
               onClick={() => setIsOpen(false)}
             >
               {t('openAccount')}
             </Link>
             
             {/* Mobile Language Selector */}
-            <div className="pt-4 mt-4" style={{ borderTop: '1px solid var(--color-border)' }}>
-              <p className="text-xs mb-2 px-2" style={{ color: 'var(--color-text-muted)' }}>Language / اللغة</p>
+            <div className="pt-4 mt-4 border-t border-gray-200">
+              <p className="text-xs mb-2 px-2 text-gray-400">Language / اللغة</p>
               <button
                 onClick={() => { switchLocale('en'); setIsOpen(false); }}
-                className="block w-full text-left px-2 py-2 rounded transition-colors"
-                style={{
-                  backgroundColor: locale === 'en' ? 'var(--color-primary-light)' : 'transparent',
-                  color: locale === 'en' ? 'var(--color-primary)' : 'var(--color-text-secondary)',
-                  fontWeight: locale === 'en' ? '600' : '400'
-                }}
+                className={`block w-full text-left px-2 py-2 rounded transition-colors ${
+                  locale === 'en' 
+                    ? 'bg-emerald-50 text-emerald-700 font-semibold' 
+                    : 'text-gray-600'
+                }`}
               >
                 English
               </button>
               <button
                 onClick={() => { switchLocale('ar'); setIsOpen(false); }}
-                className="block w-full text-left px-2 py-2 rounded transition-colors"
-                style={{
-                  backgroundColor: locale === 'ar' ? 'var(--color-primary-light)' : 'transparent',
-                  color: locale === 'ar' ? 'var(--color-primary)' : 'var(--color-text-secondary)',
-                  fontWeight: locale === 'ar' ? '600' : '400'
-                }}
+                className={`block w-full text-left px-2 py-2 rounded transition-colors ${
+                  locale === 'ar' 
+                    ? 'bg-emerald-50 text-emerald-700 font-semibold' 
+                    : 'text-gray-600'
+                }`}
               >
                 العربية (Arabic)
               </button>
