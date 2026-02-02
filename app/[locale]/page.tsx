@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { useTranslations, useLocale } from 'next-intl'
 import { ArrowRight, CheckCircle2, Package, Truck, Shield, Users, Award, TrendingUp, FileCheck } from "lucide-react"
 import HeroSlider from "@/components/HeroSlider"
@@ -77,8 +78,14 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <Link href={`/${locale}/products?category=olives`}>
               <div className="group bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer">
-                <div className="h-80 relative overflow-hidden bg-gradient-to-br from-emerald-100 to-emerald-200">
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl">🫒</div>
+                <div className="h-80 relative overflow-hidden bg-gray-50">
+                  <Image
+                    src="/All products/kalmata olives/kalmata_olives_3.png"
+                    alt="Premium Mediterranean Olives"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-8">
                   <h3 className="text-3xl font-bold mb-2 text-gray-900">Olives</h3>
@@ -92,8 +99,14 @@ export default function Home() {
 
             <Link href={`/${locale}/products?category=cheeses`}>
               <div className="group bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer">
-                <div className="h-80 relative overflow-hidden bg-gradient-to-br from-amber-100 to-amber-200">
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl">🧀</div>
+                <div className="h-80 relative overflow-hidden bg-gray-50">
+                  <Image
+                    src="/All products/premium feta cheese/premium_feta_cheese_3.png"
+                    alt="Premium Mediterranean Cheese"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-8">
                   <h3 className="text-3xl font-bold mb-2 text-gray-900">Cheeses</h3>
@@ -107,8 +120,14 @@ export default function Home() {
 
             <Link href={`/${locale}/products?category=pickles`}>
               <div className="group bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer">
-                <div className="h-80 relative overflow-hidden bg-gradient-to-br from-lime-100 to-lime-200">
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl">🥒</div>
+                <div className="h-80 relative overflow-hidden bg-gray-50">
+                  <Image
+                    src="/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_3.jpg"
+                    alt="Premium Mediterranean Pickles"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-8">
                   <h3 className="text-3xl font-bold mb-2 text-gray-900">Pickles</h3>
@@ -172,8 +191,14 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-50 to-emerald-100">
-              <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-20">🌍</div>
+            <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden bg-gray-100">
+              <Image
+                src="/hero.png"
+                alt="Premium Mediterranean Food Products"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
             
             <div>

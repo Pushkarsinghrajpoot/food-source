@@ -196,7 +196,14 @@ export default function AboutPage() {
       <section className="py-24" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-96 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-sm">
+            <div className="relative h-96 rounded-3xl overflow-hidden">
+              <Image
+                src="https://res.cloudinary.com/daeyqeofn/image/upload/v1770034901/cheese_2_y3nhsz.jpg"
+                alt="Mediterranean olive groves and producers"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
