@@ -34,7 +34,10 @@ export default function Navigation({ locale }: NavigationProps) {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 backdrop-blur-md z-50 bg-white/90 shadow-sm">
+    <nav 
+      className="fixed top-0 left-0 right-0 backdrop-blur-md z-50 shadow-sm"
+      style={{ backgroundColor: 'var(--color-surface)' }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           <Link href={`/${locale}`} className="relative w-40 h-12">
@@ -52,7 +55,10 @@ export default function Navigation({ locale }: NavigationProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium transition-colors text-gray-600 hover:text-gray-900"
+                className="text-sm font-medium transition-colors"
+                style={{ color: 'var(--color-text-secondary)' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
               >
                 {link.label}
               </Link>
@@ -73,7 +79,10 @@ export default function Navigation({ locale }: NavigationProps) {
             <div className="relative">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-2 font-medium transition-colors text-gray-600 hover:text-gray-900"
+                className="flex items-center gap-2 font-medium transition-colors"
+                style={{ color: 'var(--color-text-secondary)' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
               >
                 <Globe size={18} />
                 <span>{locale === 'en' ? 'English' : 'العربية'}</span>
@@ -81,14 +90,30 @@ export default function Navigation({ locale }: NavigationProps) {
               </button>
               
               {langDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 rounded-lg py-2 z-50 bg-white shadow-lg border border-gray-200">
+                <div 
+                  className="absolute right-0 mt-2 w-40 rounded-lg py-2 z-50 shadow-lg"
+                  style={{ 
+                    backgroundColor: 'var(--color-surface)', 
+                    border: '1px solid var(--color-border)' 
+                  }}
+                >
                   <button
                     onClick={() => switchLocale('en')}
                     className={`w-full px-4 py-2 text-left transition-colors ${
                       locale === 'en' 
-                        ? 'bg-emerald-50 text-emerald-700 font-semibold' 
-                        : 'text-gray-600 hover:bg-gray-50'
+                        ? 'font-semibold' 
+                        : ''
                     }`}
+                    style={{
+                      backgroundColor: locale === 'en' ? 'var(--color-primary-light)' : 'transparent',
+                      color: locale === 'en' ? 'var(--color-primary)' : 'var(--color-text-secondary)'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (locale !== 'en') e.currentTarget.style.backgroundColor = 'var(--color-bg-secondary)'
+                    }}
+                    onMouseLeave={(e) => {
+                      if (locale !== 'en') e.currentTarget.style.backgroundColor = 'transparent'
+                    }}
                   >
                     English
                   </button>
@@ -96,9 +121,19 @@ export default function Navigation({ locale }: NavigationProps) {
                     onClick={() => switchLocale('ar')}
                     className={`w-full px-4 py-2 text-left transition-colors ${
                       locale === 'ar' 
-                        ? 'bg-emerald-50 text-emerald-700 font-semibold' 
-                        : 'text-gray-600 hover:bg-gray-50'
+                        ? 'font-semibold' 
+                        : ''
                     }`}
+                    style={{
+                      backgroundColor: locale === 'ar' ? 'var(--color-primary-light)' : 'transparent',
+                      color: locale === 'ar' ? 'var(--color-primary)' : 'var(--color-text-secondary)'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (locale !== 'ar') e.currentTarget.style.backgroundColor = 'var(--color-bg-secondary)'
+                    }}
+                    onMouseLeave={(e) => {
+                      if (locale !== 'ar') e.currentTarget.style.backgroundColor = 'transparent'
+                    }}
                   >
                     العربية
                   </button>
@@ -110,7 +145,8 @@ export default function Navigation({ locale }: NavigationProps) {
           <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
             <button
-              className="transition-colors text-gray-900"
+              className="transition-colors"
+              style={{ color: 'var(--color-text-primary)' }}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -124,7 +160,10 @@ export default function Navigation({ locale }: NavigationProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block font-medium transition-colors text-gray-600 hover:text-gray-900"
+                className="block font-medium transition-colors"
+                style={{ color: 'var(--color-text-secondary)' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -141,25 +180,29 @@ export default function Navigation({ locale }: NavigationProps) {
             </Link>
             
             {/* Mobile Language Selector */}
-            <div className="pt-4 mt-4 border-t border-gray-200">
-              <p className="text-xs mb-2 px-2 text-gray-400">Language / اللغة</p>
+            <div className="pt-4 mt-4" style={{ borderTop: '1px solid var(--color-border)' }}>
+              <p className="text-xs mb-2 px-2" style={{ color: 'var(--color-text-muted)' }}>Language / اللغة</p>
               <button
                 onClick={() => { switchLocale('en'); setIsOpen(false); }}
                 className={`block w-full text-left px-2 py-2 rounded transition-colors ${
-                  locale === 'en' 
-                    ? 'bg-emerald-50 text-emerald-700 font-semibold' 
-                    : 'text-gray-600'
+                  locale === 'en' ? 'font-semibold' : ''
                 }`}
+                style={{
+                  backgroundColor: locale === 'en' ? 'var(--color-primary-light)' : 'transparent',
+                  color: locale === 'en' ? 'var(--color-primary)' : 'var(--color-text-secondary)'
+                }}
               >
                 English
               </button>
               <button
                 onClick={() => { switchLocale('ar'); setIsOpen(false); }}
                 className={`block w-full text-left px-2 py-2 rounded transition-colors ${
-                  locale === 'ar' 
-                    ? 'bg-emerald-50 text-emerald-700 font-semibold' 
-                    : 'text-gray-600'
+                  locale === 'ar' ? 'font-semibold' : ''
                 }`}
+                style={{
+                  backgroundColor: locale === 'ar' ? 'var(--color-primary-light)' : 'transparent',
+                  color: locale === 'ar' ? 'var(--color-primary)' : 'var(--color-text-secondary)'
+                }}
               >
                 العربية (Arabic)
               </button>

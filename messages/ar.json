@@ -8,6 +8,11 @@
       "openAccount": "فتح حساب",
       "viewOlives": "عرض الزيتون"
     },
+    "stats": {
+      "partners": "شريك",
+      "years": "سنوات",
+      "delivery": "توصيل"
+    },
     "slide2": {
       "badge": "طازج يومياً",
       "discount": "وصول جديد",
@@ -151,15 +156,19 @@
         "description": "توصيل سريع مع سهولة إعادة الطلب للعملاء المنتظمين"
       }
     },
-    "testimonial": {
-      "quote": "لقد غيرت فود سورسيز سلسلة التوريد لدينا. الجودة استثنائية، التوصيل دائمًا في الوقت المحدد، وخدمة العملاء متميزة.",
-      "name": "أحمد الراشد",
-      "position": "الشيف التنفيذي، فندق الرياض الكبير"
-    },
     "cta": {
       "title": "هل أنت مستعد لتحويل سلسلة التوريد الخاصة بك؟",
       "subtitle": "انضم إلى مئات الشركاء الراضين في جميع أنحاء المملكة العربية السعودية",
-      "button": "ابدأ اليوم"
+      "button": "ابدأ اليوم",
+      "talkToSales": "تحدث مع المبيعات",
+      "whatYouGet": "ماذا ستحصل عليه:",
+      "benefits": {
+        "manager": "مدير حساب مخصص",
+        "payment": "شروط دفع مرنة (نقد وائتمان)",
+        "delivery": "توصيل في اليوم التالي في جميع أنحاء المملكة",
+        "pricing": "تسعير الجملة وخصومات الكميات",
+        "certified": "منتجات معتمدة من الهيئة العامة للغذاء والدواء"
+      }
     }
   },
   "footer": {
@@ -205,10 +214,12 @@
     "productsCount": "منتجات",
     "bulkPricing": "هل تحتاج أسعار الجملة؟",
     "bulkPricingDesc": "اتصل بفريق المبيعات للحصول على عروض أسعار مخصصة للطلبات الكبيرة والتوصيلات المنتظمة",
-    "requestCustomQuote": "طلب عرض سعر مخصص"
+    "requestCustomQuote": "طلب عرض سعر مخصص",
+    "loading": "جاري التحميل..."
   },
   "about": {
     "hero": {
+      "badge": "قصة الطعام المصادر",
       "title": "قصتنا",
       "subtitle": "شغف عائلة لجلب التميز المتوسطي إلى المملكة العربية السعودية",
       "imageAlt": "المشهد الطبيعي المتوسطي"
@@ -285,6 +296,15 @@
       "title": "الأشخاص وراء الشغف",
       "subtitle": "تعرف على الفريق المخصص لنجاحك"
     },
+    "sourcing": {
+      "title": "من المزرعة إلى المطبخ",
+      "description": "نزور كل مورد شخصياً لضمان معايير الجودة. شراكاتنا مع منتجي البحر المتوسط تمتد لأجيال، مما يضمن النكهات الأصيلة والممارسات المستدامة.",
+      "imageAlt": "مزارع الزيتون والمنتجين",
+      "greece": "اليونان",
+      "morocco": "المغرب",
+      "spain": "إسبانيا",
+      "turkey": "تركيا"
+    },
     "certifications": {
       "title": "التزاماتنا",
       "subtitle": "التميز المعتمد في كل توصيل",
@@ -304,44 +324,58 @@
       "title": "لنبدأ المحادثة",
       "subtitle": "سواء كنت مستعدًا للطلب أو لديك أسئلة فقط، نحن هنا للمساعدة"
     },
-    "callUs": {
-      "title": "اتصل بنا",
-      "hours": "متاح الأحد-الخميس، 9 صباحًا-6 مساءً"
-    },
-    "emailUs": {
-      "title": "راسلنا بالبريد الإلكتروني",
-      "subtitle": "احصل على أسعار مخصصة لعملك"
-    },
-    "whatsapp": {
-      "title": "واتساب",
-      "subtitle": "تحدث مع فريقنا فورًا",
-      "button": "فتح واتساب"
+    "options": {
+      "openAccount": {
+        "title": "فتح حساب",
+        "subtitle": "ابدأ شراكتك",
+        "hours": "الأحد-الخميس: 9 صباحًا - 6 مساءً",
+        "button": "ابدأ"
+      },
+      "call": {
+        "title": "اتصل بنا",
+        "phone": "+966 XX XXX XXXX",
+        "hours": "الأحد-الخميس: 9 صباحًا - 6 مساءً",
+        "button": "اتصل"
+      },
+      "whatsapp": {
+        "title": "واتساب",
+        "subtitle": "تحدث مع فريقنا",
+        "response": "استجابة فورية",
+        "button": "افتح"
+      }
     },
     "form": {
       "title": "أرسل لنا رسالة",
-      "subtitle": "املأ النموذج وسنرد خلال 24 ساعة",
-      "businessName": "اسم العمل",
-      "contactPerson": "الشخص المسؤول",
+      "subtitle": "املأ النموذج وسنرد خلال 24 ساعة.",
+      "businessName": "اسم الشركة",
+      "contactPerson": "الشخص المسؤول عن التواصل",
       "email": "البريد الإلكتروني",
       "phone": "رقم الهاتف",
       "businessType": "نوع العمل",
-      "city": "المدينة",
-      "inquiryType": "نوع الاستفسار",
-      "message": "الرسالة",
       "selectType": "اختر النوع",
+      "city": "المدينة",
       "selectCity": "اختر المدينة",
+      "inquiryType": "نوع الاستفسار",
       "selectInquiry": "اختر نوع الاستفسار",
-      "messagePlaceholder": "أخبرنا كيف يمكننا المساعدة...",
-      "consent": "أوافق على تلقي الاتصالات من شركة Food Sources Trading Co.",
+      "message": "الرسالة",
+      "messagePlaceholder": "كيف يمكننا مساعدتك؟",
+      "consent": "أوافق على معالجة بياناتي الشخصية",
       "submit": "إرسال الرسالة",
-      "privacy": "بإرسال هذا النموذج، فإنك توافق على سياسة الخصوصية وشروط الخدمة الخاصة بنا",
-      "officeHours": "ساعات العمل",
-      "officeHoursWeekdays": "الأحد - الخميس: 9:00 صباحًا - 6:00 مساءً",
-      "officeHoursWeekend": "الجمعة - السبت: مغلق"
+      "privacy": "بياناتك آمنة ولن نشاركها مع أطراف ثالثة"
+    },
+    "info": {
+      "hours": {
+        "title": "ساعات العمل",
+        "value": "الأحد-الخميس: 9 صباحًا - 6 مساءً بتوقيت المملكة العربية السعودية"
+      },
+      "email": {
+        "title": "البريد الإلكتروني",
+        "value": "contact@foodsources.com.sa"
+      }
     },
     "success": {
-      "title": "تم إرسال الرسالة بنجاح!",
-      "message": "شكراً لتواصلك معنا. سنعود إليك خلال 24 ساعة.",
+      "title": "تم الإرسال بنجاح!",
+      "message": "شكرًا لتواصلك معنا. سنعود إليك قريبًا.",
       "button": "إرسال رسالة أخرى"
     },
     "businessTypes": {
@@ -349,10 +383,37 @@
       "restaurant": "مطعم",
       "cafe": "مقهى",
       "catering": "تقديم طعام",
-      "retail": "بيع بالتجزئة",
+      "retail": "تجزئة",
       "other": "أخرى"
     },
     "cities": {
+      "riyadh": "الرياض",
+      "jeddah": "جدة",
+      "dammam": "الدمام",
+      "other": "أخرى"
+    },
+    "inquiryTypes": {
+      "pricing": "التسعير",
+      "product": "المنتجات",
+      "partnership": "الشراكة",
+      "support": "الدعم",
+      "other": "أخرى"
+    },
+    "locations": {
+      "title": "مواقعنا",
+      "riyadh": {
+        "title": "مقر الرياض",
+        "address": "شارع الملك فهد\nحي النخيل\nالرياض 11564\nالمملكة العربية السعودية",
+        "phone": "الهاتف",
+        "hours": "ساعات العمل",
+        "hoursValue": "الأحد-الخميس: 9 صباحًا - 6 مساءً"
+      },
+      "jeddah": {
+        "title": "مقر جدة",
+        "address": "شارع الأمير محمد\nمركز جدة التجاري\nجدة 21442\nالمملكة العربية السعودية"
+      }
+    },
+    "otherInquiries": {
       "riyadh": "الرياض",
       "jeddah": "جدة",
       "dammam": "الدمام",
@@ -396,6 +457,61 @@
       "title": "شكراً لك!",
       "message": "سنعود إليك خلال 24 ساعة."
     }
+  },
+  "productDetail": {
+    "notFound": "المنتج غير موجود",
+    "downloadAlert": "سيتم تنزيل ورقة مواصفات المنتج. هذا هو عرض توضيحي - قم بالتكامل مع إنشاء/تخزين PDF الفعلي.",
+    "productView": "عرض المنتج {number}",
+    "breadcrumb": {
+      "home": "الرئيسية",
+      "products": "المنتجات",
+      "olives": "زيتون",
+      "cheeses": "أجبان",
+      "pickles": "مخللات",
+      "labneh": "لبنة"
+    },
+    "sourcedFrom": "مورد من",
+    "availableSizes": "الأحجام المتاحة",
+    "shelfLife": "مدة الصلاحية",
+    "storage": "التخزين",
+    "certification": "الشهادة",
+    "selectPackSize": "اختر حجم العبوة",
+    "quantity": "الكمية",
+    "interestedMessage": "مهتم بهذا المنتج؟",
+    "openAccountToOrder": "فتح حساب للطلب",
+    "downloadSpecSheet": "تنزيل مواصفات المنتج (PDF)",
+    "contactBulkPricing": "تواصل لأسعار الجملة",
+    "trust": {
+      "foodSafe": "آمن للطعام",
+      "halal": "حلال",
+      "premium": "ممتاز"
+    },
+    "tabs": {
+      "description": "وصف المنتج",
+      "nutritional": "المعلومات الغذائية",
+      "shipping": "معلومات الشحن",
+      "reviews": "مراجعات العملاء"
+    },
+    "suggestedUses": "استخدامات مقترحة",
+    "perServing": "لكل 100 جرام",
+    "nutritional": {
+      "energy": "الطاقة",
+      "fat": "الدهون",
+      "carbohydrates": "الكربوهيدرات",
+      "protein": "البروتين",
+      "sodium": "الصوديوم",
+      "notAvailable": "المعلومات الغذائية غير متاحة"
+    },
+    "reviews": "مراجعات",
+    "noReviews": "لا توجد مراجعات بعد. كن أول من يراجع هذا المنتج!",
+    "shipping": {
+      "deliveryTime": "وقت التوصيل",
+      "deliveryTimeDesc": "التوصيل في اليوم التالي متاح في الرياض، جدة، والدمام. 2-3 أيام للمواقع الأخرى في المملكة.",
+      "minimumOrder": "الحد الأدنى للطلب",
+      "minimumOrderDesc": "الحد الأدنى لكمية الطلب: 2 وحدات. توصيل مجاني للطلبات فوق 500 ريال سعودي."
+    },
+    "relatedProducts": "قد يعجبك أيضاً",
+    "viewDetails": "عرض التفاصيل"
   },
   "quote": {
     "backHome": "→ العودة إلى الصفحة الرئيسية",
@@ -494,6 +610,133 @@
     "hero": {
       "title": "انضم إلى فريقنا",
       "subtitle": "ابنِ مسيرتك المهنية مع شركة توزيع الأغذية الرائدة في المملكة العربية السعودية"
+    }
+  },
+  "onboarding": {
+    "title": "التسجيل كشريك",
+    "subtitle": "انضم إلى شبكتنا من الموردين الموثوقين",
+    "partnershipApplication": "طلب الشراكة",
+    "questions": "أسئلة؟",
+    "returnToHomepage": "العودة إلى الصفحة الرئيسية",
+    "browseProducts": "تصفح المنتجات",
+    "selectCity": "اختر المدينة...",
+    "selectType": "اختر النوع...",
+    "step1": "الحالة",
+    "step2": "النوع", 
+    "step3": "المعلومات",
+    "step4": "التواصل",
+    "step5": "المستندات",
+    "welcome": "مرحباً بك في مصادر الطعام",
+    "welcomeSubtitle": "دعونا نبدأ مع طلب الشراكة الخاص بك",
+    "partnershipInfo": "ترحب شركة مصادر الطعام للتجارة بطلبات الشراكة من تجار التجزئة، تجار الجملة، المطاعم، الفنادق، وشركات تقديم الطعام في جميع أنحاء المملكة العربية السعودية.",
+    "existingCustomerQuestion": "هل أنت عميل حالي لدى مصادر الطعام؟ *",
+    "status": "الحالة",
+    "type": "النوع",
+    "info": "المعلومات",
+    "contact": "التواصل",
+    "docs": "المستندات",
+    "existingCustomer": "عميل حالي",
+    "newCustomer": "عميل جديد",
+    "accountType": "نوع الحساب",
+    "selectAccountType": "اختر نوع الحساب",
+    "cashAccount": "حساب نقدي",
+    "creditAccount": "حساب ائتماني",
+    "addCheeseDairy": "إضافة أجبان وألبان",
+    "addOlivesPickles": "إضافة زيتون ومخللات",
+    "chooseAccountType": "اختر نوع الحساب الذي تريد فتحه",
+    "newCustomerInfo": "كعميل جديد، ستبدأ بحساب نقدي. بعد 3 أشهر من الشراكة النشطة، يمكنك التقديم للحساب الائتماني.",
+    "fullCatalog": "الوصول إلى كتالوج المنتجات الكامل",
+    "competitivePricing": "أسعار الجملة التنافسية",
+    "nextDayDelivery": "التوصيل في اليوم التالي في جميع أنحاء المملكة",
+    "dedicatedManager": "مدير حساب مخصص",
+    "selectAccountTypeExisting": "اختر نوع الحساب *",
+    "openCreditAccount": "فتح حساب ائتماني",
+    "upgradeToCredit": "الترقية من النقد إلى الشروط الائتمانية",
+    "expandProductAccess": "توسيع الوصول إلى المنتجات",
+    "businessInformation": "معلومات العمل",
+    "contactInformation": "معلومات التواصل",
+    "requiredDocuments": "المستندات المطلوبة",
+    "tellUsAboutCompany": "أخبرنا عن شركتك",
+    "commercialNameLabel": "الاسم التجاري *",
+    "commercialRegisterLabel": "رقم السجل التجاري *",
+    "crIssueDateLabel": "تاريخ إصدار السجل التجاري *",
+    "crIssuePlaceLabel": "مكان إصدار السجل التجاري *",
+    "businessActivityLabel": "نوع النشاط التجاري *",
+    "accountHolderNameLabel": "اسم صاحب الحساب *",
+    "civilRegisterLabel": "رقم السجل المدني *",
+    "crExpiryDateLabel": "تاريخ انتهاء السجل التجاري *",
+    "howCanWeReachYou": "كيف يمكننا التواصل معك؟",
+    "officialMobileLabel": "رقم الجوال الرسمي *",
+    "emailAddressLabel": "عنوان البريد الإلكتروني *",
+    "confirmEmailLabel": "تأكيد البريد الإلكتروني *",
+    "vatNumberLabel": "رقم الضريبة المضافة *",
+    "nationalAddressLabel": "رمز العنوان الوطني *",
+    "uploadDocuments": "يرجى رفع المستندات التالية لإكمال طلبك",
+    "businessDocuments": "المستندات التجارية",
+    "personalDocuments": "المستندات الشخصية",
+    "clickToUpload": "انقر للرفع",
+    "termsAndConditions": "أؤكد أن جميع المعلومات المقدمة دقيقة وأوافق على الشروط والأحكام وسياسة الخصوصية لشركة مصادر الطعام للتجارة",
+    "commercialName": "الاسم التجاري",
+    "commercialRegisterNumber": "رقم السجل التجاري",
+    "crIssueDate": "تاريخ إصدار السجل التجاري",
+    "crIssuePlace": "مكان إصدار السجل التجاري",
+    "businessActivity": "نوع النشاط التجاري",
+    "accountHolderName": "اسم صاحب الحساب",
+    "civilRegisterNumber": "رقم السجل المدني",
+    "crExpiryDate": "تاريخ انتهاء السجل التجاري",
+    "mobileNumber": "رقم الجوال",
+    "email": "البريد الإلكتروني",
+    "emailConfirm": "تأكيد البريد الإلكتروني",
+    "vatNumber": "رقم الضريبة المضافة",
+    "nationalAddressCode": "رمز العنوان الوطني",
+    "uploadDocuments": "رفع المستندات",
+    "commercialRegister": "السجل التجاري",
+    "vatCertificate": "شهادة الضريبة المضافة",
+    "municipalLicense": "رخصة البلدية",
+    "chamberCommerce": "غرفة التجارة",
+    "nationalAddress": "العنوان الوطني",
+    "holderId": "هوية صاحب الحساب",
+    "storefrontPhoto": "صورة واجهة المتجر",
+    "termsAccepted": "موافقة على الشروط والأحكام",
+    "previous": "السابق",
+    "next": "التالي",
+    "submit": "تقديم",
+    "success": {
+      "title": "تم تقديم الطلب بنجاح!",
+      "message": "شكراً لاهتمامك بالشراكة مع شركة مصادر الطعام للتجارة.",
+      "referenceNumber": "رقم المرجع:",
+      "whatHappensNext": "ماذا يحدث بعد ذلك؟",
+      "step1": "يقوم فريقنا بمراجعة طلبك (1-2 يوم)",
+      "step2": "ستتلقى مكالمة تأكيد",
+      "step3": "إرسال بيانات اعتماد الحساب إلى بريدك الإلكتروني"
+    },
+    "businessTypes": {
+      "Hotel": "فندق",
+      "Restaurant": "مطعم",
+      "Café / Coffee Shop": "مقهى/مقهى قهوة",
+      "Catering Company": "شركة تقديم طعام",
+      "Retail Store / Grocery": "متجر تجزئة/بقالة",
+      "Supermarket / Hypermarket": "سوبر ماركت/هايبر ماركت",
+      "Wholesaler / Distributor": "تاجر جملة/موزع",
+      "Food Truck": "شاحنة طعام",
+      "Cloud Kitchen": "مطبخ سحابي",
+      "Other": "أخرى"
+    },
+    "cities": {
+      "Riyadh": "الرياض",
+      "Jeddah": "جدة",
+      "Mecca": "مكة",
+      "Medina": "المدينة",
+      "Dammam": "الدمام",
+      "Khobar": "الخبر",
+      "Tabuk": "تبوك",
+      "Abha": "أبها",
+      "Hail": "حائل",
+      "Najran": "نجران",
+      "Jazan": "جازان",
+      "Al-Baha": "الباحة",
+      "Arar": "عرعر",
+      "Sakaka": "سكاكا"
     }
   },
   "faq": {

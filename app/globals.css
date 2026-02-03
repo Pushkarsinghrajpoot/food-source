@@ -78,6 +78,72 @@
   --color-sage: #8BA888;
 }
 
+/* ☀️ LIGHT THEME - Explicit selector for theme switching */
+[data-theme="light"] {
+  /* Primary Colors - Deep Forest */
+  --color-primary: #1B3A2F;
+  --color-primary-hover: #162E26;
+  --color-primary-light: #E8F0ED;
+  
+  /* Accent Colors - Burnt Sienna */
+  --color-accent: #D97757;
+  --color-accent-hover: #C35F3F;
+  --color-accent-light: #FDF5F1;
+  
+  /* Secondary Accent - Sage Green */
+  --color-secondary: #8BA888;
+  --color-secondary-hover: #6F8A6D;
+  --color-secondary-light: #F2F6F2;
+  
+  /* Gold Accent */
+  --color-gold: #C9A961;
+  --color-gold-hover: #B3924D;
+  --color-gold-light: #FAF7F0;
+  
+  /* Background Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F1ED;
+  --color-bg-tertiary: #EBE3DB;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #FFFFFF;
+  
+  /* Border Colors */
+  --color-border: #E5E7EB;
+  --color-border-hover: #D1D5DB;
+  
+  /* Text Colors */
+  --color-text-primary: #0F1419;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #6B7280;
+  --color-text-muted: #9CA3AF;
+  --color-text-on-primary: #FFFFFF;
+  --color-text-on-accent: #FFFFFF;
+  
+  /* Semantic Colors */
+  --color-success: #2E7D32;
+  --color-success-light: #E8F5E9;
+  --color-warning: #ED6C02;
+  --color-warning-light: #FFF4E5;
+  --color-error: #D32F2F;
+  --color-error-light: #FFEBEE;
+  --color-info: #0288D1;
+  --color-info-light: #E1F5FE;
+  
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
+  
+  /* Legacy Color Support */
+  --color-forest: #1B3A2F;
+  --color-slate: #0F1419;
+  --color-stone: #F5F1ED;
+  --color-sienna: #D97757;
+  --color-sage: #8BA888;
+}
+
 /* 🌙 DARK THEME - B2B Modern Design */
 [data-theme="dark"] {
   /* Primary Colors - Deep Forest (adjusted) */

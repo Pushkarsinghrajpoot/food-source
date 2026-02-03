@@ -24,29 +24,29 @@ export default function CareersPage() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-cream to-white py-20">
+      <section className="py-20" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-primary))' }}>
         <div className="container-custom text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-charcoal mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>
             {t('hero.title') || 'Join Our Team'}
           </h1>
-          <p className="text-xl text-charcoal-600 max-w-2xl mx-auto">
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
             {t('hero.subtitle') || 'Build your career with Saudi Arabia\'s leading food distribution company'}
           </p>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Join Us</h2>
+          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--color-text-primary)' }}>Why Join Us</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-olive/10 rounded-full mb-4">
                   <benefit.icon className="text-olive" size={32} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">{benefit.title}</h3>
-                <p className="text-charcoal-600 text-sm">{benefit.description}</p>
+                <h3 className="font-semibold text-lg mb-2" style={{ color: 'var(--color-text-primary)' }}>{benefit.title}</h3>
+                <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -54,16 +54,16 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions */}
-      <section className="py-16 bg-cream">
+      <section className="py-16" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center mb-12">Open Positions</h2>
+          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--color-text-primary)' }}>Open Positions</h2>
           <div className="space-y-4 max-w-3xl mx-auto">
             {openings.map((job, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div key={index} className="p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: 'var(--color-surface)' }}>
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-charcoal mb-2">{job.title}</h3>
-                    <div className="flex gap-4 text-sm text-charcoal-600">
+                    <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--color-text-primary)' }}>{job.title}</h3>
+                    <div className="flex gap-4 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
                       <span>{job.department}</span>
                       <span>•</span>
                       <span>{job.location}</span>

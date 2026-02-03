@@ -34,58 +34,58 @@ export default function Footer({ locale }: FooterProps) {
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white">Food Sources</h3>
             <p className="text-sm leading-relaxed text-gray-400">
-              Premium Mediterranean ingredients for Saudi Arabia's finest kitchens since 2015.
+              {t('about')}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">PRODUCTS</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">{t('productsTitle')}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}/products?category=olives`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  Olives
+                  {t('olives')}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/products?category=cheeses`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  Cheeses
+                  {t('cheeses')}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/products?category=pickles`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  Pickles
+                  {t('pickles')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">COMPANY</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">{navT('about')}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}/about`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  About
+                  {navT('about')}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/careers`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  Careers
+                  {t('careers')}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/blog`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  Blog
+                  {navT('blog')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">PARTNERSHIP</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">{navT('openAccount')}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}/onboarding`} className="text-sm transition-colors hover:text-white text-gray-400">
-                  Open Account
+                  {navT('openAccount')}
                 </Link>
               </li>
               <li>
@@ -102,19 +102,19 @@ export default function Footer({ locale }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">CONTACT</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider mb-6 text-white">{navT('contact')}</h4>
             <ul className="space-y-3">
               <li className="text-sm text-gray-400">
                 Riyadh HQ
               </li>
               <li>
                 <a href="tel:+966XXXXXXX" className="text-sm transition-colors hover:text-white text-gray-400">
-                  +966 XX XXX XXXX
+                  {t('phone')}
                 </a>
               </li>
               <li>
                 <a href="mailto:contact@foodsources.com.sa" className="text-sm transition-colors hover:text-white text-gray-400">
-                  contact@foodsources.com.sa
+                  {t('email')}
                 </a>
               </li>
             </ul>
@@ -124,7 +124,7 @@ export default function Footer({ locale }: FooterProps) {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Food Sources  |  <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors text-gray-400">Privacy</Link>  |  <Link href={`/${locale}/terms`} className="hover:text-white transition-colors text-gray-400">Terms</Link>
+              © {new Date().getFullYear()} Food Sources  |  <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors text-gray-400">{t('privacy')}</Link>  |  <Link href={`/${locale}/terms`} className="hover:text-white transition-colors text-gray-400">{t('terms')}</Link>
             </p>
             
             <div className="flex items-center gap-6">

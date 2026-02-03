@@ -7,10 +7,12 @@ import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, T
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
 import { getProductById, getRelatedProducts } from "@/data/products"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import productTranslations from "@/data/productTranslations.json"
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const locale = useLocale()
+  const t = useTranslations('productDetail')
   const [productId, setProductId] = useState<string>('')
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
@@ -33,17 +35,46 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const product = productId ? getProductById(productId) : null
   const relatedProducts = productId ? getRelatedProducts(productId) : []
 
+  // Get translated product data for Arabic
+  const getTranslatedProduct = (product: any) => {
+    if (locale === 'ar' && product && product.id && productTranslations[product.id as keyof typeof productTranslations]) {
+      const translation = productTranslations[product.id as keyof typeof productTranslations]
+      return {
+        ...product,
+        name: translation.name || product.name,
+        description: translation.description || product.description,
+        origin: translation.origin || product.origin,
+        sizes: translation.sizes || product.sizes,
+        shelfLife: translation.shelfLife || product.shelfLife,
+        storage: translation.storage || product.storage,
+        certification: translation.certification || product.certification,
+        suggestedUses: translation.suggestedUses || product.suggestedUses,
+        reviews: (translation as any).reviews && product.reviews ? {
+          ...product.reviews,
+          comments: (translation as any).reviews.comments.map((comment: any, index: number) => ({
+            ...product.reviews?.comments[index],
+            comment: comment.comment
+          }))
+        } : product.reviews
+      }
+    }
+    return product
+  }
+
+  const translatedProduct = getTranslatedProduct(product)
+  const displayProduct = translatedProduct || product
+
   if (!product) {
     return (
       <div className="pt-20 min-h-screen flex items-center justify-center">
-        <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>Product not found</p>
+        <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('notFound')}</p>
       </div>
     )
   }
 
   const handleDownloadPDF = () => {
     // Simulate PDF download
-    alert('Product specification sheet will be downloaded. This is a demo - integrate with actual PDF generation/storage.')
+    alert(t('downloadAlert'))
   }
 
   return (
@@ -52,13 +83,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       <div className="py-4" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
         <div className="container-custom">
           <nav className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-            <Link href="/" className="hover:underline">Home</Link>
+            <Link href={`/${locale}`} className="hover:underline">{t('breadcrumb.home')}</Link>
             <span className="mx-2">/</span>
-            <Link href="/products" className="hover:underline">Products</Link>
+            <Link href={`/${locale}/products`} className="hover:underline">{t('breadcrumb.products')}</Link>
             <span className="mx-2">/</span>
-            <Link href="/products?category=olives" className="hover:underline">Olives</Link>
+            <Link href={`/${locale}/products?category=${product.category.toLowerCase()}`} className="hover:underline">{t(`breadcrumb.${product.category.toLowerCase()}`)}</Link>
             <span className="mx-2">/</span>
-            <span style={{ color: 'var(--color-text-primary)' }}>Greek Kalamata Olives</span>
+            <span style={{ color: 'var(--color-text-primary)' }}>{displayProduct.name}</span>
           </nav>
         </div>
       </div>
@@ -91,7 +122,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   >
                     <Image
                       src={img}
-                      alt={`Product view ${i + 1}`}
+                      alt={`${t('productView')} ${i + 1}`}
                       fill
                       className="object-cover"
                     />
@@ -106,38 +137,38 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                 <span className="inline-block text-sm font-medium px-4 py-2 rounded-full mb-4" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
                   {product.category}
                 </span>
-                <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{product.name}</h1>
-                <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>Sourced from {product.origin}</p>
+                <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.name}</h1>
+                <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>{t('sourcedFrom')} {displayProduct.origin}</p>
               </div>
 
-              <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{product.description}</p>
+              <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{displayProduct.description}</p>
 
               <div className="py-6 space-y-4" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Available Sizes</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.sizes.join(', ')}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('availableSizes')}</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.sizes.join(', ')}</p>
                   </div>
                   <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Shelf Life</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.shelfLife}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('shelfLife')}</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.shelfLife}</p>
                   </div>
                   <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Storage</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.storage}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('storage')}</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.storage}</p>
                   </div>
                   <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Certification</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.certification}</p>
+                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('certification')}</p>
+                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.certification}</p>
                   </div>
                 </div>
               </div>
 
               {/* Pack Size Selector */}
               <div>
-                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>Select Pack Size</label>
+                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>{t('selectPackSize')}</label>
                 <div className="grid grid-cols-3 gap-3">
-                  {product.sizes.map((size) => (
+                  {displayProduct.sizes.map((size: string) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
@@ -156,7 +187,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
               {/* Quantity */}
               <div>
-                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>Quantity</label>
+                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>{t('quantity')}</label>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center rounded-lg" style={{ border: '2px solid var(--color-border)' }}>
                     <button
@@ -183,20 +214,20 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               {/* Actions */}
               <div className="space-y-3 pt-4">
                 <div className="text-center mb-4 p-4 rounded-lg" style={{ backgroundColor: 'var(--color-primary-light)', border: '1px solid var(--color-primary)' }}>
-                  <p className="text-sm font-medium mb-2" style={{ color: 'var(--color-primary)' }}>Interested in this product?</p>
+                  <p className="text-sm font-medium mb-2" style={{ color: 'var(--color-primary)' }}>{t('interestedMessage')}</p>
                 </div>
                 <Link href={`/${locale}/onboarding?product=${product.id}`}>
                   <Button variant="primary" size="lg" className="w-full">
-                    Open Account to Order
+                    {t('openAccountToOrder')}
                   </Button>
                 </Link>
                 <Button onClick={handleDownloadPDF} variant="outline" size="lg" className="w-full">
                   <Download size={20} className="mr-2" />
-                  Download Product Spec Sheet (PDF)
+                  {t('downloadSpecSheet')}
                 </Button>
                 <Link href={`/${locale}/contact?product=${product.id}`}>
                   <Button variant="ghost" size="lg" className="w-full">
-                    Contact for Bulk Pricing
+                    {t('contactBulkPricing')}
                   </Button>
                 </Link>
               </div>
@@ -205,15 +236,15 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               <div className="flex items-center gap-6 pt-6" style={{ borderTop: '1px solid var(--color-border)' }}>
                 <div className="flex items-center gap-2">
                   <Shield size={24} style={{ color: 'var(--color-primary)' }} />
-                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Food Safe</span>
+                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>{t('trust.foodSafe')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Award size={24} style={{ color: 'var(--color-primary)' }} />
-                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Halal</span>
+                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>{t('trust.halal')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Package size={24} style={{ color: 'var(--color-primary)' }} />
-                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Premium</span>
+                  <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>{t('trust.premium')}</span>
                 </div>
               </div>
             </div>
@@ -233,7 +264,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   className="pb-4 font-medium capitalize transition-colors relative"
                   style={{ color: activeTab === tab ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
                 >
-                  {tab}
+                  {t(`tabs.${tab}`)}
                   {activeTab === tab && (
                     <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ backgroundColor: 'var(--color-primary)' }} />
                   )}
@@ -245,13 +276,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           <div className="rounded-2xl p-8" style={{ backgroundColor: 'var(--color-surface)' }}>
             {activeTab === 'description' && (
               <div className="prose max-w-none">
-                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Product Description</h3>
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.description')}</h3>
                 <p className="leading-relaxed mb-4" style={{ color: 'var(--color-text-secondary)' }}>
-                  {product.description}
+                  {displayProduct.description}
                 </p>
-                <h4 className="text-xl font-semibold mt-6 mb-3" style={{ color: 'var(--color-text-primary)' }}>Suggested Uses</h4>
+                <h4 className="text-xl font-semibold mt-6 mb-3" style={{ color: 'var(--color-text-primary)' }}>{t('suggestedUses')}</h4>
                 <ul className="list-disc list-inside space-y-2" style={{ color: 'var(--color-text-secondary)' }}>
-                  {product.suggestedUses.map((use, idx) => (
+                  {displayProduct.suggestedUses.map((use: string, idx: number) => (
                     <li key={idx}>{use}</li>
                   ))}
                 </ul>
@@ -259,27 +290,27 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             )}
             {activeTab === 'nutritional' && (
               <div>
-                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Nutritional Information</h3>
-                <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>Per 100g serving</p>
-                {product.nutritional ? (
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.nutritional')}</h3>
+                <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>{t('perServing')}</p>
+                {displayProduct.nutritional ? (
                   <table className="w-full">
                     <tbody style={{ borderTop: '1px solid var(--color-border)' }}>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Energy</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.energy}</td></tr>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Fat</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.fat}</td></tr>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Carbohydrates</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.carbohydrates}</td></tr>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Protein</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.protein}</td></tr>
-                      <tr><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>Sodium</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.nutritional.sodium}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.energy')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.energy}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.fat')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.fat}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.carbohydrates')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.carbohydrates}</td></tr>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.protein')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.protein}</td></tr>
+                      <tr><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.sodium')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.sodium}</td></tr>
                     </tbody>
                   </table>
                 ) : (
-                  <p style={{ color: 'var(--color-text-secondary)' }}>Nutritional information not available</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.notAvailable')}</p>
                 )}
               </div>
             )}
             {activeTab === 'reviews' && (
               <div>
-                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Customer Reviews</h3>
-                {product.reviews && product.reviews.count > 0 ? (
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.reviews')}</h3>
+                {displayProduct.reviews && displayProduct.reviews.count > 0 ? (
                   <>
                     <div className="flex items-center gap-4 mb-6">
                       <div className="flex items-center gap-1">
@@ -287,15 +318,15 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                           <Star
                             key={i}
                             size={24}
-                            className={i < Math.round(product.reviews!.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-charcoal-300'}
+                            className={i < Math.round(displayProduct.reviews!.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-charcoal-300'}
                           />
                         ))}
                       </div>
-                      <span className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{product.reviews.rating}</span>
-                      <span style={{ color: 'var(--color-text-secondary)' }}>({product.reviews.count} reviews)</span>
+                      <span className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.reviews.rating}</span>
+                      <span style={{ color: 'var(--color-text-secondary)' }}>({displayProduct.reviews.count} {t('reviews')})</span>
                     </div>
                     <div className="space-y-6">
-                      {product.reviews.comments.map((review, idx) => (
+                      {displayProduct.reviews.comments.map((review: any, idx: number) => (
                         <div key={idx} className="pb-6 last:border-0" style={{ borderBottom: '1px solid var(--color-border)' }}>
                           <div className="flex items-center gap-2 mb-2">
                             <span className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{review.author}</span>
@@ -316,26 +347,26 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                     </div>
                   </>
                 ) : (
-                  <p style={{ color: 'var(--color-text-secondary)' }}>No reviews yet. Be the first to review this product!</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>{t('noReviews')}</p>
                 )}
               </div>
             )}
             {activeTab === 'shipping' && (
               <div>
-                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Shipping Information</h3>
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.shipping')}</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <Truck className="mt-1" size={24} style={{ color: 'var(--color-primary)' }} />
                     <div>
-                      <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>Delivery Time</p>
-                      <p style={{ color: 'var(--color-text-secondary)' }}>Next-day delivery available across Riyadh, Jeddah, and Dammam. 2-3 days for other locations in KSA.</p>
+                      <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{t('shipping.deliveryTime')}</p>
+                      <p style={{ color: 'var(--color-text-secondary)' }}>{t('shipping.deliveryTimeDesc')}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Package className="mt-1" size={24} style={{ color: 'var(--color-primary)' }} />
                     <div>
-                      <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>Minimum Order</p>
-                      <p style={{ color: 'var(--color-text-secondary)' }}>Minimum order quantity: 2 units. Free delivery on orders above 500 SAR.</p>
+                      <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{t('shipping.minimumOrder')}</p>
+                      <p style={{ color: 'var(--color-text-secondary)' }}>{t('shipping.minimumOrderDesc')}</p>
                     </div>
                   </div>
                 </div>
@@ -348,7 +379,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       {/* Related Products */}
       <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--color-text-primary)' }}>You May Also Like</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--color-text-primary)' }}>{t('relatedProducts')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {relatedProducts.map((prod) => (
               <Card key={prod.id} hover className="overflow-hidden group">
@@ -367,7 +398,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   <h3 className="text-lg font-semibold mt-3 mb-2" style={{ color: 'var(--color-text-primary)' }}>{prod.name}</h3>
                   <p className="text-sm mb-4" style={{ color: 'var(--color-text-secondary)' }}>{prod.origin}</p>
                   <Link href={`/${locale}/products/${prod.id}`} className="font-medium text-sm hover:underline inline-flex items-center gap-1" style={{ color: 'var(--color-primary)' }}>
-                    View Details <ArrowRight size={16} />
+                    {t('viewDetails')} <ArrowRight size={16} />
                   </Link>
                 </div>
               </Card>

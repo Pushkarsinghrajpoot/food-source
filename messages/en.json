@@ -588,5 +588,75 @@
       "callLabel": "Or call us directly:",
       "hours": "Sunday - Thursday: 9:00 AM - 6:00 PM"
     }
+  },
+  "productDetail": {
+    "notFound": "Product not found",
+    "breadcrumb": {
+      "home": "Home",
+      "products": "Products",
+      "olives": "Olives",
+      "cheeses": "Cheeses",
+      "pickles": "Pickles",
+      "labneh": "Labneh"
+    },
+    "sourcedFrom": "Sourced from",
+    "availableSizes": "Available Sizes",
+    "shelfLife": "Shelf Life",
+    "storage": "Storage",
+    "certification": "Certification",
+    "selectPackSize": "Select Pack Size",
+    "openAccountToOrder": "Open an account to place orders",
+    "requestQuote": "Request a Quote",
+    "tabs": {
+      "description": "Description",
+      "nutritional": "Nutritional",
+      "shipping": "Shipping",
+      "reviews": "Reviews"
+    },
+    "suggestedUses": "Suggested Uses",
+    "perServing": "Per Serving",
+    "nutritional": {
+      "energy": "Energy",
+      "fat": "Fat",
+      "carbohydrates": "Carbohydrates",
+      "protein": "Protein",
+      "sodium": "Sodium",
+      "notAvailable": "Nutritional information not available"
+    },
+    "shipping": {
+      "title": "Shipping Information",
+      "subtitle": "Fast and reliable delivery across Saudi Arabia",
+      "nextDay": "Next-day delivery available in major cities",
+      "tracking": "Real-time tracking provided",
+      "packaging": "Secure packaging to ensure freshness"
+    },
+    "reviews": {
+      "title": "Customer Reviews",
+      "subtitle": "What our partners say about our products",
+      "rating": "Rating",
+      "basedOn": "Based on",
+      "reviews": "reviews",
+      "writeReview": "Write a Review"
+    },
+    "related": {
+      "title": "Related Products",
+      "subtitle": "You might also like"
+    },
+    "trust": {
+      "foodSafe": "Food Safe Certified",
+      "qualityGuaranteed": "Quality Guaranteed",
+      "fastDelivery": "Fast Delivery",
+      "bestPrice": "Best Price Guaranteed",
+      "halal": "Halal Certified",
+      "premium": "Premium Quality"
+    },
+    "quantity": "Quantity",
+    "interestedMessage": "Interested in this product? Open an account to place orders",
+    "downloadSpecSheet": "Download Spec Sheet",
+    "contactBulkPricing": "Contact for Bulk Pricing",
+    "downloadAlert": "Product specifications downloaded successfully!",
+    "productView": "Product Image",
+    "relatedProducts": "Related Products",
+    "viewDetails": "View Details"
   }
 }

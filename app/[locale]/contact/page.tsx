@@ -10,6 +10,7 @@ import Card from "@/components/ui/Card"
 
 export default function ContactPage() {
   const t = useTranslations('contact')
+  const navT = useTranslations('nav')
   const locale = useLocale()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success'>('idle')
   const [formData, setFormData] = useState({
@@ -36,64 +37,67 @@ export default function ContactPage() {
   return (
     <div className="pt-18">
       {/* Hero - Modern Gradient */}
-      <section className="py-24" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg-tertiary) 100%)' }}>
         <div className="max-w-container mx-auto px-6 lg:px-12 text-center">
-          <div className="inline-block px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold mb-8" style={{ backgroundColor: 'rgba(201, 169, 97, 0.2)', color: '#C9A961', border: '1px solid rgba(201, 169, 97, 0.3)' }}>
-            Contact Us
+          <div className="inline-block px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold mb-8" style={{ backgroundColor: 'var(--color-gold-light)', color: 'var(--color-gold)', border: '1px solid var(--color-gold)' }}>
+            {navT('contact')}
           </div>
-          <h1 className="text-5xl md:text-6xl font-black mb-6 text-white">
-            Get in Touch
+          <h1 className="text-5xl md:text-6xl font-black mb-6" style={{ color: 'var(--color-text-on-primary)' }}>
+            {t('hero.title')}
           </h1>
-          <p className="text-xl max-w-2xl mx-auto text-gray-300">
-            We're here to help with your partnership inquiries
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>
+            {t('hero.subtitle')}
           </p>
         </div>
       </section>
 
       {/* Contact Options - 3 Cards */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8 mb-24">
-            <div className="bg-white rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl">
+            <div className="rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-orange-100">
                 <Mail size={32} className="text-orange-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Open Account</h3>
-              <p className="mb-4 text-sm text-gray-600">Start your partnership</p>
-              <p className="text-sm mb-6 text-gray-500">Sun-Thu: 9am-6pm</p>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{t('options.openAccount.title')}</h3>
+              <p className="mb-4 text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('options.openAccount.subtitle')}</p>
+              <p className="text-sm mb-6" style={{ color: 'var(--color-text-tertiary)' }}>{t('options.openAccount.hours')}</p>
               <Link href={`/${locale}/onboarding`}>
-                <button className="px-6 py-2.5 rounded-full border-2 border-gray-900 text-gray-900 transition-all font-semibold hover:bg-gray-900 hover:text-white">
-                  Start →
+                <button className="px-6 py-2.5 rounded-full border-2 transition-all font-semibold" style={{ borderColor: 'var(--color-text-primary)', color: 'var(--color-text-primary)' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-text-primary)'; e.currentTarget.style.color = 'var(--color-bg-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)'; }}>
+                  {t('options.openAccount.button')}
                 </button>
               </Link>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl">
+            <div className="rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-orange-100">
                 <Phone size={32} className="text-orange-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Call Us</h3>
-              <p className="mb-4 text-lg font-semibold text-orange-600">+966 XX XXX XXXX</p>
-              <p className="text-sm mb-6 text-gray-500">Sun-Thu: 9am-6pm</p>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{t('options.call.title')}</h3>
+              <p className="mb-4 text-lg font-semibold text-orange-600">{t('options.call.phone')}</p>
+              <p className="text-sm mb-6" style={{ color: 'var(--color-text-tertiary)' }}>{t('options.call.hours')}</p>
               <a href="tel:+966XXXXXXXX">
-                <button className="px-6 py-2.5 rounded-full border-2 border-gray-900 text-gray-900 transition-all font-semibold hover:bg-gray-900 hover:text-white">
-                  Call →
+                <button className="px-6 py-2.5 rounded-full border-2 transition-all font-semibold" style={{ borderColor: 'var(--color-text-primary)', color: 'var(--color-text-primary)' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-text-primary)'; e.currentTarget.style.color = 'var(--color-bg-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)'; }}>
+                  {t('options.call.button')}
                 </button>
               </a>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl">
+            <div className="rounded-2xl p-8 text-center transition-all hover:-translate-y-2 shadow-lg hover:shadow-2xl" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-green-100">
                 <MessageCircle size={32} style={{ color: '#16a34a' }} />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">WhatsApp</h3>
-              <p className="mb-4 text-sm text-gray-600">Chat with our team</p>
-              <p className="text-sm mb-6 text-gray-500">Instant response</p>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{t('options.whatsapp.title')}</h3>
+              <p className="mb-4 text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('options.whatsapp.subtitle')}</p>
+              <p className="text-sm mb-6" style={{ color: 'var(--color-text-tertiary)' }}>{t('options.whatsapp.response')}</p>
               <button 
                 onClick={() => window.open('https://wa.me/966XXXXXXXXX', '_blank')}
-                className="px-6 py-2.5 rounded-full border-2 border-gray-900 text-gray-900 transition-all font-semibold hover:bg-gray-50"
+                className="px-6 py-2.5 rounded-full border-2 transition-all font-semibold"
+                style={{ borderColor: 'var(--color-text-primary)', color: 'var(--color-text-primary)' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-secondary)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
               >
-                Open →
+                {t('options.whatsapp.button')}
               </button>
             </div>
           </div>
@@ -101,20 +105,20 @@ export default function ContactPage() {
           {/* Contact Form - Two Column */}
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900">Send Us a Message</h2>
-              <p className="mb-8 text-lg text-gray-600">
-                Fill out the form and we'll respond within 24 hours.
+              <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('form.title')}</h2>
+              <p className="mb-8 text-lg" style={{ color: 'var(--color-text-secondary)' }}>
+                {t('form.subtitle')}
               </p>
               
               <div className="space-y-6">
                 <div>
-                  <p className="font-semibold mb-1 text-gray-900">Office Hours:</p>
-                  <p className="text-sm text-gray-600">Sun-Thu: 9am-6pm KSA</p>
+                  <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{t('info.hours.title')}:</p>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('info.hours.value')}</p>
                 </div>
                 
                 <div>
-                  <p className="font-semibold mb-1 text-gray-900">Email:</p>
-                  <p className="text-sm text-gray-600">contact@foodsources.com.sa</p>
+                  <p className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{t('info.email.title')}:</p>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('info.email.value')}</p>
                 </div>
               </div>
             </div>

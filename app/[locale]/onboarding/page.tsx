@@ -42,35 +42,71 @@ interface FormData {
   termsAccepted: boolean
 }
 
-const businessTypes = [
-  'Hotel',
-  'Restaurant', 
-  'Café / Coffee Shop',
-  'Catering Company',
-  'Retail Store / Grocery',
-  'Supermarket / Hypermarket',
-  'Wholesaler / Distributor',
-  'Food Truck',
-  'Cloud Kitchen',
-  'Other'
-]
+const getBusinessTypes = (locale: string) => {
+  if (locale === 'ar') {
+    return [
+      'فندق',
+      'مطعم',
+      'مقهى/مقهى قهوة',
+      'شركة تقديم طعام',
+      'متجر تجزئة/بقالة',
+      'سوبر ماركت/هايبر ماركت',
+      'تاجر جملة/موزع',
+      'شاحنة طعام',
+      'مطبخ سحابي',
+      'أخرى'
+    ]
+  }
+  return [
+    'Hotel',
+    'Restaurant', 
+    'Café / Coffee Shop',
+    'Catering Company',
+    'Retail Store / Grocery',
+    'Supermarket / Hypermarket',
+    'Wholesaler / Distributor',
+    'Food Truck',
+    'Cloud Kitchen',
+    'Other'
+  ]
+}
 
-const cities = [
-  'Riyadh',
-  'Jeddah',
-  'Mecca',
-  'Medina',
-  'Dammam',
-  'Khobar',
-  'Tabuk',
-  'Abha',
-  'Hail',
-  'Najran',
-  'Jazan',
-  'Al-Baha',
-  'Arar',
-  'Sakaka'
-]
+const getCities = (locale: string) => {
+  if (locale === 'ar') {
+    return [
+      'الرياض',
+      'جدة',
+      'مكة',
+      'المدينة',
+      'الدمام',
+      'الخبر',
+      'تبوك',
+      'أبها',
+      'حائل',
+      'نجران',
+      'جازان',
+      'الباحة',
+      'عرعر',
+      'سكاكا'
+    ]
+  }
+  return [
+    'Riyadh',
+    'Jeddah',
+    'Mecca',
+    'Medina',
+    'Dammam',
+    'Khobar',
+    'Tabuk',
+    'Abha',
+    'Hail',
+    'Najran',
+    'Jazan',
+    'Al-Baha',
+    'Arar',
+    'Sakaka'
+  ]
+}
 
 export default function OnboardingPage() {
   const t = useTranslations('onboarding')
@@ -107,8 +143,10 @@ export default function OnboardingPage() {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
-  const handleFileUpload = (field: keyof FormData, file: File) => {
-    setFormData(prev => ({ ...prev, [field]: file }))
+  const handleFileUpload = (field: keyof FormData, file: File | undefined) => {
+    if (file) {
+      setFormData(prev => ({ ...prev, [field]: file }))
+    }
   }
 
   const nextStep = () => {
@@ -175,44 +213,44 @@ export default function OnboardingPage() {
               <Check size={48} style={{ color: 'var(--color-secondary)' }} />
             </div>
             <h1 className="text-4xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>
-              Application Submitted Successfully!
+              {t('success.title')}
             </h1>
             <p className="text-xl mb-12" style={{ color: 'var(--color-text-secondary)' }}>
-              Thank you for your interest in partnering with Food Sources Trading Co.
+              {t('success.message')}
             </p>
             
-            <div className="text-left mb-12 p-8 rounded-2xl bg-white shadow-md">
+            <div className="text-left mb-12 p-8 rounded-2xl shadow-md" style={{ backgroundColor: 'var(--color-surface)' }}>
               <p className="font-bold text-lg mb-8" style={{ color: 'var(--color-accent)' }}>
-                Reference Number: FST-2024-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}
+                {t('success.referenceNumber')} FST-2024-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}
               </p>
               <h3 className="font-bold text-xl mb-6" style={{ color: 'var(--color-text-primary)' }}>
-                What happens next?
+                {t('success.whatHappensNext')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-light)' }}>
                     <span className="font-bold text-sm" style={{ color: 'var(--color-accent)' }}>1</span>
                   </div>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>Our team reviews your application (1-2 days)</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>{t('success.step1')}</p>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-light)' }}>
                     <span className="font-bold text-sm" style={{ color: 'var(--color-accent)' }}>2</span>
                   </div>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>You'll receive a confirmation call</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>{t('success.step2')}</p>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-light)' }}>
                     <span className="font-bold text-sm" style={{ color: 'var(--color-accent)' }}>3</span>
                   </div>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>Account credentials sent to your email</p>
+                  <p style={{ color: 'var(--color-text-secondary)' }}>{t('success.step3')}</p>
                 </div>
               </div>
             </div>
 
             <div className="mb-12 p-6 rounded-xl" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
               <h3 className="font-bold text-lg mb-3" style={{ color: 'var(--color-text-primary)' }}>
-                Questions?
+                {t('questions')}
               </h3>
               <div className="flex items-center justify-center gap-6" style={{ color: 'var(--color-text-secondary)' }}>
                 <div className="flex items-center gap-2">
@@ -229,12 +267,12 @@ export default function OnboardingPage() {
             <div className="flex gap-4 justify-center">
               <Link href={`/${locale}`}>
                 <button className="px-8 py-3 rounded-full font-semibold transition-all hover:shadow-lift hover:-translate-y-1" style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-text-on-accent)' }}>
-                  Return to Homepage
+                  {t('returnToHomepage')}
                 </button>
               </Link>
               <Link href={`/${locale}/products`}>
                 <button className="px-8 py-3 rounded-full border-2 font-semibold transition-all hover:bg-gray-50" style={{ borderColor: 'var(--color-text-primary)', color: 'var(--color-text-primary)' }}>
-                  Browse Products
+                  {t('browseProducts')}
                 </button>
               </Link>
             </div>
@@ -250,7 +288,7 @@ export default function OnboardingPage() {
       <div className="py-12" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--color-text-primary)' }}>
-            Partnership Application
+            {t('partnershipApplication')}
           </h1>
           <div className="flex items-center justify-between mb-6">
             {[1, 2, 3, 4, 5].map((step) => (
@@ -276,11 +314,11 @@ export default function OnboardingPage() {
             ))}
           </div>
           <div className="flex justify-between text-xs text-center" style={{ color: 'var(--color-text-tertiary)' }}>
-            <span className="w-12">Status</span>
-            <span className="w-12">Type</span>
-            <span className="w-12">Info</span>
-            <span className="w-12">Contact</span>
-            <span className="w-12">Docs</span>
+            <span className="w-12">{t('status')}</span>
+            <span className="w-12">{t('type')}</span>
+            <span className="w-12">{t('info')}</span>
+            <span className="w-12">{t('contact')}</span>
+            <span className="w-12">{t('docs')}</span>
           </div>
         </div>
       </div>
@@ -288,26 +326,26 @@ export default function OnboardingPage() {
       {/* Form Container */}
       <div className="py-12">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
+          <div className="rounded-3xl p-8 md:p-12 shadow-lg" style={{ backgroundColor: 'var(--color-surface)' }}>
           {/* Step 1: Customer Status */}
           {currentStep === 1 && (
             <div>
               <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                Welcome to Food Sources
+                {t('welcome')}
               </h1>
               <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
-                Let's get you started with your partnership application
+                {t('welcomeSubtitle')}
               </p>
               
               <div className="mb-8 p-6 rounded-lg" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
                 <p className="mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                  Food Sources Trading Co. welcomes partnership requests from retailers, wholesalers, restaurants, hotels, and catering companies across Saudi Arabia.
+                  {t('partnershipInfo')}
                 </p>
               </div>
 
               <div className="mb-8">
                 <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                  Are you an existing customer of Food Sources? *
+                  {t('existingCustomerQuestion')}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <button
@@ -323,10 +361,10 @@ export default function OnboardingPage() {
                     }}
                   >
                     <div className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                      YES
+                      {locale === 'ar' ? 'نعم' : 'YES'}
                     </div>
                     <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                      I already have an account
+                      {locale === 'ar' ? 'لدي بالفعل حساب' : 'I already have an account'}
                     </div>
                   </button>
                   <button
@@ -342,10 +380,10 @@ export default function OnboardingPage() {
                     }}
                   >
                     <div className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                      NO
+                      {locale === 'ar' ? 'لا' : 'NO'}
                     </div>
                     <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                      I'm a new customer
+                      {locale === 'ar' ? 'أنا عميل جديد' : "I'm a new customer"}
                     </div>
                   </button>
                 </div>
@@ -359,7 +397,7 @@ export default function OnboardingPage() {
                   onClick={nextStep}
                   disabled={!isStepValid()}
                 >
-                  Next <ArrowRight size={16} className="ml-2" />
+                  {t('next')} <ArrowRight size={16} className="ml-2" />
                 </Button>
               </div>
             </div>
@@ -369,37 +407,37 @@ export default function OnboardingPage() {
           {currentStep === 2 && (
             <div>
               <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                Select Account Type
+                {t('selectAccountType')}
               </h1>
               <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
-                Choose the type of account you'd like to open
+                {t('chooseAccountType')}
               </p>
 
               {!formData.isExistingCustomer ? (
                 // New Customer Flow
                 <div className="mb-8 p-6 rounded-lg" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
                   <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                    Account Type: CASH ACCOUNT
+                    {t('accountType')}: {t('cashAccount')}
                   </h3>
                   <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>
-                    As a new customer, you'll start with a Cash Account. After 3 months of active partnership, you can apply for a Credit Account.
+                    {t('newCustomerInfo')}
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
                       <Check size={16} style={{ color: 'var(--color-primary)' }} />
-                      <span>Access to full product catalog</span>
+                      <span>{t('fullCatalog')}</span>
                     </div>
                     <div className="flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
                       <Check size={16} style={{ color: 'var(--color-primary)' }} />
-                      <span>Competitive wholesale pricing</span>
+                      <span>{t('competitivePricing')}</span>
                     </div>
                     <div className="flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
                       <Check size={16} style={{ color: 'var(--color-primary)' }} />
-                      <span>Next-day delivery across KSA</span>
+                      <span>{t('nextDayDelivery')}</span>
                     </div>
                     <div className="flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
                       <Check size={16} style={{ color: 'var(--color-primary)' }} />
-                      <span>Dedicated account manager</span>
+                      <span>{t('dedicatedManager')}</span>
                     </div>
                   </div>
                 </div>
@@ -407,7 +445,7 @@ export default function OnboardingPage() {
                 // Existing Customer Flow
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                    Select The Account Type *
+                    {t('selectAccountTypeExisting')}
                   </h3>
                   <div className="space-y-3">
                     <button
@@ -423,10 +461,10 @@ export default function OnboardingPage() {
                       }}
                     >
                       <div className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                        Open Credit Account
+                        {t('openCreditAccount')}
                       </div>
                       <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                        Upgrade from cash to credit terms
+                        {t('upgradeToCredit')}
                       </div>
                     </button>
                     <button
@@ -442,10 +480,10 @@ export default function OnboardingPage() {
                       }}
                     >
                       <div className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                        Add Cheese & Dairy Products
+                        {t('addCheeseDairy')}
                       </div>
                       <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                        Expand your product access
+                        {t('expandProductAccess')}
                       </div>
                     </button>
                     <button
@@ -461,10 +499,10 @@ export default function OnboardingPage() {
                       }}
                     >
                       <div className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                        Add Olives & Pickles Products
+                        {t('addOlivesPickles')}
                       </div>
                       <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                        Expand your product access
+                        {t('expandProductAccess')}
                       </div>
                     </button>
                   </div>
@@ -473,7 +511,7 @@ export default function OnboardingPage() {
 
               <div className="flex justify-between">
                 <Button variant="secondary" size="lg" onClick={prevStep}>
-                  <ArrowLeft size={16} className="mr-2" /> Back
+                  <ArrowLeft size={16} className="mr-2" /> {t('previous')}
                 </Button>
                 <Button 
                   variant="primary" 
@@ -481,7 +519,7 @@ export default function OnboardingPage() {
                   onClick={nextStep}
                   disabled={!isStepValid()}
                 >
-                  Continue <ArrowRight size={16} className="ml-2" />
+                  {t('next')} <ArrowRight size={16} className="ml-2" />
                 </Button>
               </div>
             </div>
@@ -491,16 +529,16 @@ export default function OnboardingPage() {
           {currentStep === 3 && (
             <div>
               <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                Business Information
+                {t('businessInformation')}
               </h1>
               <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
-                Tell us about your company
+                {t('tellUsAboutCompany')}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    Commercial Name *
+                    {t('commercialNameLabel')}
                   </label>
                   <input
                     type="text"
@@ -517,7 +555,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    Commercial Register Number *
+                    {t('commercialRegisterLabel')}
                   </label>
                   <input
                     type="text"
@@ -534,7 +572,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    CR Issue Date *
+                    {t('crIssueDateLabel')}
                   </label>
                   <input
                     type="date"
@@ -551,7 +589,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    CR Issue Place (Area) *
+                    {t('crIssuePlaceLabel')}(Area) *
                   </label>
                   <select
                     value={formData.crIssuePlace}
@@ -563,8 +601,8 @@ export default function OnboardingPage() {
                       color: 'var(--color-text-primary)'
                     }}
                   >
-                    <option value="">Select city...</option>
-                    {cities.map(city => (
+                    <option value="">{t('selectCity')}</option>
+                    {getCities(locale).map(city => (
                       <option key={city} value={city}>{city}</option>
                     ))}
                   </select>
@@ -572,7 +610,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    Type of Business Activity *
+                    {t('businessActivityLabel')}
                   </label>
                   <select
                     value={formData.businessType}
@@ -584,8 +622,8 @@ export default function OnboardingPage() {
                       color: 'var(--color-text-primary)'
                     }}
                   >
-                    <option value="">Select type...</option>
-                    {businessTypes.map(type => (
+                    <option value="">{t('selectType')}</option>
+                    {getBusinessTypes(locale).map(type => (
                       <option key={type} value={type}>{type}</option>
                     ))}
                   </select>
@@ -593,7 +631,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    Account Holder's Name *
+                    {t('accountHolderNameLabel')}
                   </label>
                   <input
                     type="text"
@@ -610,7 +648,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    Civil Register Number *
+                    {t('civilRegisterLabel')}
                   </label>
                   <input
                     type="text"
@@ -627,7 +665,7 @@ export default function OnboardingPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    CR Expiry Date *
+                    {t('crExpiryDateLabel')}
                   </label>
                   <input
                     type="date"
@@ -645,7 +683,7 @@ export default function OnboardingPage() {
 
               <div className="flex justify-between">
                 <Button variant="secondary" size="lg" onClick={prevStep}>
-                  <ArrowLeft size={16} className="mr-2" /> Back
+                  <ArrowLeft size={16} className="mr-2" /> {t('previous')}
                 </Button>
                 <Button 
                   variant="primary" 
@@ -653,7 +691,7 @@ export default function OnboardingPage() {
                   onClick={nextStep}
                   disabled={!isStepValid()}
                 >
-                  Continue <ArrowRight size={16} className="ml-2" />
+                  {t('next')} <ArrowRight size={16} className="ml-2" />
                 </Button>
               </div>
             </div>
@@ -663,16 +701,16 @@ export default function OnboardingPage() {
           {currentStep === 4 && (
             <div>
               <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                Contact Information
+                {t('contactInformation')}
               </h1>
               <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
-                How can we reach you?
+                {t('howCanWeReachYou')}
               </p>
 
               <div className="space-y-6 mb-8">
                 <div>
                   <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    Official Mobile Number *
+                    {t('officialMobileLabel')}
                   </label>
                   <div className="flex gap-2">
                     <div className="px-3 py-3 rounded-lg border" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
@@ -699,7 +737,7 @@ export default function OnboardingPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                      Email Address *
+                      {t('emailAddressLabel')}
                     </label>
                     <input
                       type="email"
@@ -716,12 +754,13 @@ export default function OnboardingPage() {
 
                   <div>
                     <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                      Confirm Email Address *
+                      {t('nationalAddressLabel')} (Short Code) *
                     </label>
                     <input
-                      type="email"
-                      value={formData.emailConfirm}
-                      onChange={(e) => updateFormData('emailConfirm', e.target.value)}
+                      type="text"
+                      placeholder="XXXX1234"
+                      value={formData.nationalAddressCode}
+                      onChange={(e) => updateFormData('nationalAddressCode', e.target.value)}
                       className="w-full p-3 rounded-lg border"
                       style={{
                         borderColor: 'var(--color-border)',
@@ -732,50 +771,139 @@ export default function OnboardingPage() {
                   </div>
                 </div>
 
-                <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                  Account credentials will be sent to this email
-                </p>
+                <div className="flex justify-between">
+                  <Button variant="secondary" size="lg" onClick={prevStep}>
+                    <ArrowLeft size={16} className="mr-2" /> {t('previous')}
+                  </Button>
+                  <Button 
+                    variant="primary" 
+                    size="lg" 
+                    onClick={nextStep}
+                    disabled={!isStepValid()}
+                  >
+                    {t('next')} <ArrowRight size={16} className="ml-2" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
 
+          {/* Step 5: Document Upload */}
+          {currentStep === 5 && (
+            <div>
+              <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+                {t('requiredDocuments')}
+              </h1>
+              <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
+                {t('uploadDocuments')}
+              </p>
+
+              <div className="space-y-8 mb-8">
+                {/* Business Documents */}
                 <div>
-                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    VAT Registration Number *
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="3XXXXXXXXXX00003"
-                    value={formData.vatNumber}
-                    onChange={(e) => updateFormData('vatNumber', e.target.value)}
-                    className="w-full p-3 rounded-lg border"
-                    style={{
-                      borderColor: 'var(--color-border)',
-                      backgroundColor: 'var(--color-bg-primary)',
-                      color: 'var(--color-text-primary)'
-                    }}
-                  />
+                  <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+                    {t('businessDocuments')}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
+                        {t('commercialRegister')}
+                      </label>
+                      <div className="border-2 border-dashed rounded-lg p-6 text-center" style={{ borderColor: 'var(--color-border)' }}>
+                        <Upload size={32} className="mx-auto mb-2" style={{ color: 'var(--color-text-tertiary)' }} />
+                        <p style={{ color: 'var(--color-text-secondary)' }}>
+                          {formData.docCommercialRegister ? formData.docCommercialRegister.name : t('clickToUpload')}
+                        </p>
+                        <input
+                          type="file"
+                          onChange={(e) => handleFileUpload('docCommercialRegister', e.target.files?.[0])}
+                          className="hidden"
+                          accept=".pdf,.jpg,.jpeg,.png"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
+                        {t('vatCertificate')}
+                      </label>
+                      <div className="border-2 border-dashed rounded-lg p-6 text-center" style={{ borderColor: 'var(--color-border)' }}>
+                        <Upload size={32} className="mx-auto mb-2" style={{ color: 'var(--color-text-tertiary)' }} />
+                        <p style={{ color: 'var(--color-text-secondary)' }}>
+                          {formData.docVatCertificate ? formData.docVatCertificate.name : t('clickToUpload')}
+                        </p>
+                        <input
+                          type="file"
+                          onChange={(e) => handleFileUpload('docVatCertificate', e.target.files?.[0])}
+                          className="hidden"
+                          accept=".pdf,.jpg,.jpeg,.png"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
+                {/* Personal Documents */}
                 <div>
-                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                    National Address (Short Code) *
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="XXXX1234"
-                    value={formData.nationalAddressCode}
-                    onChange={(e) => updateFormData('nationalAddressCode', e.target.value)}
-                    className="w-full p-3 rounded-lg border"
-                    style={{
-                      borderColor: 'var(--color-border)',
-                      backgroundColor: 'var(--color-bg-primary)',
-                      color: 'var(--color-text-primary)'
-                    }}
-                  />
+                  <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+                    {t('personalDocuments')}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
+                        {t('municipalLicense')}
+                      </label>
+                      <div className="border-2 border-dashed rounded-lg p-6 text-center" style={{ borderColor: 'var(--color-border)' }}>
+                        <Upload size={32} className="mx-auto mb-2" style={{ color: 'var(--color-text-tertiary)' }} />
+                        <p style={{ color: 'var(--color-text-secondary)' }}>
+                          {formData.docMunicipalLicense ? formData.docMunicipalLicense.name : t('clickToUpload')}
+                        </p>
+                        <input
+                          type="file"
+                          onChange={(e) => handleFileUpload('docMunicipalLicense', e.target.files?.[0])}
+                          className="hidden"
+                          accept=".pdf,.jpg,.jpeg,.png"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text-primary)' }}>
+                        {t('nationalAddress')}
+                      </label>
+                      <div className="border-2 border-dashed rounded-lg p-6 text-center" style={{ borderColor: 'var(--color-border)' }}>
+                        <Upload size={32} className="mx-auto mb-2" style={{ color: 'var(--color-text-tertiary)' }} />
+                        <p style={{ color: 'var(--color-text-secondary)' }}>
+                          {formData.docNationalAddress ? formData.docNationalAddress.name : t('clickToUpload')}
+                        </p>
+                        <input
+                          type="file"
+                          onChange={(e) => handleFileUpload('docNationalAddress', e.target.files?.[0])}
+                          className="hidden"
+                          accept=".pdf,.jpg,.jpeg,.png"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+
+              <div className="mb-8">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={formData.termsAccepted}
+                    onChange={(e) => updateFormData('termsAccepted', e.target.checked)}
+                    className="w-4 h-4 rounded"
+                    style={{ accentColor: 'var(--color-primary)' }}
+                  />
+                  <label className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                    I confirm that all information provided is accurate and I agree to the Terms & Conditions and Privacy Policy of Food Sources Trading Co.
+                  </label>
+                </label>
               </div>
 
               <div className="flex justify-between">
                 <Button variant="secondary" size="lg" onClick={prevStep}>
-                  <ArrowLeft size={16} className="mr-2" /> Back
+                  <ArrowLeft size={16} className="mr-2" /> {t('previous')}
                 </Button>
                 <Button 
                   variant="primary" 
@@ -783,7 +911,7 @@ export default function OnboardingPage() {
                   onClick={nextStep}
                   disabled={!isStepValid()}
                 >
-                  Continue <ArrowRight size={16} className="ml-2" />
+                  {t('next')} <ArrowRight size={16} className="ml-2" />
                 </Button>
               </div>
             </div>
@@ -793,7 +921,7 @@ export default function OnboardingPage() {
           {currentStep === 5 && (
             <div>
               <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                Required Documents
+                {t('requiredDocuments')}
               </h1>
               <p className="text-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
                 Please upload the following documents to complete your application
@@ -903,7 +1031,7 @@ export default function OnboardingPage() {
 
               <div className="flex justify-between">
                 <Button variant="secondary" size="lg" onClick={prevStep}>
-                  <ArrowLeft size={16} className="mr-2" /> Back
+                  <ArrowLeft size={16} className="mr-2" /> {t('previous')}
                 </Button>
                 <Button 
                   variant="primary" 
@@ -911,7 +1039,7 @@ export default function OnboardingPage() {
                   onClick={handleSubmit}
                   disabled={!isStepValid()}
                 >
-                  Submit Application
+                  {t('submit')}
                 </Button>
               </div>
             </div>

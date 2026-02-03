@@ -16,9 +16,9 @@ export default function Home() {
       <HeroSlider />
 
       {/* Trusted By - Logo Bar */}
-      <section className="py-12 bg-white border-b border-gray-200">
+      <section className="py-12" style={{ backgroundColor: 'var(--color-bg-primary)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">Trusted by Leading Businesses Across Saudi Arabia</p>
+          <p className="text-center text-sm font-semibold uppercase tracking-wider mb-8" style={{ color: 'var(--color-text-tertiary)' }}>{t('logoMarquee')}</p>
           <div className="flex items-center justify-center gap-8 md:gap-16 flex-wrap opacity-60 grayscale hover:grayscale-0 transition-all">
             <img src="/trusted-partners/almarai-logo.png" alt="Almarai" className="h-10 md:h-12 object-contain" />
             <img src="/trusted-partners/nadec.png" alt="Nadec" className="h-10 md:h-12 object-contain" />
@@ -30,55 +30,55 @@ export default function Home() {
       </section>
 
       {/* Who We Serve - Industries */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Who We Serve</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Premium ingredients for Saudi Arabia's hospitality & food service industry</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('features.title')}</h2>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>{t('features.subtitle')}</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="text-5xl mb-4">🏨</div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Hotels & Resorts</h3>
-              <p className="text-sm text-gray-600">Fine dining & buffet operations</p>
+              <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('features.sourcing.title')}</h3>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.sourcing.description')}</p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="text-5xl mb-4">🍽️</div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Restaurants</h3>
-              <p className="text-sm text-gray-600">Quick service to fine dining</p>
+              <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('features.certified.title')}</h3>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.certified.description')}</p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="text-5xl mb-4">🎉</div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Catering</h3>
-              <p className="text-sm text-gray-600">Events & corporate catering</p>
+              <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('features.flexible.title')}</h3>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.flexible.description')}</p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="text-5xl mb-4">🏪</div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Retailers</h3>
-              <p className="text-sm text-gray-600">Specialty food stores</p>
+              <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('features.manager.title')}</h3>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.manager.description')}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Product Categories - Card Grid */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Premium Product Range
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+              {t('products.title')}
             </h2>
-            <p className="text-xl text-gray-600">Sourced directly from Mediterranean family producers</p>
+            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('products.subtitle')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             <Link href={`/${locale}/products?category=olives`}>
-              <div className="group bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer">
-                <div className="h-80 relative overflow-hidden bg-gray-50">
+              <div className="group rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer" style={{ backgroundColor: 'var(--color-surface)' }}>
+                <div className="h-80 relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
                   <Image
                     src="/All products/kalmata olives/kalmata_olives_3.png"
                     alt="Premium Mediterranean Olives"
@@ -88,18 +88,18 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-3xl font-bold mb-2 text-gray-900">Olives</h3>
-                  <p className="text-sm mb-4 text-gray-500">50+ varieties • Bulk & retail</p>
+                  <h3 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('products.filterOlives')}</h3>
+                  <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>{t('products.product1.category')} • {t('products.filterAll')}</p>
                   <span className="inline-flex items-center gap-2 font-semibold text-orange-600">
-                    View <ArrowRight size={16} />
+                    {t('products.viewDetails')} <ArrowRight size={16} />
                   </span>
                 </div>
               </div>
             </Link>
 
             <Link href={`/${locale}/products?category=cheeses`}>
-              <div className="group bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer">
-                <div className="h-80 relative overflow-hidden bg-gray-50">
+              <div className="group rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer" style={{ backgroundColor: 'var(--color-surface)' }}>
+                <div className="h-80 relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
                   <Image
                     src="/All products/premium feta cheese/premium_feta_cheese_3.png"
                     alt="Premium Mediterranean Cheese"
@@ -109,18 +109,18 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-3xl font-bold mb-2 text-gray-900">Cheeses</h3>
-                  <p className="text-sm mb-4 text-gray-500">30+ varieties • Feta, Halloumi & more</p>
+                  <h3 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('products.filterCheeses')}</h3>
+                  <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>{t('products.product2.category')} • {t('products.filterAll')}</p>
                   <span className="inline-flex items-center gap-2 font-semibold text-orange-600">
-                    View <ArrowRight size={16} />
+                    {t('products.viewDetails')} <ArrowRight size={16} />
                   </span>
                 </div>
               </div>
             </Link>
 
             <Link href={`/${locale}/products?category=pickles`}>
-              <div className="group bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer">
-                <div className="h-80 relative overflow-hidden bg-gray-50">
+              <div className="group rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl cursor-pointer" style={{ backgroundColor: 'var(--color-surface)' }}>
+                <div className="h-80 relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
                   <Image
                     src="/All products/mixed mediterrean pickles/mixed_mediterrean_pickles_3.jpg"
                     alt="Premium Mediterranean Pickles"
@@ -130,10 +130,10 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-3xl font-bold mb-2 text-gray-900">Pickles</h3>
-                  <p className="text-sm mb-4 text-gray-500">40+ varieties • Traditional recipes</p>
+                  <h3 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{t('products.filterPickles')}</h3>
+                  <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>{t('products.product3.category')} • {t('products.filterAll')}</p>
                   <span className="inline-flex items-center gap-2 font-semibold text-orange-600">
-                    View <ArrowRight size={16} />
+                    {t('products.viewDetails')} <ArrowRight size={16} />
                   </span>
                 </div>
               </div>
@@ -146,41 +146,41 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-br from-emerald-900 to-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Why Businesses Choose Us</h2>
-            <p className="text-xl text-gray-300">More than just a supplier—your strategic food partner</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">{t('cta.title')}</h2>
+            <p className="text-xl text-gray-300">{t('cta.subtitle')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
               <div className="text-5xl mb-4">💰</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Competitive Wholesale Pricing</h3>
-              <p className="text-gray-300 mb-4">Volume-based discounts and flexible payment terms for established partners</p>
+              <h3 className="text-2xl font-bold mb-3 text-white">{t('features.pricing.title')}</h3>
+              <p className="text-gray-300 mb-4">{t('features.pricing.description')}</p>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>• Cash & credit accounts available</li>
-                <li>• Bulk order discounts</li>
-                <li>• Price protection programs</li>
+                <li>• {t('features.pricing.bullet1')}</li>
+                <li>• {t('features.pricing.bullet2')}</li>
+                <li>• {t('features.pricing.bullet3')}</li>
               </ul>
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
               <div className="text-5xl mb-4">🚚</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Reliable Logistics</h3>
-              <p className="text-gray-300 mb-4">Next-day delivery across all major KSA cities with temperature control</p>
+              <h3 className="text-2xl font-bold mb-3 text-white">{t('features.delivery.title')}</h3>
+              <p className="text-gray-300 mb-4">{t('features.delivery.description')}</p>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>• 24-hour delivery (Riyadh, Jeddah, Dammam)</li>
-                <li>• Cold chain management</li>
-                <li>• Real-time order tracking</li>
+                <li>• {t('features.delivery.bullet1')}</li>
+                <li>• {t('features.delivery.bullet2')}</li>
+                <li>• {t('features.delivery.bullet3')}</li>
               </ul>
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
               <div className="text-5xl mb-4">👤</div>
-              <h3 className="text-2xl font-bold mb-3 text-white">Dedicated Support</h3>
-              <p className="text-gray-300 mb-4">Every account gets a personal manager who understands your business</p>
+              <h3 className="text-2xl font-bold mb-3 text-white">{t('features.manager.title')}</h3>
+              <p className="text-gray-300 mb-4">{t('features.manager.description')}</p>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>• Single point of contact</li>
-                <li>• Custom product sourcing</li>
-                <li>• Menu development support</li>
+                <li>• {t('features.manager.bullet1')}</li>
+                <li>• {t('features.manager.bullet2')}</li>
+                <li>• {t('features.manager.bullet3')}</li>
               </ul>
             </div>
           </div>
@@ -188,10 +188,10 @@ export default function Home() {
       </section>
 
       {/* Value Proposition - Split Layout */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden bg-gray-100">
+            <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
               <Image
                 src="/hero.png"
                 alt="Premium Mediterranean Food Products"
@@ -202,58 +202,58 @@ export default function Home() {
             </div>
             
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                Quality You Can Trust
+              <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>
+                {t('howItWorks.title')}
               </h2>
-              <p className="text-xl text-gray-600 mb-12">Every product meets the highest international & local standards</p>
+              <p className="text-xl mb-12" style={{ color: 'var(--color-text-secondary)' }}>{t('howItWorks.subtitle')}</p>
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-100">
                     <CheckCircle2 size={24} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Direct Sourcing</h3>
-                  <p className="text-sm text-gray-600">From Mediterranean producers</p>
+                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('features.sourcing.title')}</h3>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.sourcing.description')}</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-100">
                     <Shield size={24} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">SFDA Certified</h3>
-                  <p className="text-sm text-gray-600">All products certified</p>
+                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('features.certified.title')}</h3>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.certified.description')}</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-100">
                     <Truck size={24} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Next-Day Delivery</h3>
-                  <p className="text-sm text-gray-600">Across all KSA cities</p>
+                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('features.delivery.title')}</h3>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.delivery.description')}</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-100">
                     <TrendingUp size={24} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Flexible Orders</h3>
-                  <p className="text-sm text-gray-600">No minimum quantities</p>
+                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('features.flexible.title')}</h3>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.flexible.description')}</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-100">
                     <Users size={24} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Account Manager</h3>
-                  <p className="text-sm text-gray-600">Dedicated support team</p>
+                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('features.manager.title')}</h3>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.manager.description')}</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-100">
                     <Award size={24} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Wholesale Pricing</h3>
-                  <p className="text-sm text-gray-600">Best rates guaranteed</p>
+                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>{t('features.pricing.title')}</h3>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('features.pricing.description')}</p>
                 </div>
               </div>
             </div>
@@ -262,13 +262,13 @@ export default function Home() {
       </section>
 
       {/* How It Works - Timeline */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Start Partnering in 3 Steps
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
+              {t('howItWorks.title')}
             </h2>
-            <p className="text-xl text-gray-600">Get approved and start ordering within 48 hours</p>
+            <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>{t('howItWorks.subtitle')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-12 relative">
@@ -279,8 +279,8 @@ export default function Home() {
                   <FileCheck size={32} className="text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Open Account</h3>
-              <p className="text-gray-600">Submit documents online</p>
+              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{t('howItWorks.step1.title')}</h3>
+              <p style={{ color: 'var(--color-text-secondary)' }}>{t('howItWorks.step1.description')}</p>
             </div>
             
             <div className="text-center space-y-6">
@@ -290,8 +290,8 @@ export default function Home() {
                   <CheckCircle2 size={32} className="text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Receive Approval</h3>
-              <p className="text-gray-600">Our team reviews & contacts you</p>
+              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{t('howItWorks.step2.title')}</h3>
+              <p style={{ color: 'var(--color-text-secondary)' }}>{t('howItWorks.step2.description')}</p>
             </div>
             
             <div className="text-center space-y-6">
@@ -301,20 +301,20 @@ export default function Home() {
                   <Package size={32} className="text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Order & Reorder</h3>
-              <p className="text-gray-600">Browse, order, and manage everything online</p>
+              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{t('howItWorks.step3.title')}</h3>
+              <p style={{ color: 'var(--color-text-secondary)' }}>{t('howItWorks.step3.description')}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Client Testimonials */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900">What Our Partners Say</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16" style={{ color: 'var(--color-text-primary)' }}>{t('testimonial.title')}</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-md">
+            <div className="rounded-2xl p-8 shadow-md" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
@@ -322,19 +322,19 @@ export default function Home() {
                   </svg>
                 ))}
               </div>
-              <blockquote className="text-lg italic text-gray-700 mb-6">
-                "Food Sources has been our partner for 3 years. Their quality is consistent, delivery is reliable, and the account manager really understands our needs."
+              <blockquote className="text-lg italic mb-6" style={{ color: 'var(--color-text-secondary)' }}>
+                "{t('testimonial.quote')}"
               </blockquote>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-xl">👨‍🍳</div>
                 <div>
-                  <p className="font-bold text-gray-900">Ahmad Al-Salem</p>
-                  <p className="text-sm text-gray-600">Executive Chef, Riyadh Marriott Hotel</p>
+                  <p className="font-bold" style={{ color: 'var(--color-text-primary)' }}>{t('testimonial.name')}</p>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{t('testimonial.position')}</p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 shadow-md">
+            <div className="rounded-2xl p-8 shadow-md" style={{ backgroundColor: 'var(--color-surface)' }}>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
@@ -342,14 +342,14 @@ export default function Home() {
                   </svg>
                 ))}
               </div>
-              <blockquote className="text-lg italic text-gray-700 mb-6">
+              <blockquote className="text-lg italic mb-6" style={{ color: 'var(--color-text-secondary)' }}>
                 "We switched to Food Sources last year and haven't looked back. The pricing is competitive and the Mediterranean products are authentic."
               </blockquote>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-xl">👩‍💼</div>
                 <div>
-                  <p className="font-bold text-gray-900">Sara Al-Ghamdi</p>
-                  <p className="text-sm text-gray-600">Owner, La Petite Maison Jeddah</p>
+                  <p className="font-bold" style={{ color: 'var(--color-text-primary)' }}>Sara Al-Ghamdi</p>
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>Owner, La Petite Maison Jeddah</p>
                 </div>
               </div>
             </div>
@@ -358,52 +358,52 @@ export default function Home() {
       </section>
 
       {/* CTA Banner - Full Width Bold */}
-      <section className="py-32" style={{ background: 'linear-gradient(135deg, #1B3A2F 0%, #0F1419 100%)' }}>
+      <section className="py-32" style={{ background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg-tertiary) 100%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-                Ready to Elevate Your Business?
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--color-text-on-primary)' }}>
+                {t('cta.title')}
               </h2>
-              <p className="text-xl mb-8 text-gray-300">
-                Join 500+ restaurants, hotels, and catering companies partnering with Food Sources for premium Mediterranean ingredients.
+              <p className="text-xl mb-8" style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>
+                {t('cta.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href={`/${locale}/onboarding`}>
                   <button className="px-8 py-4 rounded-full font-bold text-lg transition-all hover:shadow-2xl hover:-translate-y-1 bg-orange-600 text-white">
-                    Open Business Account →
+                    {t('cta.button')}
                   </button>
                 </Link>
                 <Link href={`/${locale}/contact`}>
-                  <button className="px-8 py-4 rounded-full font-semibold text-lg transition-all border-2 border-white/30 hover:bg-white/10 text-white">
-                    Talk to Sales
+                  <button className="px-8 py-4 rounded-full font-semibold text-lg transition-all border-2 hover:bg-white/10" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', color: 'var(--color-text-on-primary)' }}>
+                    {t('cta.talkToSales')}
                   </button>
                 </Link>
               </div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold mb-6 text-white">What You Get:</h3>
+            <div className="backdrop-blur-sm rounded-2xl p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <h3 className="text-2xl font-bold mb-6" style={{ color: 'var(--color-text-on-primary)' }}>{t('cta.whatYouGet')}</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-emerald-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Dedicated account manager</span>
+                  <span style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>{t('cta.benefits.manager')}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-emerald-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Flexible payment terms (Cash & Credit)</span>
+                  <span style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>{t('cta.benefits.payment')}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-emerald-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Next-day delivery across KSA</span>
+                  <span style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>{t('cta.benefits.delivery')}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-emerald-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">Wholesale pricing & volume discounts</span>
+                  <span style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>{t('cta.benefits.pricing')}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-emerald-400 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-gray-300">SFDA certified products</span>
+                  <span style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>{t('cta.benefits.certified')}</span>
                 </li>
               </ul>
             </div>
