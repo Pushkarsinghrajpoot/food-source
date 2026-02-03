@@ -165,7 +165,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Pack Size Selector */}
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>{t('selectPackSize')}</label>
                 <div className="grid grid-cols-3 gap-3">
                   {displayProduct.sizes.map((size: string) => (
@@ -186,7 +186,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               </div>
 
               {/* Quantity */}
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>{t('quantity')}</label>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center rounded-lg" style={{ border: '2px solid var(--color-border)' }}>
@@ -209,7 +209,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                     </button>
                   </div>
                 </div>
-              </div>
+              </div>  */}
 
               {/* Actions */}
               <div className="space-y-3 pt-4">
