@@ -853,5 +853,46 @@
     "productView": "Product Image",
     "relatedProducts": "Related Products",
     "viewDetails": "View Details"
+  },
+  "blog": {
+    "hero": {
+      "badge": "Blog & Resources",
+      "title": "Insights & Inspiration",
+      "subtitle": "Expert recipes, industry trends, and professional tips for culinary excellence"
+    },
+    "search": {
+      "placeholder": "Search articles, recipes, and topics..."
+    },
+    "categories": {
+      "all": "All Articles",
+      "recipes": "Recipes",
+      "industryNews": "Industry News",
+      "productGuides": "Product Guides",
+      "companyUpdates": "Company Updates"
+    },
+    "featured": {
+      "badge": "Featured Article",
+      "title": "Editor's Pick",
+      "featuredLabel": "FEATURED • RECIPES"
+    },
+    "article": {
+      "readTime": "min read",
+      "readArticle": "Read Article",
+      "readFullArticle": "Read Full Article",
+      "articlesFound": "articles found",
+      "articleFound": "article found",
+      "by": "By",
+      "backToBlog": "Back to Blog",
+      "relatedArticles": "Related Articles"
+    },
+    "loadMore": "Load More Articles",
+    "newsletter": {
+      "title": "Stay Ahead of the Curve",
+      "subtitle": "Get exclusive recipes, industry insights, and professional tips delivered straight to your inbox every month.",
+      "emailPlaceholder": "Enter your email address",
+      "subscribe": "Subscribe Now",
+      "noSpam": "No spam, ever",
+      "unsubscribe": "Unsubscribe anytime"
+    }
   }
 }

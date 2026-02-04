@@ -4,16 +4,43 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Search, Clock, User, ArrowRight } from "lucide-react"
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
+import blogTranslations from "@/data/blogTranslations.json"
 
 export default function BlogPage() {
   const locale = useLocale()
+  const t = useTranslations('blog')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
+  const getCategoryLabel = (category: string) => {
+    const labels: Record<string, string> = {
+      'all': t('categories.all'),
+      'recipes': t('categories.recipes'),
+      'industry-news': t('categories.industryNews'),
+      'product-guides': t('categories.productGuides'),
+      'company-updates': t('categories.companyUpdates')
+    }
+    return labels[category] || category
+  }
+
   const categories = ['all', 'recipes', 'industry-news', 'product-guides', 'company-updates']
+
+  // Get translated article data for Arabic
+  const getTranslatedArticle = (article: any) => {
+    if (locale === 'ar' && (blogTranslations as any)[article.id]) {
+      const translation = (blogTranslations as any)[article.id]
+      return {
+        ...article,
+        title: translation.title,
+        excerpt: translation.excerpt,
+        author: translation.author
+      }
+    }
+    return article
+  }
 
   const articles = [
     {
@@ -78,7 +105,9 @@ export default function BlogPage() {
     },
   ]
 
-  const filteredArticles = articles
+  const translatedArticles = articles.map(article => getTranslatedArticle(article))
+
+  const filteredArticles = translatedArticles
     .filter(a => selectedCategory === 'all' || a.category === selectedCategory)
     .filter(a => 
       searchQuery === '' || 
@@ -104,14 +133,14 @@ export default function BlogPage() {
         <div className="container-custom text-center">
           <div className="inline-block">
             <span className="text-sm font-medium px-4 py-2 rounded-full mb-4" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
-              Blog & Resources
+              {t('hero.badge')}
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>
-            Insights & Inspiration
+            {t('hero.title')}
           </h1>
           <p className="text-xl mb-12 max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-            Expert recipes, industry trends, and professional tips for culinary excellence
+            {t('hero.subtitle')}
           </p>
           
           {/* Search Bar */}
@@ -121,7 +150,7 @@ export default function BlogPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search articles, recipes, and topics..."
+              placeholder={t('search.placeholder')}
               className="w-full pl-12 pr-4 py-4 rounded-2xl focus:outline-none focus:ring-2 text-lg"
               style={{
                 backgroundColor: 'var(--color-surface)',
@@ -147,7 +176,7 @@ export default function BlogPage() {
                   transform: selectedCategory === cat ? 'scale(1.05)' : 'scale(1)'
                 }}
               >
-                {cat === 'all' ? 'All Articles' : cat.replace('-', ' ')}
+                {getCategoryLabel(cat)}
               </button>
             ))}
           </div>
@@ -159,8 +188,8 @@ export default function BlogPage() {
         <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
           <div className="container-custom">
             <div className="text-center mb-12">
-              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: 'var(--color-primary)' }}>Featured Article</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2" style={{ color: 'var(--color-text-primary)' }}>Editor's Pick</h2>
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: 'var(--color-primary)' }}>{t('featured.badge')}</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2" style={{ color: 'var(--color-text-primary)' }}>{t('featured.title')}</h2>
             </div>
             <Card hover className="overflow-hidden shadow-xl">
               <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -175,7 +204,7 @@ export default function BlogPage() {
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-surface))' }}>
                   <span className={`inline-block text-xs font-semibold px-4 py-2 rounded-full mb-4 w-fit ${getCategoryColor('recipes')}`}>
-                    FEATURED • RECIPES
+                    {t('featured.featuredLabel')}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight" style={{ color: 'var(--color-text-primary)' }}>
                     10 Creative Ways to Use Kalamata Olives in Your Menu
@@ -186,17 +215,17 @@ export default function BlogPage() {
                   <div className="flex items-center gap-6 text-sm mb-8" style={{ color: 'var(--color-text-muted)' }}>
                     <div className="flex items-center gap-2">
                       <User size={16} />
-                      <span>Chef Maria</span>
+                      <span>{t('article.by')} {articles[0].author}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock size={16} />
-                      <span>5 min read</span>
+                      <span>{articles[0].readTime} {t('article.readTime')}</span>
                     </div>
                     <span style={{ color: 'var(--color-text-muted)' }}>January 15, 2024</span>
                   </div>
                   <Link href={`/${locale}/blog/1`}>
                     <Button variant="primary" size="lg" className="group">
-                      Read Full Article <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      {t('article.readFullArticle')} <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
@@ -211,10 +240,10 @@ export default function BlogPage() {
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-              {selectedCategory === 'all' ? 'All Articles' : `${selectedCategory.replace('-', ' ')} Articles`}
+              {getCategoryLabel(selectedCategory)}
             </h2>
             <p style={{ color: 'var(--color-text-secondary)' }}>
-              {filteredArticles.length} {filteredArticles.length === 1 ? 'article' : 'articles'} found
+              {filteredArticles.length} {filteredArticles.length === 1 ? t('article.articleFound') : t('article.articlesFound')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -232,7 +261,7 @@ export default function BlogPage() {
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
                     <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${getCategoryColor(article.category)}`}>
-                      {article.category.replace('-', ' ').toUpperCase()}
+                      {getCategoryLabel(article.category)}
                     </span>
                     <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{article.date}</span>
                   </div>
@@ -245,15 +274,15 @@ export default function BlogPage() {
                   <div className="flex items-center justify-between text-sm mb-4" style={{ color: 'var(--color-text-muted)' }}>
                     <div className="flex items-center gap-2">
                       <User size={14} />
-                      <span>{article.author}</span>
+                      <span>{t('article.by')} {article.author}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock size={14} />
-                      <span>{article.readTime}</span>
+                      <span>{article.readTime} {t('article.readTime')}</span>
                     </div>
                   </div>
                   <Link href={`/${locale}/blog/${article.id}`} className="font-semibold transition-colors inline-flex items-center group" style={{ color: 'var(--color-primary)' }}>
-                    Read Article <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                    {t('article.readArticle')} <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </Card>
@@ -263,7 +292,7 @@ export default function BlogPage() {
           {/* Load More */}
           <div className="text-center mt-12">
             <Button variant="outline" size="lg">
-              Load More Articles
+              {t('loadMore')}
             </Button>
           </div>
         </div>
@@ -280,16 +309,16 @@ export default function BlogPage() {
                 </svg>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-                Stay Ahead of the Curve
+                {t('newsletter.title')}
               </h2>
               <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                Get exclusive recipes, industry insights, and professional tips delivered straight to your inbox every month.
+                {t('newsletter.subtitle')}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-6">
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder={t('newsletter.emailPlaceholder')}
                 className="flex-1 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 text-lg"
                 style={{
                   backgroundColor: 'var(--color-surface)',
@@ -298,7 +327,7 @@ export default function BlogPage() {
                 }}
               />
               <Button variant="primary" size="lg" className="px-8">
-                Subscribe Now
+                {t('newsletter.subscribe')}
               </Button>
             </div>
             <div className="flex items-center justify-center gap-6 text-sm" style={{ color: 'var(--color-text-muted)' }}>
@@ -306,13 +335,13 @@ export default function BlogPage() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                No spam, ever
+                {t('newsletter.noSpam')}
               </span>
               <span className="flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                Unsubscribe anytime
+                {t('newsletter.unsubscribe')}
               </span>
             </div>
           </Card>
