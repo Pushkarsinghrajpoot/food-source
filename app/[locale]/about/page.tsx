@@ -52,26 +52,16 @@ export default function AboutPage() {
 
   return (
     <div className="pt-18">
-      {/* Hero Section - Cinematic with Gradient */}
-      <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80"
-            alt={t('hero.imageAlt')}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg-tertiary) 100%)', opacity: 0.95 }} />
-        <div className="max-w-container mx-auto px-6 lg:px-12 relative z-10 text-center">
+      {/* Hero - Modern Gradient */}
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg-tertiary) 100%)' }}>
+        <div className="max-w-container mx-auto px-6 lg:px-12 text-center">
           <div className="inline-block px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold mb-8" style={{ backgroundColor: 'var(--color-gold-light)', color: 'var(--color-gold)', border: '1px solid var(--color-gold)' }}>
             {t('hero.badge')}
           </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight" style={{ color: 'var(--color-text-on-primary)' }}>
+          <h1 className="text-5xl md:text-6xl font-black mb-6" style={{ color: 'var(--color-text-on-primary)' }}>
             {t('hero.title')}
           </h1>
-          <p className="text-2xl max-w-3xl mx-auto" style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>
             {t('hero.subtitle')}
           </p>
         </div>
