@@ -89,7 +89,7 @@ export default function HeroSlider() {
 
   return (
     <div 
-      className="relative w-full min-h-screen overflow-hidden"
+      className="relative w-full h-[80vh] min-h-[550px] max-h-[900px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -106,7 +106,7 @@ export default function HeroSlider() {
               </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 min-h-screen flex items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-center">
         <div className="max-w-4xl py-32">
           
           {/* Badge - Animated */}
@@ -117,12 +117,12 @@ export default function HeroSlider() {
           </div>
           
           {/* Headline - Animated */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black leading-tight mb-8 animate-fade-in" style={{ color: 'var(--color-text-on-primary)', animationDelay: '0.2s' }}>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black leading-tight mb-8 animate-fade-in" style={{ color: '#1a1a1a', textShadow: '2px 2px 4px rgba(255,255,255,0.8)', animationDelay: '0.2s' }}>
             {slide.headline}
           </h1>
           
           {/* Subtext - Animated */}
-          <p className="text-lg md:text-xl leading-relaxed mb-12 max-w-2xl animate-fade-in" style={{ color: 'var(--color-text-on-primary)', opacity: 0.9, animationDelay: '0.4s' }}>
+          <p className="text-lg md:text-xl leading-relaxed mb-12 max-w-2xl animate-fade-in" style={{ color: '#2d2d2d', textShadow: '1px 1px 2px rgba(255,255,255,0.8)', animationDelay: '0.4s' }}>
             {slide.subtext}
           </p>
           
@@ -135,7 +135,7 @@ export default function HeroSlider() {
               </button>
             </Link>
             <Link href={`/${locale}${slide.productLink}`}>
-              <button className="group px-8 py-4 rounded-full font-semibold text-lg transition-all border-2 flex items-center gap-2 justify-center backdrop-blur-sm" style={{ borderColor: 'rgba(255, 255, 255, 0.4)', color: 'var(--color-text-on-primary)' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.8)'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'; }}>
+              <button className="group px-8 py-4 rounded-full font-semibold text-lg transition-all border-2 flex items-center gap-2 justify-center backdrop-blur-sm" style={{ borderColor: 'rgba(0, 0, 0, 0.6)', color: '#1a1a1a', backgroundColor: 'rgba(255, 255, 255, 0.9)' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 1)'; e.currentTarget.style.borderColor = '#1a1a1a'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'; e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.6)'; }}>
                 {slide.productText}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </button>
@@ -143,20 +143,20 @@ export default function HeroSlider() {
           </div>
           
           {/* Stats - Animated */}
-          <div className="flex items-center gap-8 pt-6 animate-fade-in" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)', animationDelay: '0.8s' }}>
+          <div className="flex items-center gap-8 pt-6 animate-fade-in" style={{ borderTop: '1px solid rgba(0, 0, 0, 0.3)', animationDelay: '0.8s' }}>
             <div>
-              <div className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Space Grotesk, monospace', color: 'var(--color-text-on-primary)' }}>500+</div>
-              <div className="text-xs uppercase tracking-wide" style={{ color: 'var(--color-text-on-primary)', opacity: 0.8 }}>{t('stats.partners')}</div>
+              <div className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1a1a1a', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>500+</div>
+              <div className="text-xs uppercase tracking-wide" style={{ color: '#2d2d2d', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>{t('stats.partners')}</div>
             </div>
             <div className="w-px h-12" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}></div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Space Grotesk, monospace', color: 'var(--color-text-on-primary)' }}>8+</div>
-              <div className="text-xs uppercase tracking-wide" style={{ color: 'var(--color-text-on-primary)', opacity: 0.8 }}>{t('stats.years')}</div>
+              <div className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1a1a1a', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>8+</div>
+              <div className="text-xs uppercase tracking-wide" style={{ color: '#2d2d2d', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>{t('stats.years')}</div>
             </div>
             <div className="w-px h-12" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}></div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Space Grotesk, monospace', color: 'var(--color-text-on-primary)' }}>24hrs</div>
-              <div className="text-xs uppercase tracking-wide" style={{ color: 'var(--color-text-on-primary)', opacity: 0.8 }}>{t('stats.delivery')}</div>
+              <div className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1a1a1a', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>24hrs</div>
+              <div className="text-xs uppercase tracking-wide" style={{ color: '#2d2d2d', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>{t('stats.delivery')}</div>
             </div>
           </div>
         </div>
