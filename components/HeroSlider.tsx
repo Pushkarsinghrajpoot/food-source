@@ -103,12 +103,7 @@ export default function HeroSlider() {
           sizes="100vw"
           priority
         />
-        {/* Theme-aware Overlay */}
-        <div className="absolute inset-0" style={{ 
-          background: 'linear-gradient(to right, var(--color-primary), var(--color-bg-tertiary))',
-          opacity: 0.88
-        }} />
-      </div>
+              </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 min-h-screen flex items-center">
