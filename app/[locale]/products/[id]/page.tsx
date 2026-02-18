@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, Truck, Star, RefreshCw } from "lucide-react"
 import Button from "@/components/ui/Button"
@@ -126,12 +127,20 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             {/* Left Column - Image */}
             <div className="space-y-4">
               <div className="aspect-square rounded-2xl relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
-                {product.image_url && (
-                  <img
+                {product.image_url ? (
+                  <Image
                     src={product.image_url}
                     alt={product.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    unoptimized
                   />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Package size={64} className="text-gray-300" />
+                  </div>
                 )}
               </div>
             </div>
@@ -327,12 +336,20 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             {relatedProducts.map((prod) => (
               <Card key={prod.id} hover className="overflow-hidden group">
                 <div className="aspect-square relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
-                  {prod.image_url && (
-                    <img
+                  {prod.image_url ? (
+                    <Image
                       src={prod.image_url}
                       alt={prod.name}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      unoptimized
                     />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Package size={48} className="text-gray-300" />
+                    </div>
                   )}
                 </div>
                 <div className="p-6">

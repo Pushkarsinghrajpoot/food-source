@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 import { useTranslations, useLocale } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
@@ -146,12 +147,23 @@ function ProductsContent() {
               <Link key={product.id} href={`/${locale}/products/${product.id}`}>
                 <div className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lift cursor-pointer" style={{ backgroundColor: 'var(--color-surface)' }}>
                   <div className="aspect-[4/3] relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-tertiary))' }}>
-                    {product.image_url && (
-                    <img
+                    {product.image_url ? (
+                    <Image
                       src={product.image_url}
                       alt={product.name}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      unoptimized
+                      onError={(e) => {
+                        console.error(`Failed to load image for ${product.name}:`, product.image_url);
+                      }}
                     />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                        <Package size={48} />
+                      </div>
                     )}
                   </div>
                   <div className="p-6">

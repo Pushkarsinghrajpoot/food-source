@@ -42,11 +42,12 @@ export default function Navigation({ locale }: NavigationProps) {
         <div className="flex items-center justify-between h-20">
           <Link href={`/${locale}`} className="relative w-40 h-12">
             <Image
-              src="/main-logo.png"
+              src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440541/foodsources_logo_2_oj4x6q.png"
               alt="Food Sources"
               fill
               className="object-contain"
               priority
+              unoptimized
             />
           </Link>
 

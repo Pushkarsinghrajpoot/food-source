@@ -12,12 +12,12 @@ export default function AboutPage() {
   const t = useTranslations('about')
   const locale = useLocale()
   const values = [
-    { icon: Award, title: t('values.quality.title'), description: t('values.quality.description') },
-    { icon: Heart, title: t('values.integrity.title'), description: t('values.integrity.description') },
-    { icon: Users, title: t('values.partnership.title'), description: t('values.partnership.description') },
-    { icon: TrendingUp, title: t('values.innovation.title'), description: t('values.innovation.description') },
-    { icon: Globe, title: t('values.sustainability.title'), description: t('values.sustainability.description') },
+    { icon: Heart, title: t('values.respect.title'), description: t('values.respect.description') },
+    { icon: Award, title: t('values.dedication.title'), description: t('values.dedication.description') },
+    { icon: Users, title: t('values.cooperation.title'), description: t('values.cooperation.description') },
+    { icon: TrendingUp, title: t('values.flexibility.title'), description: t('values.flexibility.description') },
     { icon: CheckCircle, title: t('values.excellence.title'), description: t('values.excellence.description') },
+    { icon: Globe, title: t('values.innovation.title'), description: t('values.innovation.description') },
   ]
 
   const timeline = [
@@ -67,19 +67,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Introduction - Large Text Block */}
+      {/* Introduction */}
       <section className="py-32" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <blockquote className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-16" style={{ color: 'var(--color-text-primary)' }}>
-            "{t('intro.quote')}"
-          </blockquote>
-          
-          <div className="space-y-6 text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+        <div className="max-w-4xl mx-auto px-6 lg:px-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: 'var(--color-text-primary)' }}>
+            {t('intro.title')}
+          </h2>
+          <div className="space-y-8 text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
             <p>
               {t('intro.paragraph1')}
             </p>
             <p>
               {t('intro.paragraph2')}
+            </p>
+            <p>
+              {t('intro.paragraph3')}
             </p>
           </div>
         </div>
@@ -151,6 +153,18 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Strategy */}
+      <section className="py-24" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8" style={{ color: 'var(--color-text-primary)' }}>
+            {t('strategy.title')}
+          </h2>
+          <p className="text-xl leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+            {t('strategy.description')}
+          </p>
         </div>
       </section>
 

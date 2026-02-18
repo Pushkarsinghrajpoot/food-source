@@ -20,11 +20,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <p className="text-center text-sm font-semibold uppercase tracking-wider mb-8" style={{ color: 'var(--color-text-tertiary)' }}>{t('logoMarquee')}</p>
           <div className="flex items-center justify-center gap-8 md:gap-16 flex-wrap opacity-60 grayscale hover:grayscale-0 transition-all">
-            <img src="/trusted-partners/almarai-logo.png" alt="Almarai" className="h-10 md:h-12 object-contain" />
-            <img src="/trusted-partners/nadec.png" alt="Nadec" className="h-10 md:h-12 object-contain" />
-            <img src="/trusted-partners/savola.png" alt="Savola" className="h-10 md:h-12 object-contain" />
-            <img src="/trusted-partners/sadafco.png" alt="Sadafco" className="h-10 md:h-12 object-contain" />
-            <img src="/trusted-partners/almunajem.png" alt="Almunajem" className="h-10 md:h-12 object-contain" />
+            <img src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440368/0_lfkiig.png" alt="Partner 1" className="h-10 md:h-12 object-contain" />
+            <img src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440368/altaeib_d5y5mw.png" alt="Altaeib" className="h-10 md:h-12 object-contain" />
+            <img src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440368/laziza_kso1hc.png" alt="Laziza" className="h-10 md:h-12 object-contain" />
+            <img src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440368/joud_dn6yrr.png" alt="Joud" className="h-10 md:h-12 object-contain" />
+            <img src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440368/wexford_mcf6zq.png" alt="Wexford" className="h-10 md:h-12 object-contain" />
+            <img src="https://res.cloudinary.com/daeyqeofn/image/upload/v1771440368/muratbey_ci8k33.png" alt="Muratbey" className="h-10 md:h-12 object-contain" />
           </div>
         </div>
       </section>

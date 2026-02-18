@@ -249,9 +249,10 @@
       "imageAlt": "Mediterranean landscape"
     },
     "intro": {
-      "quote": "We believe every great dish starts with exceptional ingredients",
-      "paragraph1": "Founded in 2015, Food Sources Trading Co. began with a simple mission: to connect Saudi Arabia's finest culinary establishments with the authentic flavors of the Mediterranean.",
-      "paragraph2": "What started as a small family business has grown into one of the region's most trusted suppliers of premium olives, cheeses, and pickles. Today, we're proud to serve over 500 hotels, restaurants, and catering businesses across the Kingdom."
+      "title": "Introduction",
+      "paragraph1": "Food Sources Trading Co is a family-owned enterprise that has been in operation for over 8 years. Established in 2015, they specialize in supplying fresh and nutritious food in Deli to key accounts, restaurants, catering companies, and grocery stores around SA.",
+      "paragraph2": "The company prides itself on providing quality products that not only meet customer needs but also adhere to the highest standards of safety and hygiene. From sourcing, only the freshest ingredients to ensuring secure and safe packaging, Food Sources Trading Co is committed to delivering top-notch customer service.",
+      "paragraph3": "Food Sources Trading Co is a leader in the global food industry, and its products are trusted by customers all over the world. They are committed to providing the highest quality food ingredients while also being mindful of the environment and making a positive contribution to society."
     },
     "timeline": {
       "title": "Our Journey",
@@ -283,38 +284,42 @@
     },
     "vision": {
       "title": "Our Vision",
-      "description": "To be the leading provider of Mediterranean ingredients in the Middle East, recognized for uncompromising quality and exceptional service."
+      "description": "We strive to make our products the preferred choice for the consumer through our leadership in the target markets and the provision of high-quality, balanced foodstuffs."
     },
     "mission": {
       "title": "Our Mission",
-      "description": "To empower culinary professionals with premium Mediterranean ingredients, delivered with reliability and expertise that exceeds expectations."
+      "description": "Provides many high-quality products at a competitive price for hotels, restaurants and food refrigerators in the Kingdom of Saudi Arabia."
     },
     "values": {
-      "title": "What Drives Us",
-      "quality": {
-        "title": "Quality First",
-        "description": "Never compromising on ingredient excellence"
+      "title": "Our Values",
+      "respect": {
+        "title": "Respect",
+        "description": "We earn respect through our commitment to justice, trust, and integrity in all of our relationships"
       },
-      "integrity": {
-        "title": "Integrity",
-        "description": "Honest and transparent in all our dealings"
+      "dedication": {
+        "title": "Dedication",
+        "description": "We take pride in our work and strive to achieve outstanding results."
       },
-      "partnership": {
-        "title": "Partnership",
-        "description": "Building lasting relationships with our clients"
+      "cooperation": {
+        "title": "Cooperation",
+        "description": "We work in a team spirit, cooperate transparently, share knowledge and skills, so that our employees are the best."
       },
-      "innovation": {
-        "title": "Innovation",
-        "description": "Constantly improving our service and offerings"
-      },
-      "sustainability": {
-        "title": "Sustainability",
-        "description": "Responsible sourcing for future generations"
+      "flexibility": {
+        "title": "Flexibility",
+        "description": "We do our business with flexibility and high efficiency, and with confidence we make bold decisions that enhance the interest of our partners."
       },
       "excellence": {
         "title": "Excellence",
-        "description": "Exceeding expectations in everything we do"
+        "description": "We excel in accomplishing our business and offer regularly the best levels of quality."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We strive always to develop our business and maximize the creative capabilities of our employees."
       }
+    },
+    "strategy": {
+      "title": "Strategy Compatibility",
+      "description": "Targeting trusted retailer and hospitality houses and enforce loyalty by supplying the best and always go beyond their best services wishes."
     },
     "team": {
       "title": "The People Behind the Passion",
