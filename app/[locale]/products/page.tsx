@@ -2,15 +2,28 @@
 
 import { useState, useEffect, Suspense } from "react"
 import Link from "next/link"
-import Image from "next/image"
+
 import { useTranslations, useLocale } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
-import { Search, SlidersHorizontal, Grid, List, Package, ArrowRight } from "lucide-react"
+import { Search, SlidersHorizontal, Grid, List, Package, ArrowRight, RefreshCw } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import Card from "@/components/ui/Card"
-import { products } from "@/data/products"
-import productTranslations from "@/data/productTranslations.json"
+
+interface SupabaseProduct {
+  id: string
+  name: string
+  category: string
+  size: string
+  shelf_life: string
+  barcode: string
+  image_url: string
+  description: string
+  storage: string
+  shelf_life_detail: string
+  origin: string
+  nutrition: any[]
+}
 
 function ProductsContent() {
   const t = useTranslations('products')
@@ -20,6 +33,25 @@ function ProductsContent() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
+  const [products, setProducts] = useState<SupabaseProduct[]>([])
+  const [loading, setLoading] = useState(true)
+
+  // Fetch products from Supabase
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/products')
+        const data = await res.json()
+        if (data.products) {
+          setProducts(data.products)
+        }
+      } catch (err) {
+        console.error('Failed to fetch products:', err)
+      }
+      setLoading(false)
+    }
+    fetchProducts()
+  }, [])
 
   // Handle URL category parameter
   useEffect(() => {
@@ -33,37 +65,17 @@ function ProductsContent() {
     { id: 'all', label: t('all') },
     { id: 'olives', label: t('olives') },
     { id: 'cheeses', label: t('cheeses') },
+    { id: 'dairy', label: 'Dairy' },
     { id: 'pickles', label: t('pickles') },
     { id: 'labneh', label: t('labneh') }
   ]
 
-  // Get translated product data for Arabic
-  const getTranslatedProduct = (product: any) => {
-    if (locale === 'ar' && product && product.id && productTranslations[product.id as keyof typeof productTranslations]) {
-      const translation = productTranslations[product.id as keyof typeof productTranslations]
-      return {
-        ...product,
-        name: translation.name || product.name,
-        description: translation.description || product.description,
-        origin: translation.origin || product.origin,
-        sizes: translation.sizes || product.sizes,
-        shelfLife: translation.shelfLife || product.shelfLife,
-        storage: translation.storage || product.storage,
-        certification: translation.certification || product.certification,
-        suggestedUses: translation.suggestedUses || product.suggestedUses
-      }
-    }
-    return product
-  }
-
-  const translatedProducts = products.map(product => getTranslatedProduct(product))
-
-  const filteredProducts = translatedProducts
+  const filteredProducts = products
     .filter(p => selectedCategory === 'all' || p.category === selectedCategory)
     .filter(p => 
       searchQuery === '' || 
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (p.origin || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.category.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
@@ -124,24 +136,30 @@ function ProductsContent() {
       {/* Products Grid */}
       <section className="py-24" style={{ backgroundColor: 'var(--color-bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <RefreshCw className="animate-spin text-gray-400" size={32} />
+            </div>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
               <Link key={product.id} href={`/${locale}/products/${product.id}`}>
                 <div className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lift cursor-pointer" style={{ backgroundColor: 'var(--color-surface)' }}>
                   <div className="aspect-[4/3] relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, var(--color-bg-secondary), var(--color-bg-tertiary))' }}>
-                    <Image
-                      src={product.image}
+                    {product.image_url && (
+                    <img
+                      src={product.image_url}
                       alt={product.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    )}
                   </div>
                   <div className="p-6">
                     <span className="text-xs font-semibold px-3 py-1.5 rounded-full inline-block mb-3 bg-emerald-100 text-emerald-700">
                       {product.category}
                     </span>
                     <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>{product.name}</h3>
-                    <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>{product.origin} • {product.sizes[0]}</p>
+                    <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>{product.origin ? `${product.origin} • ` : ''}{product.size}</p>
                     <span className="inline-flex items-center gap-2 font-medium text-sm text-orange-600">
                       {t('viewDetails')} <ArrowRight size={16} />
                     </span>
@@ -150,6 +168,7 @@ function ProductsContent() {
               </Link>
             ))}
           </div>
+          )}
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-20">

@@ -2,67 +2,89 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, Truck, Star } from "lucide-react"
+
+import { ArrowLeft, Plus, Minus, Download, Package, ArrowRight, Shield, Award, Truck, Star, RefreshCw } from "lucide-react"
 import Button from "@/components/ui/Button"
 import Card from "@/components/ui/Card"
-import { getProductById, getRelatedProducts } from "@/data/products"
 import { useLocale, useTranslations } from "next-intl"
-import productTranslations from "@/data/productTranslations.json"
+
+interface SupabaseProduct {
+  id: string
+  name: string
+  category: string
+  size: string
+  shelf_life: string
+  barcode: string
+  image_url: string
+  description: string
+  storage: string
+  shelf_life_detail: string
+  origin: string
+  nutrition: { nutrient: string; amount: string; daily_value: string | null }[]
+}
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const locale = useLocale()
   const t = useTranslations('productDetail')
-  const [productId, setProductId] = useState<string>('')
-  const [selectedSize, setSelectedSize] = useState('')
+  const [product, setProduct] = useState<SupabaseProduct | null>(null)
+  const [relatedProducts, setRelatedProducts] = useState<SupabaseProduct[]>([])
+  const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
   const [activeTab, setActiveTab] = useState('description')
-  const [selectedImage, setSelectedImage] = useState('')
 
   useEffect(() => {
-    params.then(p => {
-      setProductId(p.id)
-      const prod = getProductById(p.id)
-      if (prod && prod.sizes.length > 0) {
-        setSelectedSize(prod.sizes[0])
+    params.then(async (p) => {
+      try {
+        // Fetch single product
+        const res = await fetch(`/api/products/${p.id}`)
+        const data = await res.json()
+        if (data.product) {
+          setProduct(data.product)
+
+          // Fetch related products (same category)
+          const allRes = await fetch('/api/products')
+          const allData = await allRes.json()
+          if (allData.products) {
+            const related = allData.products
+              .filter((prod: SupabaseProduct) => prod.id !== p.id)
+              .sort((a: SupabaseProduct, b: SupabaseProduct) =>
+                a.category === data.product.category ? -1 : b.category === data.product.category ? 1 : 0
+              )
+              .slice(0, 4)
+            setRelatedProducts(related)
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch product:', err)
       }
-      if (prod) {
-        setSelectedImage(prod.image)
-      }
+      setLoading(false)
     })
   }, [])
 
-  const product = productId ? getProductById(productId) : null
-  const relatedProducts = productId ? getRelatedProducts(productId) : []
-
-  // Get translated product data for Arabic
-  const getTranslatedProduct = (product: any) => {
-    if (locale === 'ar' && product && product.id && productTranslations[product.id as keyof typeof productTranslations]) {
-      const translation = productTranslations[product.id as keyof typeof productTranslations]
-      return {
-        ...product,
-        name: translation.name || product.name,
-        description: translation.description || product.description,
-        origin: translation.origin || product.origin,
-        sizes: translation.sizes || product.sizes,
-        shelfLife: translation.shelfLife || product.shelfLife,
-        storage: translation.storage || product.storage,
-        certification: translation.certification || product.certification,
-        suggestedUses: translation.suggestedUses || product.suggestedUses,
-        reviews: (translation as any).reviews && product.reviews ? {
-          ...product.reviews,
-          comments: (translation as any).reviews.comments.map((comment: any, index: number) => ({
-            ...product.reviews?.comments[index],
-            comment: comment.comment
-          }))
-        } : product.reviews
-      }
+  // Extract suggested uses from description (lines after "Suggested Uses")
+  const getSuggestedUses = (desc: string): string[] => {
+    if (!desc) return []
+    const match = desc.match(/Suggested Uses[:\s]*\n([\s\S]*?)(?:\n\n|$)/)
+    if (match) {
+      return match[1].split('\n').map(s => s.trim()).filter(s => s.length > 0)
     }
-    return product
+    return []
   }
 
-  const translatedProduct = getTranslatedProduct(product)
-  const displayProduct = translatedProduct || product
+  // Get main description (before "Suggested Uses")
+  const getMainDescription = (desc: string): string => {
+    if (!desc) return ''
+    const idx = desc.indexOf('Suggested Uses')
+    return idx > -1 ? desc.substring(0, idx).trim() : desc
+  }
+
+  if (loading) {
+    return (
+      <div className="pt-20 min-h-screen flex items-center justify-center">
+        <RefreshCw className="animate-spin text-gray-400" size={32} />
+      </div>
+    )
+  }
 
   if (!product) {
     return (
@@ -71,6 +93,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       </div>
     )
   }
+
+  const suggestedUses = getSuggestedUses(product.description)
+  const mainDescription = getMainDescription(product.description)
 
   const handleDownloadPDF = () => {
     // Simulate PDF download
@@ -87,9 +112,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             <span className="mx-2">/</span>
             <Link href={`/${locale}/products`} className="hover:underline">{t('breadcrumb.products')}</Link>
             <span className="mx-2">/</span>
-            <Link href={`/${locale}/products?category=${product.category.toLowerCase()}`} className="hover:underline">{t(`breadcrumb.${product.category.toLowerCase()}`)}</Link>
+            <Link href={`/${locale}/products?category=${product.category.toLowerCase()}`} className="hover:underline">{product.category}</Link>
             <span className="mx-2">/</span>
-            <span style={{ color: 'var(--color-text-primary)' }}>{displayProduct.name}</span>
+            <span style={{ color: 'var(--color-text-primary)' }}>{product.name}</span>
           </nav>
         </div>
       </div>
@@ -98,36 +123,16 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       <section className="section-padding" style={{ backgroundColor: 'var(--color-bg-primary)' }}>
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left Column - Images */}
+            {/* Left Column - Image */}
             <div className="space-y-4">
               <div className="aspect-square rounded-2xl relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
-                <Image
-                  src={selectedImage || product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div className="grid grid-cols-3 gap-4">
-                {product.images.map((img, i) => (
-                  <div 
-                    key={i} 
-                    onClick={() => setSelectedImage(img)}
-                    className="aspect-square rounded-lg relative overflow-hidden cursor-pointer hover:ring-2 transition-all"
-                    style={{
-                      backgroundColor: 'var(--color-bg-tertiary)',
-                      boxShadow: selectedImage === img ? '0 0 0 2px var(--color-primary)' : '0 0 0 1px var(--color-border)'
-                    }}
-                  >
-                    <Image
-                      src={img}
-                      alt={`${t('productView')} ${i + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
+                {product.image_url && (
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
               </div>
             </div>
 
@@ -137,79 +142,42 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                 <span className="inline-block text-sm font-medium px-4 py-2 rounded-full mb-4" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
                   {product.category}
                 </span>
-                <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.name}</h1>
-                <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>{t('sourcedFrom')} {displayProduct.origin}</p>
+                <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>{product.name}</h1>
+                {product.origin && (
+                  <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>{t('sourcedFrom')} {product.origin}</p>
+                )}
               </div>
 
-              <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{displayProduct.description}</p>
+              <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{mainDescription}</p>
 
               <div className="py-6 space-y-4" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
                 <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('availableSizes')}</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.sizes.join(', ')}</p>
-                  </div>
-                  <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('shelfLife')}</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.shelfLife}</p>
-                  </div>
-                  <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('storage')}</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.storage}</p>
-                  </div>
-                  <div>
-                    <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('certification')}</p>
-                    <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.certification}</p>
-                  </div>
+                  {product.size && (
+                    <div>
+                      <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('availableSizes')}</p>
+                      <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.size}</p>
+                    </div>
+                  )}
+                  {product.shelf_life && (
+                    <div>
+                      <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('shelfLife')}</p>
+                      <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.shelf_life}</p>
+                    </div>
+                  )}
+                  {product.storage && (
+                    <div>
+                      <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>{t('storage')}</p>
+                      <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{product.storage}</p>
+                    </div>
+                  )}
+                  {product.barcode && (
+                    <div>
+                      <p className="mb-1" style={{ color: 'var(--color-text-muted)' }}>Barcode</p>
+                      <p className="font-medium font-mono" style={{ color: 'var(--color-text-primary)' }}>{product.barcode}</p>
+                    </div>
+                  )}
                 </div>
               </div>
-
-              {/* Pack Size Selector */}
-              {/* <div>
-                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>{t('selectPackSize')}</label>
-                <div className="grid grid-cols-3 gap-3">
-                  {displayProduct.sizes.map((size: string) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className="px-4 py-3 rounded-lg font-medium transition-all"
-                      style={{
-                        border: selectedSize === size ? '2px solid var(--color-primary)' : '2px solid var(--color-border)',
-                        backgroundColor: selectedSize === size ? 'var(--color-primary-light)' : 'transparent',
-                        color: selectedSize === size ? 'var(--color-primary)' : 'var(--color-text-secondary)'
-                      }}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quantity */}
-              {/* <div>
-                <label className="block text-sm font-medium mb-3" style={{ color: 'var(--color-text-secondary)' }}>{t('quantity')}</label>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center rounded-lg" style={{ border: '2px solid var(--color-border)' }}>
-                    <button
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="p-3 transition-colors"
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-tertiary)'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                      <Minus size={20} />
-                    </button>
-                    <span className="px-6 font-semibold text-lg" style={{ color: 'var(--color-text-primary)' }}>{quantity}</span>
-                    <button
-                      onClick={() => setQuantity(quantity + 1)}
-                      className="p-3 transition-colors"
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-tertiary)'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                      <Plus size={20} />
-                    </button>
-                  </div>
-                </div>
-              </div>  */}
 
               {/* Actions */}
               <div className="space-y-3 pt-4">
@@ -257,7 +225,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
         <div className="container-custom max-w-5xl">
           <div className="mb-8" style={{ borderBottom: '1px solid var(--color-border)' }}>
             <div className="flex gap-8 overflow-x-auto">
-              {['description', 'nutritional', 'shipping', 'reviews'].map((tab) => (
+              {['description', 'nutritional', 'shipping'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -277,77 +245,52 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             {activeTab === 'description' && (
               <div className="prose max-w-none">
                 <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.description')}</h3>
-                <p className="leading-relaxed mb-4" style={{ color: 'var(--color-text-secondary)' }}>
-                  {displayProduct.description}
+                <p className="leading-relaxed mb-4 whitespace-pre-line" style={{ color: 'var(--color-text-secondary)' }}>
+                  {mainDescription}
                 </p>
-                <h4 className="text-xl font-semibold mt-6 mb-3" style={{ color: 'var(--color-text-primary)' }}>{t('suggestedUses')}</h4>
-                <ul className="list-disc list-inside space-y-2" style={{ color: 'var(--color-text-secondary)' }}>
-                  {displayProduct.suggestedUses.map((use: string, idx: number) => (
-                    <li key={idx}>{use}</li>
-                  ))}
-                </ul>
+                {suggestedUses.length > 0 && (
+                  <>
+                    <h4 className="text-xl font-semibold mt-6 mb-3" style={{ color: 'var(--color-text-primary)' }}>{t('suggestedUses')}</h4>
+                    <ul className="list-disc list-inside space-y-2" style={{ color: 'var(--color-text-secondary)' }}>
+                      {suggestedUses.map((use: string, idx: number) => (
+                        <li key={idx}>{use}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {product.shelf_life_detail && (
+                  <>
+                    <h4 className="text-xl font-semibold mt-6 mb-3" style={{ color: 'var(--color-text-primary)' }}>Shelf Life Details</h4>
+                    <p className="leading-relaxed whitespace-pre-line" style={{ color: 'var(--color-text-secondary)' }}>{product.shelf_life_detail}</p>
+                  </>
+                )}
               </div>
             )}
             {activeTab === 'nutritional' && (
               <div>
                 <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.nutritional')}</h3>
                 <p className="mb-4" style={{ color: 'var(--color-text-secondary)' }}>{t('perServing')}</p>
-                {displayProduct.nutritional ? (
+                {product.nutrition && product.nutrition.length > 0 ? (
                   <table className="w-full">
-                    <tbody style={{ borderTop: '1px solid var(--color-border)' }}>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.energy')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.energy}</td></tr>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.fat')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.fat}</td></tr>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.carbohydrates')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.carbohydrates}</td></tr>
-                      <tr style={{ borderBottom: '1px solid var(--color-border)' }}><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.protein')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.protein}</td></tr>
-                      <tr><td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.sodium')}</td><td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.nutritional?.sodium}</td></tr>
+                    <thead>
+                      <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
+                        <th className="py-3 text-left font-semibold" style={{ color: 'var(--color-text-primary)' }}>Nutrient</th>
+                        <th className="py-3 text-right font-semibold" style={{ color: 'var(--color-text-primary)' }}>Amount</th>
+                        <th className="py-3 text-right font-semibold" style={{ color: 'var(--color-text-primary)' }}>% Daily Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {product.nutrition.map((item, idx) => (
+                        <tr key={idx} style={{ borderBottom: '1px solid var(--color-border)' }}>
+                          <td className="py-3" style={{ color: 'var(--color-text-secondary)' }}>{item.nutrient}</td>
+                          <td className="py-3 text-right font-medium" style={{ color: 'var(--color-text-primary)' }}>{item.amount}</td>
+                          <td className="py-3 text-right" style={{ color: 'var(--color-text-muted)' }}>{item.daily_value || '—'}</td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 ) : (
                   <p style={{ color: 'var(--color-text-secondary)' }}>{t('nutritional.notAvailable')}</p>
-                )}
-              </div>
-            )}
-            {activeTab === 'reviews' && (
-              <div>
-                <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>{t('tabs.reviews')}</h3>
-                {displayProduct.reviews && displayProduct.reviews.count > 0 ? (
-                  <>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            size={24}
-                            className={i < Math.round(displayProduct.reviews!.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-charcoal-300'}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{displayProduct.reviews.rating}</span>
-                      <span style={{ color: 'var(--color-text-secondary)' }}>({displayProduct.reviews.count} {t('reviews')})</span>
-                    </div>
-                    <div className="space-y-6">
-                      {displayProduct.reviews.comments.map((review: any, idx: number) => (
-                        <div key={idx} className="pb-6 last:border-0" style={{ borderBottom: '1px solid var(--color-border)' }}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{review.author}</span>
-                            <span className="text-sm" style={{ color: 'var(--color-text-muted)' }}>{review.date}</span>
-                          </div>
-                          <div className="flex items-center gap-1 mb-2">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                size={16}
-                                className={i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-charcoal-300'}
-                              />
-                            ))}
-                          </div>
-                          <p style={{ color: 'var(--color-text-secondary)' }}>{review.comment}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <p style={{ color: 'var(--color-text-secondary)' }}>{t('noReviews')}</p>
                 )}
               </div>
             )}
@@ -384,19 +327,20 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             {relatedProducts.map((prod) => (
               <Card key={prod.id} hover className="overflow-hidden group">
                 <div className="aspect-square relative overflow-hidden" style={{ backgroundColor: 'var(--color-bg-tertiary)' }}>
-                  <Image
-                    src={prod.image}
-                    alt={prod.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  {prod.image_url && (
+                    <img
+                      src={prod.image_url}
+                      alt={prod.name}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
                 </div>
                 <div className="p-6">
                   <span className="text-xs font-medium px-3 py-1 rounded-full" style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-light)' }}>
                     {prod.category}
                   </span>
                   <h3 className="text-lg font-semibold mt-3 mb-2" style={{ color: 'var(--color-text-primary)' }}>{prod.name}</h3>
-                  <p className="text-sm mb-4" style={{ color: 'var(--color-text-secondary)' }}>{prod.origin}</p>
+                  <p className="text-sm mb-4" style={{ color: 'var(--color-text-secondary)' }}>{prod.origin || prod.size}</p>
                   <Link href={`/${locale}/products/${prod.id}`} className="font-medium text-sm hover:underline inline-flex items-center gap-1" style={{ color: 'var(--color-primary)' }}>
                     {t('viewDetails')} <ArrowRight size={16} />
                   </Link>

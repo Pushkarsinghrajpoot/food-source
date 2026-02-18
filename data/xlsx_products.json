@@ -1,0 +1,876 @@
+[
+  {
+    "category": null,
+    "name": "white cheese, lightly salted",
+    "size": "10 kg",
+    "shelf_life": "6 Months",
+    "barcode": "\"6224000145590\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434812/Altaieb_white_cheese_lightly_salted_gcy6th.png",
+    "description": "Description\n\nSoft white cheese with a smooth texture and reduced salt content, offering a light, fresh dairy flavor suitable for everyday consumption.\n\nSuggested Uses\n\nFresh breakfast plates\n\nSliced in sandwiches\n\nCubed in salads\n\nStuffed in pita bread\n\nServed with olives & tomatoes",
+    "storage": "Cool Place",
+    "shelf_life_detail": "Unopened: Up to 6 months from the date of production under refrigerated conditions (4–8°C).\n\nOpened: Keep refrigerated in brine and consume within 5–7 days.",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "8 g",
+        "daily_value": "0.4"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.1 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Polyunsaturated Fat",
+        "amount": "5 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Monounsaturated Fat",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "50 mg",
+        "daily_value": "0.16"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "1,800 mg",
+        "daily_value": "0.75"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "6 g",
+        "daily_value": "0.02"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "5 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "9 g",
+        "daily_value": "0.18"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "500 mg",
+        "daily_value": "0.5"
+      },
+      {
+        "nutrient": "Calories for 2000gm",
+        "amount": null,
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Fat",
+        "amount": "65 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "20 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "300 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "2,400 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "300 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "25 g",
+        "daily_value": null
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Unprocessed Cottage Cheese",
+    "size": "10 kg",
+    "shelf_life": "6 Months",
+    "barcode": "\"6224000145132\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434810/Altaeib_Unprocessed_Cottage_Cheese_tplwv2.png",
+    "description": "Description\n\nUnprocessed cottage cheese with reduced fat and moderate salt content, offering a soft texture and clean dairy taste. Suitable for balanced and lighter meal options.\n\nSuggested Uses\n\nBreakfast plates\n\nFresh salads\n\nSandwich fillings\n\nStuffed wraps\n\nLight baked dishes",
+    "storage": "Cool Place",
+    "shelf_life_detail": "Unopened: Up to 6 months from the date of production at 4–8°C.\n\nOpened: Keep refrigerated in brine and consume within 5–7 days.",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Total Fat",
+        "amount": "4.3 g",
+        "daily_value": "0.06"
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "1.7 g",
+        "daily_value": "0.09"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.1 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "17 mg",
+        "daily_value": "0.06"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "364 mg",
+        "daily_value": "0.16"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "3.4 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "2.7 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "11 g",
+        "daily_value": "0.22"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "83 mg",
+        "daily_value": "0.08"
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Double Cream Cheese",
+    "size": "10kg",
+    "shelf_life": "6 months",
+    "barcode": "\"6224000145880\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434810/Altaieb_double_cream_cheese_kdrtc5.png",
+    "description": "Description\n\nRich and creamy double cream cheese made from 100% natural dairy, offering a smooth texture and mild, fresh taste. Perfect for both sweet and savory preparations.\n\nSuggested Uses\n\nCheesecake base\n\nBagels & toast spread\n\nCreamy pasta sauces\n\nFrosting & desserts\n\nDips & fillings",
+    "storage": "Cool Place",
+    "shelf_life_detail": "Unopened: Up to 6 months at 2–6°C.\n\nOpened: Keep refrigerated and consume within 5–7 days.",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "21 g",
+        "daily_value": "1.05"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.5 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "110 mg",
+        "daily_value": "0.37"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "320 mg",
+        "daily_value": "0.14"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "4 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "6 g",
+        "daily_value": "0.12"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "98 mg",
+        "daily_value": "0.1"
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Feta Cheese",
+    "size": "10 kg",
+    "shelf_life": "6 Months",
+    "barcode": "\"6224008067443\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434809/Altaeib_Fata_Cheese_rgkdwz.png",
+    "description": "Description\n\n Feta-style cheese with a crumbly texture and fresh, mildly tangy flavor. Crafted for lighter meals without compromising authentic taste.\n\nSuggested Uses\n\nCrumbled over salads\n\nStuffed in spinach pastries\n\nAdded to omelets\n\nTopped on baked vegetables\n\nMixed into grain bowls",
+    "storage": "Cool Place",
+    "shelf_life_detail": "Unopened: Up to 6 months from the date of production at 4–8°C.\n\nOpened: Keep refrigerated in brine and consume within 5–7 days.",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Total Fat",
+        "amount": "12 g",
+        "daily_value": "0.15"
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "8 g",
+        "daily_value": "0.4"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.4 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "45 mg",
+        "daily_value": "0.15"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "1,200 mg",
+        "daily_value": "0.52"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "4 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "14 g",
+        "daily_value": "0.28"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "400 mg",
+        "daily_value": "0.4"
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Unprocessed Cottage Cheese",
+    "size": "10 kg",
+    "shelf_life": "12 Months",
+    "barcode": "\"6224003986046\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434810/Altaeib_Unprocessed_Cottage_Cheese_tplwv2.png",
+    "description": "Description\n\nUnprocessed cottage white cheese made from 100% natural milk, featuring a firm yet creamy texture with a distinct salty and rich dairy flavor.\n\nSuggested Uses\n\nTraditional breakfast platters\n\nServed with tomatoes & olives\n\nStuffed in pastries\n\nCubed in salads\n\nPaired with fresh bread",
+    "storage": "Cool Place",
+    "shelf_life_detail": "Unopened: Up to 12 months from the date of production at 4–8°C.\n\nOpened: Keep refrigerated in brine and consume within 5–7 days.",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "14 g",
+        "daily_value": "0.7"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "60 mg",
+        "daily_value": "0.2"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "1,500 mg",
+        "daily_value": "0.65"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "4 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "16 g",
+        "daily_value": "0.32"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "450 mg",
+        "daily_value": "0.45"
+      },
+      {
+        "nutrient": "Calories for 2000gm",
+        "amount": null,
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Fat",
+        "amount": "65 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "20 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "300 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "2,400 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "300 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "25 g",
+        "daily_value": null
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Semi White Cheese",
+    "size": "10 kg",
+    "shelf_life": "6 Months",
+    "barcode": "\"6224000145828\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434789/Laziza_Semi_White_Soft_Cheese_gexkmh.png",
+    "description": "Description\n\nSemi-white soft cheese with a smooth texture and mild creamy flavor. Easy to slice and spread, suitable for everyday meals and light dairy preparations.\n\nSuggested Uses\n\nBreakfast sandwiches\n\nServed with flatbread\n\nSliced in wraps\n\nAdded to salads\n\nLight baked dishes",
+    "storage": "Cool Place",
+    "shelf_life_detail": "Unopened: Up to 6 months from the date of production at 4–8°C.\n\nOpened: Keep refrigerated and consume within 5–7 days.",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "12 g",
+        "daily_value": "0.6"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.2 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "55 mg",
+        "daily_value": "0.18"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "1,300 mg",
+        "daily_value": "0.57"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "4 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "15 g",
+        "daily_value": "0.3"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "420 mg",
+        "daily_value": "0.42"
+      },
+      {
+        "nutrient": "Calories for 2000gm",
+        "amount": null,
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Fat",
+        "amount": "65 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "20 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "300 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "2,400 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "300 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "25 g",
+        "daily_value": null
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Whipping Analogue cream",
+    "size": "6 kg",
+    "shelf_life": "6 Months",
+    "barcode": "\"6224000145521\"",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434812/Altaeib_Whipping_Analogue_Cream_mzqec7.png",
+    "description": "Description\n\nSemi-cream dairy product with a smooth consistency and balanced richness. Ideal for cooking and light cream-based preparations.\n\nSuggested Uses\n\nCreamy pasta sauces\n\nSoups & stews\n\nCoffee & tea whitening\n\nDessert recipes\n\nBaking applications",
+    "storage": null,
+    "shelf_life_detail": null,
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Total Fat",
+        "amount": "28 g",
+        "daily_value": "0.36"
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "7 g",
+        "daily_value": "0.9"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.1 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "60 mg",
+        "daily_value": "0.3"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "60 mg",
+        "daily_value": "0.12"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "4 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "0 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "0 g",
+        "daily_value": "0.12"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "100 mg",
+        "daily_value": "0.1"
+      },
+      {
+        "nutrient": "Polyunsaturated Fatty Acids",
+        "amount": "11.Sg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Monounsaturated Fatty Acids",
+        "amount": "11.Sg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Calories for 2000gm",
+        "amount": null,
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Fat",
+        "amount": "65 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "20 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "300 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "2,400 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "300 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "25 g",
+        "daily_value": null
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Natural Cream",
+    "size": "2.750g",
+    "shelf_life": "9 Months",
+    "barcode": "622400145866",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434810/Altaieb_Natural_Cream_ugyrv7.png",
+    "description": "Natural Cream is a rich dairy product made from fresh cow’s milk cream. It has a smooth, velvety texture and a mildly sweet, creamy flavor. With its high fat content, Natural Cream adds richness and body to both sweet and savory dishes.\n\nSuggested Uses:\n\nAdded to coffee and beverages\n\nUsed in soups and sauces for creaminess\n\nIncorporated into pasta and savory dishes\n\nWhipped for desserts and cakes\n\nUsed in baking and confectionery\n\nTopping for fruits and puddings",
+    "storage": "Cool place",
+    "shelf_life_detail": "\"Unopened: Up to 6 months at 2–6°C.\n\nOpened: Keep refrigerated and consume within 5 days.\"",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Total Fat",
+        "amount": "8 g",
+        "daily_value": "0.15"
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "22 g",
+        "daily_value": "1.1"
+      },
+      {
+        "nutrient": "Trans Fat",
+        "amount": "0.5 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "20 mg",
+        "daily_value": "0.37"
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "18 mg",
+        "daily_value": "0.02"
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "3 g",
+        "daily_value": "0.01"
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "1.1 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "0 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "2 g",
+        "daily_value": "0.04"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "66 mg",
+        "daily_value": "0.07"
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Grilled Olives",
+    "size": "14kg",
+    "shelf_life": "9 MONTHS",
+    "barcode": "622400145521",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434788/Joud_Grilled_Olives_dwpy1c.png",
+    "description": "Grilled Olives are premium olives that are lightly marinated and flame-grilled to enhance their natural flavor. They have a smoky aroma, tender texture, and a mildly salty taste. The grilling process adds depth and richness, making them ideal for gourmet dishes and appetizers.\n\nSuggested Uses :\n\nServed as part of appetizer platters\n\nAdded to salads for smoky flavor\n\nIncluded in sandwiches and wraps\n\nUsed as a pizza or pasta topping\n\nPaired with cheese boards\n\nServed alongside grilled meats",
+    "storage": "Store in a cool, dry place away from direct sunlight and heat sources.\n\nAfter opening, refrigerate at 4–8°C.",
+    "shelf_life_detail": "Unopened: 9 months from production date\n\nAfter Opening: Consume within 7–10 days under refrigeration",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Total Fat",
+        "amount": "65 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Saturated Fat",
+        "amount": "20 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Cholesterol",
+        "amount": "300 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Sodium",
+        "amount": "2,400 mg",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Carbohydrates",
+        "amount": "300 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Dietary Fiber",
+        "amount": "25 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Added Sugar",
+        "amount": "50 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Protein",
+        "amount": "50 g",
+        "daily_value": null
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Selected Greek Black",
+    "size": "10kg",
+    "shelf_life": "2YEARS",
+    "barcode": "5200103692029",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434788/Joud_Selected_Greek_Black_Olives_i1kobh.png",
+    "description": "Selected Greek Black Olives are premium-quality olives carefully harvested at full ripeness to deliver a rich, bold, and slightly tangy flavor. They have a firm texture and deep black color, making them ideal for Mediterranean dishes and gourmet preparations.\n\nSuggested Uses:\n\nAdd to Greek salads and Mediterranean platters\n\nUse as pizza and pasta toppings\n\nMix into sandwiches and wraps\n\nServe with cheese boards and antipasto platters\n\nBlend into tapenade or olive spreads",
+    "storage": "Store in a cool, dry place away from heat and direct sunlight.\n\nOnce opened, refrigerate at 4–8°C.",
+    "shelf_life_detail": "Unopened: 18–24 months from production date\n\nAfter Opening: Consume within 7–14 days when properly refrigerated",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Energy",
+        "amount": "200 kcal",
+        "daily_value": "0.17"
+      },
+      {
+        "nutrient": "Fat",
+        "amount": "19 g",
+        "daily_value": "0.1"
+      },
+      {
+        "nutrient": "Saturated",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Monounsaturated",
+        "amount": "14 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Polyunsaturated",
+        "amount": "1.5 g",
+        "daily_value": "0.31"
+      },
+      {
+        "nutrient": "Carbohydrates",
+        "amount": "6 g",
+        "daily_value": "0.02"
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "0 g",
+        "daily_value": "0.12"
+      },
+      {
+        "nutrient": "Dietary Fibers",
+        "amount": "3 g",
+        "daily_value": "—"
+      },
+      {
+        "nutrient": "Proteins",
+        "amount": "1.5 g",
+        "daily_value": "0"
+      },
+      {
+        "nutrient": "Salt",
+        "amount": "2.5 g",
+        "daily_value": "0.02"
+      },
+      {
+        "nutrient": "Calcium",
+        "amount": "88 mg",
+        "daily_value": "0.09"
+      }
+    ]
+  },
+  {
+    "category": null,
+    "name": "Selected Greek Blac Kalamata",
+    "size": "10kg",
+    "shelf_life": "2 YEARS",
+    "barcode": "5200103692033",
+    "image_url": "https://res.cloudinary.com/daeyqeofn/image/upload/v1771434788/Joud_Selected_Greek_Black_Kalmata_Olives_k3kw0s.png",
+    "description": "Selected Greek Black Kalamata Olives are premium, naturally ripened olives known for their deep purple-black color, smooth texture, and rich, fruity flavor with a mild tanginess. Carefully selected for quality and authenticity, they are a staple of Mediterranean cuisine.\nSuggested Uses\n\nAdd to authentic Greek salads\n\nUse in pasta, pizza, and Mediterranean rice dishes\n\nServe on antipasto and mezze platters\n\nBlend into tapenade and olive spreads\n\nPair with feta cheese and fresh bread",
+    "storage": "Store in a cool, dry place before opening.",
+    "shelf_life_detail": "Unopened: 18–24 months\n\nAfter Opening: Best consumed within 7–14 days under refrigeration",
+    "origin": null,
+    "nutrition": [
+      {
+        "nutrient": "Energy",
+        "amount": "230 kcal",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Fat",
+        "amount": "21 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Saturated",
+        "amount": "3 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Monounsaturated",
+        "amount": "15 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Polyunsaturated",
+        "amount": "2 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Carbohydrates",
+        "amount": "6 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Total Sugars",
+        "amount": "0 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Dietary Fibers",
+        "amount": "3 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Proteins",
+        "amount": "2 g",
+        "daily_value": null
+      },
+      {
+        "nutrient": "Salt",
+        "amount": "3.3 g",
+        "daily_value": null
+      }
+    ]
+  }
+]
